@@ -1,7 +1,9 @@
+import HomeContainer from '@/modules/home/HomeContainer';
+
 export default function Home() {
   return (
     <main>
-      Hello World
+      <HomeContainer />
     </main>
-  )
+  );
 }

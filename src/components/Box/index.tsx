@@ -11,7 +11,8 @@ import { ICSSProps } from '@/models/theme/base/cssProps';
 const Box = styled.div.attrs<ICSSProps>((props) => ({
   ...props
 }))`
-  ${props => cssProps(props)} 
+  ${props => cssProps(props)}
+  ${props => props.$css}
 `;
 
 export default Box;

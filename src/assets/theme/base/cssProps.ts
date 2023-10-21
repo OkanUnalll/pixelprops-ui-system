@@ -5,17 +5,10 @@ import { ICSSProps } from '@/models/theme/base/cssProps';
 */
 const cssProps = (props: ICSSProps): string => {
     const {
-        $mb,
-        $ml,
-        $mr,
-        $mt,
-        $mx,
-        $my,
-        $display,
-        $flexDirection,
-        $alignItems,
-        $justifyContent,
-        $gap,
+        $mb, $ml, $mr, $mt, $mx, $my,
+        $display, $flexDirection, $alignItems, $justifyContent, $gap,
+        $width, $minWidth, $maxWidth, 
+        $height, $minHeight, $maxHeight,
     } = props;
 
     return `
@@ -28,6 +21,12 @@ const cssProps = (props: ICSSProps): string => {
         ${$alignItems ? `align-items: ${$alignItems};` : ''}
         ${$justifyContent ? `justify-content: ${$justifyContent};` : ''}
         ${$gap ? `gap: ${$gap};` : ''}
+        ${$width ? `width: ${$width};` : ''}
+        ${$minWidth ? `min-width: ${$minWidth};` : ''}
+        ${$maxWidth ? `max-width: ${$maxWidth};` : ''}
+        ${$height ? `height: ${$height};` : ''}
+        ${$minHeight ? `min-height: ${$minHeight};` : ''}
+        ${$maxHeight ? `max-height: ${$maxHeight};` : ''}
     `;
 };
 

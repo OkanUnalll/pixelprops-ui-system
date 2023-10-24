@@ -1,6 +1,6 @@
 import { IColors } from '@/models/theme/base/colors';
 
-const colors: IColors = {
+export const colors: IColors = {
     primary: {
         main: '#26dbb0',
         focus: '#10b58a',
@@ -14,5 +14,3 @@ const colors: IColors = {
         focus: '#0f0f0f',
     },
 };
-
-export default colors;

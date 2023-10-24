@@ -21,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
+        outline: none;
+        transition: all .3s ease;
     }
 `;
 

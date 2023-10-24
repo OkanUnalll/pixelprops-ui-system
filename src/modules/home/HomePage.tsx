@@ -1,11 +1,13 @@
-import Box from '@/components/Box';
+import Box from 'pixelprops/components/Box';
 import PageLayout from '@/components/Layout/PageLayout';
 import ThemeLayout from '@/components/Layout/ThemeLayout';
+import PageNavbar from '@/components/Navbars/PageNavbar';
 
 function HomePage() {
   return (
     <ThemeLayout>
         <PageLayout>
+            <PageNavbar />
             <Box>
                 Hello World
             </Box>

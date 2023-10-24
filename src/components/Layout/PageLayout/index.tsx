@@ -10,8 +10,9 @@ function PageLayout({ children }: Props) {
       $width="100vh"
       $height="100%"
       $minHeight="100vh"
+      $px="5rem"
+      $py="3rem"
     >
-        Hello from page layout
         {children}
     </Box>
   );

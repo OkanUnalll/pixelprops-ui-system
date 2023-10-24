@@ -6,6 +6,12 @@ export interface ICSSProps {
     $mr?: string; // margin right
     $mx?: string; // margin x
     $my?: string; // margin y
+    $pb?: string; // padding bottom
+    $pt?: string; // padding top
+    $pl?: string; // padding left
+    $pr?: string; // padding right
+    $px?: string; // padding x
+    $py?: string; // padding y
     $display?: string;
     $flexDirection?: string;
     $justifyContent?: string;

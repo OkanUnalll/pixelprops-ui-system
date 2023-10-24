@@ -1,23 +1,9 @@
 'use client';
 
-import Box from '@/components/Box';
-import ThemeLayout from '@/components/Layout/ThemeLayout';
+import HomePage from '@/modules/home/HomePage';
 
 function HomeContainer() {
-  return (
-    <ThemeLayout>
-        <Box>
-          <div>
-            merhaba
-          </div>
-          <Box>
-            <div>s</div>
-            <div>s</div>
-          </Box>
-        </Box>
-        ase
-    </ThemeLayout>
-  );
+  return <HomePage />;
 };
 
 export default HomeContainer;

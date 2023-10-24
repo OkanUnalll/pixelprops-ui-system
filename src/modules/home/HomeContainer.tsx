@@ -1,7 +1,7 @@
 'use client';
 
 import Box from '@/components/Box';
-import ThemeLayout from '@/components/Layouts/ThemeLayout';
+import ThemeLayout from '@/components/Layout/ThemeLayout';
 
 function HomeContainer() {
   return (

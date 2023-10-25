@@ -8,7 +8,7 @@ function HomePage() {
     <ThemeLayout>
         <PageLayout>
             <PageNavbar />
-            <Box>
+            <Box $mt="2rem">
                 Hello World
             </Box>
         </PageLayout>

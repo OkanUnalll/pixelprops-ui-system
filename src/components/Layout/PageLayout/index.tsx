@@ -7,7 +7,6 @@ interface Props {
 function PageLayout({ children }: Props) {
   return (
     <Box
-      $width="100vh"
       $height="100%"
       $minHeight="100vh"
       $px="5rem"

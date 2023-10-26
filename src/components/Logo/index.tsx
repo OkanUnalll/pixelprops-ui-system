@@ -12,6 +12,7 @@ function Logo({
   height,
   route = true,
 }: Props) {
+
   if (route) {
     return (
       <Link href="/">

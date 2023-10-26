@@ -1,10 +1,11 @@
 import Logo from '@/components/Logo';
-import Link from '@/pixelprops/components/Link';
-import Typography from '@/pixelprops/components/Typography';
 
+import routes from '@/routes';
+
+import Link from 'pixelprops/components/Link';
+import Typography from 'pixelprops/components/Typography';
 import Box from 'pixelprops/components/Box';
 
-import navItems from '@/components/Navbars/PageNavbar/navItems.json';
 
 function PageNavbar() {
   return (
@@ -44,17 +45,17 @@ function PageNavbar() {
             </Typography>
           </Link>
         </Box>
-        <Box>
-          {navItems.map((item) => (
+        <Box $display="flex">
+          {routes.map((item) => (
             <Link
-              key={item.id}
+              key={item.key}
               href={item.route}
               $mr="1rem"
-              $css="
-                color: #fff;
-              "
+              $color="#fff"
+              withDropdown={item.collepse.length !== 0}
+              dropdownItems={item.collepse}
             >
-              {item.title}
+              {item.name}
             </Link>
           ))}
         </Box>

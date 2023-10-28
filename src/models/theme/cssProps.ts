@@ -1,3 +1,5 @@
+
+
 export interface ICSSProps {
     $css?: string; // custom css
     $mb?: string; // margin bottom
@@ -12,7 +14,7 @@ export interface ICSSProps {
     $pr?: string; // padding right
     $px?: string; // padding x
     $py?: string; // padding y
-    $display?: string;
+    $display?: 'block' | 'flex' | 'flexbox' | 'grid' | 'inline' | 'inline-flex' | 'inline-flexbox' | 'inline-block';
     $flexDirection?: string;
     $justifyContent?: string;
     $alignItems?: string;

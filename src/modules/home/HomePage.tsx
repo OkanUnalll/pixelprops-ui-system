@@ -1,4 +1,4 @@
-import { Box } from 'pixelprops/components/core';
+import Box from 'pixelprops/components/core/Box';
 import PageLayout from '@/components/Layout/PageLayout';
 import ThemeLayout from '@/components/Layout/ThemeLayout';
 import PageNavbar from '@/components/Navbars/PageNavbar';

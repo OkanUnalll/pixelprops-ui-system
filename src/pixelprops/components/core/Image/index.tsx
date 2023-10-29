@@ -8,7 +8,6 @@ interface ImageProps extends ICSSProps {};
 
 const Image = styled(NextImage)<ImageProps>`
   ${props => cssProps(props)}
-  ${props => props.$css}  
 `;
 
 export default Image;

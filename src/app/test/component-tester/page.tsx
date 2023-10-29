@@ -1,17 +1,19 @@
 'use client';
 
 import ThemeLayout from '@/components/Layout/ThemeLayout';
+import Typography from '@/pixelprops/components/core/Typography';
 
-import { DropdownWrapper, DropdownItem } from 'pixelprops/components/Dropdown';
 import Box from 'pixelprops/components/core/Box';
 
 function ComponentTester() {
   return (
     <ComponentTesterProvider>
         <Box $css="position: relative;">
-            <DropdownWrapper $css="padding: 1rem; background-color: red;">
-                <DropdownItem href="/">Link 1</DropdownItem>
-            </DropdownWrapper>
+            <Typography>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Fuga porro at asperiores. Ut adipisci aperiam veniam perspiciatis laborum sunt,
+              exercitationem totam atque numquam? Fugiat in ipsam provident quo dolore enim!
+            </Typography>
         </Box>
     </ComponentTesterProvider>
   );
@@ -27,7 +29,7 @@ function ComponentTesterProvider({ children }: { children: React.ReactNode }) {
             $width="100%"
             $height="100vh"
             $css="position: relative;"
-        >
+          >
             {children}
           </Box>
       </ThemeLayout>

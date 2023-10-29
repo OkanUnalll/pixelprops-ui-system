@@ -1,4 +1,4 @@
-import { Box } from 'pixelprops/components/core';
+import Box from 'pixelprops/components/core/Box';
 
 interface Props {
     children: React.ReactNode;

@@ -22,7 +22,6 @@ const Link = styled(NextLink)<LinkProps>`
     color: ${colors.primary.focus}
   };
   ${props => cssProps(props)}
-  ${props => props.$css}
 `;
 
 export default Link;

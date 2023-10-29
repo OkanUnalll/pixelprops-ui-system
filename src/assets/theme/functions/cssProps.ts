@@ -5,6 +5,7 @@ import { ICSSProps } from '@/models/theme/cssProps';
 */
 const cssProps = (props: ICSSProps): string => {
     const {
+        $css,
         $mb, $ml, $mr, $mt, $mx, $my,
         $pb, $pl, $pr, $pt, $px, $py,
         $display, $flexDirection, $alignItems, $justifyContent, $gap,
@@ -32,6 +33,7 @@ const cssProps = (props: ICSSProps): string => {
         ${$height ? `height: ${$height};` : ''}
         ${$minHeight ? `min-height: ${$minHeight};` : ''}
         ${$maxHeight ? `max-height: ${$maxHeight};` : ''}
+        ${$css ?? ''}
     `;
 };
 

@@ -2,9 +2,9 @@ import Logo from '@/components/Logo';
 
 import routes from '@/routes';
 
-import Link from 'pixelprops/components/Link';
-import Typography from 'pixelprops/components/Typography';
-import { Box } from 'pixelprops/components/core';
+import Link from 'pixelprops/components/core/Link';
+import Typography from 'pixelprops/components/core/Typography';
+import Box from 'pixelprops/components/core/Box';
 
 function PageNavbar() {
   return (
@@ -32,13 +32,13 @@ function PageNavbar() {
           <Typography
             $variant="h2"
             $mr=".2rem"
-            $weight="600"
+            $fontWeight="600"
           >
             PIXEL
           </Typography>
           <Typography
             $variant="h2"
-            $weight="400"
+            $fontWeight="400"
           >
             PROPS
           </Typography>

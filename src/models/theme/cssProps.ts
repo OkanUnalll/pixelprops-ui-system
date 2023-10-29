@@ -1,28 +1,28 @@
-
+import type * as CSS from 'csstype';
 
 export interface ICSSProps {
     $css?: string; // custom css
-    $mb?: string; // margin bottom
-    $mt?: string; // margin top
-    $ml?: string; // margin left
-    $mr?: string; // margin right
+    $mb?: CSS.Property.MarginBottom; // margin bottom
+    $mt?: CSS.Property.MarginTop; // margin top
+    $ml?: CSS.Property.MarginLeft; // margin left
+    $mr?: CSS.Property.MarginRight; // margin right
     $mx?: string; // margin x
     $my?: string; // margin y
-    $pb?: string; // padding bottom
-    $pt?: string; // padding top
-    $pl?: string; // padding left
-    $pr?: string; // padding right
+    $pb?: CSS.Property.PaddingBottom; // padding bottom
+    $pt?: CSS.Property.PaddingTop; // padding top
+    $pl?: CSS.Property.PaddingLeft; // padding left
+    $pr?: CSS.Property.PaddingRight; // padding right
     $px?: string; // padding x
     $py?: string; // padding y
-    $display?: 'block' | 'flex' | 'flexbox' | 'grid' | 'inline' | 'inline-flex' | 'inline-flexbox' | 'inline-block';
-    $flexDirection?: string;
-    $justifyContent?: string;
-    $alignItems?: string;
-    $gap?: string;
-    $width?: string;
-    $minWidth?: string;
-    $maxWidth?: string;
-    $height?: string;
-    $minHeight?: string;
-    $maxHeight?: string;
+    $display?: CSS.Property.Display;
+    $flexDirection?: CSS.Property.FlexDirection;
+    $justifyContent?: CSS.Property.JustifyContent;
+    $alignItems?: CSS.Property.AlignItems;
+    $gap?: CSS.Property.Gap;
+    $width?: CSS.Property.Width;
+    $minWidth?: CSS.Property.MinWidth;
+    $maxWidth?: CSS.Property.MaxWidth;
+    $height?: CSS.Property.Height;
+    $minHeight?: CSS.Property.MinHeight;
+    $maxHeight?: CSS.Property.MaxHeight;
 };

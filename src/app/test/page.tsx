@@ -1,19 +1,17 @@
 'use client';
 
-import Typography from '@root/elements/Typography';
 import Box from '@root/elements/Box';
 
 import PageLayout from '@/layouts/PageLayout';
+import Button from '@root/elements/Button';
 
 function ComponentTester() {
   return (
     <ComponentTesterProvider>
-        <Box $css="position: relative;">
-            <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Fuga porro at asperiores. Ut adipisci aperiam veniam perspiciatis laborum sunt,
-              exercitationem totam atque numquam? Fugiat in ipsam provident quo dolore enim!
-            </Typography>
+        <Box $display="flex" $css="position: relative;">
+          <Button>
+            Button
+          </Button>
         </Box>
     </ComponentTesterProvider>
   );

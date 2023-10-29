@@ -3,7 +3,7 @@ import { IColors } from '@root/models/theme';
 export const colors: IColors = {
     primary: {
         main: '#26dbb0',
-        focus: '#10b58a',
+        focus: '#0d8266',
     },
     secondary: {
         main: '#27d86e',

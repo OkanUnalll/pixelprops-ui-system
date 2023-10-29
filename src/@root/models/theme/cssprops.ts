@@ -25,4 +25,6 @@ export interface ICSSProps {
     $height?: CSS.Property.Height;
     $minHeight?: CSS.Property.MinHeight;
     $maxHeight?: CSS.Property.MaxHeight;
+    $cursor?: CSS.Property.Cursor;
+    $zIndex?: CSS.Property.ZIndex;
 };

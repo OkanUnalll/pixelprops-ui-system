@@ -1,0 +1,81 @@
+import styled from 'styled-components';
+
+import cssProps from '@root/theme/functions/cssProps';
+
+import { ICSSProps } from '@root/models/theme/cssprops';
+
+import { colors } from '@root/theme';
+
+interface ButtonProps extends ICSSProps {
+    $variant?: 'text' | 'contained' | 'outlined';
+    $color?: string;
+    $size?: 'small' | 'medium' | 'large';
+}
+
+const Button = styled.button<ButtonProps>`
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all .1s ease;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    &:disabled {
+        opacity: .7;
+        cursor: no-drop;
+    }
+
+    &:hover {
+        opacity: .8;
+    }
+
+    &:active {
+        opacity: .6;
+    }
+
+    // Variant
+    ${props => {
+      const color = props.$color ?? colors.primary.focus;
+      const variant = props.$variant ?? 'contained';
+      if (variant === 'text') return `
+          background-color: transparent;
+          border-color: transparent;
+          color: ${color};
+      `;
+      if (variant === 'contained') return `
+          background-color: ${color};
+          border-color: ${color};
+          color: #fff;
+      `;
+      if (variant === 'outlined') return `
+          background-color: transparent;
+          border-color: ${color};
+          color: ${color};
+      `;
+      
+    }}
+
+    // Size
+    ${props => {
+      const size = props.$size ?? 'medium';  
+      if (size === 'small') return `
+          padding: .4rem .7rem;
+          font-size: 12px;
+      `;
+      
+      if (size === 'medium') return `
+          padding: .4rem .9rem;
+          font-size: 14px;
+      `;
+      
+      if (size === 'large') return `
+          padding: .7rem 1rem;
+          font-size: 17px;
+      `;
+      
+    }}
+    ${props => cssProps(props)}
+`;
+
+export default Button;

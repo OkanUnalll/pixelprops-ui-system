@@ -11,6 +11,8 @@ const cssProps = (props: ICSSProps): string => {
         $display, $flexDirection, $alignItems, $justifyContent, $gap,
         $width, $minWidth, $maxWidth, 
         $height, $minHeight, $maxHeight,
+        $cursor,
+        $zIndex,
     } = props;
 
     return `
@@ -33,6 +35,8 @@ const cssProps = (props: ICSSProps): string => {
         ${$height ? `height: ${$height};` : ''}
         ${$minHeight ? `min-height: ${$minHeight};` : ''}
         ${$maxHeight ? `max-height: ${$maxHeight};` : ''}
+        ${$cursor ? `cursor: ${$cursor};` : ''}
+        ${$zIndex ? `z-index: ${$zIndex};` : ''}
         ${$css ?? ''}
     `;
 };

@@ -1,5 +1,5 @@
-import SVG from 'pixelprops/components/SVG';
-import Link from 'pixelprops/components/core/Link';
+import SVG from '@pixelprops/elements/SVG';
+import Link from '@pixelprops/elements/Link';
 
 interface Props {
   width?: number;

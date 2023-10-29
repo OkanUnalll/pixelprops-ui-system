@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import cssProps from '@/assets/theme/functions/cssProps';
+import cssProps from '@pixelprops/theme/functions/cssProps';
 
 // interfaces
-import { ICSSProps } from '@/models/theme/cssProps';
+import { ICSSProps } from '@pixelprops/models/theme/cssprops';
 
 /**
  * attrs feature ref: https://styled-components.com/docs/basics#attaching-additional-props

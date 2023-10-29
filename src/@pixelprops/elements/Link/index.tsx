@@ -1,10 +1,10 @@
 import NextLink from 'next/link';
 import styled from 'styled-components';
 
-import { ICSSProps } from '@/models/theme/cssProps';
+import { ICSSProps } from '@pixelprops/models/theme/cssprops';
 
-import { colors } from '@/assets/theme';
-import cssProps from '@/assets/theme/functions/cssProps';
+import { colors } from '@pixelprops/theme';
+import cssProps from '@pixelprops/theme/functions/cssProps';
 
 interface LinkProps extends ICSSProps {
   $underline?: boolean;

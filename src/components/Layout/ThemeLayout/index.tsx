@@ -1,7 +1,7 @@
 // lib modules
-import StyledComponentsRegistry from '../../../../lib/StyledComponentsRegistry';
+import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry';
 
-import ThemeProvider from '@/assets/theme/ThemeProvider';
+import ThemeProvider from '@pixelprops/theme/ThemeProvider';
 
 interface Props {
     children: React.ReactNode;

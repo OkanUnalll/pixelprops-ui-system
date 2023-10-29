@@ -1,4 +1,4 @@
-import type { ITypography } from '@/models/theme/base/typography';
+import type { ITypography } from '@pixelprops/models/theme';
 
 export const typography: ITypography = {
     h1: {

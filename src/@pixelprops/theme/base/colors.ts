@@ -1,4 +1,4 @@
-import { IColors } from '@/models/theme/base/colors';
+import { IColors } from '@pixelprops/models/theme';
 
 export const colors: IColors = {
     primary: {

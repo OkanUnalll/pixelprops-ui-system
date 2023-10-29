@@ -1,9 +1,9 @@
 'use client';
 
 import ThemeLayout from '@/components/Layout/ThemeLayout';
-import Typography from '@/pixelprops/components/core/Typography';
 
-import Box from 'pixelprops/components/core/Box';
+import Typography from '@pixelprops/elements/Typography';
+import Box from '@pixelprops/elements/Box';
 
 function ComponentTester() {
   return (

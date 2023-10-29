@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "pixelprops/*": ["./src/pixelprops/*"],
+      "@pixelprops/*": ["./src/@pixelprops/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

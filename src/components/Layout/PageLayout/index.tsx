@@ -1,4 +1,4 @@
-import Box from 'pixelprops/components/core/Box';
+import Box from '@pixelprops/elements/Box';
 
 interface Props {
     children: React.ReactNode;
@@ -12,7 +12,7 @@ function PageLayout({ children }: Props) {
       $px="5rem"
       $py="3rem"
     >
-        {children}
+      {children}
     </Box>
   );
 }

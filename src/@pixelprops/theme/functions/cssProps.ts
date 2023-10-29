@@ -1,4 +1,4 @@
-import { ICSSProps } from '@/models/theme/cssProps';
+import { ICSSProps } from '@pixelprops/models/theme/cssprops';
 
 /**
  * refs: https://styled-components.com/docs/basics#attaching-additional-props 

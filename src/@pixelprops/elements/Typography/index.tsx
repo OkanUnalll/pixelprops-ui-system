@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import CSS from 'csstype';
 
-import { ICSSProps } from '@/models/theme/cssProps';
-import cssProps from '@/assets/theme/functions/cssProps';
+import { ICSSProps } from '@pixelprops/models/theme/cssprops';
+import cssProps from '@pixelprops/theme/functions/cssProps';
 
-import { getVariantCSS } from 'pixelprops/components/core/Typography/helpers';
+import { getVariantCSS } from '@pixelprops/elements/Typography/helpers';
 
 interface Limit {
   width?: CSS.Property.Width;
@@ -23,6 +23,7 @@ const Typography = styled.span<TypographyProps>`
   ${
     props => {
       if (props.$limit) {
+        // ref: https://css-tricks.com/almanac/properties/l/line-clamp/
         return `
           display: -webkit-box;
           -webkit-line-clamp: ${props.$limit.lineClamp ?? 1};

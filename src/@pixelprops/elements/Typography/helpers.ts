@@ -1,5 +1,6 @@
-import { typography } from '@/assets/theme/base/typography';
-import type { ITypographyValues } from '@/models/theme/base/typography';
+import { typography } from '@pixelprops/theme';
+
+import type { ITypographyValues } from '@pixelprops/models/theme/base/typography';
 
 function getVariantCSS(variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'text'): string {
   const selectedVariant: ITypographyValues = typography[variant]; 

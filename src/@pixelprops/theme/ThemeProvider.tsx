@@ -1,7 +1,7 @@
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-import GlobalStyle from '@/assets/theme/GlobalStyle';
-import theme from '@/assets/theme';
+import GlobalStyle from '@pixelprops/theme/GlobalStyle';
+import theme from '@pixelprops/theme';
 
 function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (

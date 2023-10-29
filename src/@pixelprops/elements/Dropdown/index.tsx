@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Box from 'pixelprops/components/core/Box';
-import Link from 'pixelprops/components/core/Link';
+import Box from '@pixelprops/elements/Box';
+import Link from '@pixelprops/elements/Link';
 
 const DropdownWrapper = styled(Box)`
   border-radius: 5px;

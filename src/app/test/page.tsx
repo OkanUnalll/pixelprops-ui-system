@@ -1,19 +1,17 @@
 'use client';
 
-import ThemeLayout from '@/components/Layout/ThemeLayout';
+import Box from '@root/elements/Box';
 
-import Typography from '@pixelprops/elements/Typography';
-import Box from '@pixelprops/elements/Box';
+import PageLayout from '@/layouts/PageLayout';
+import Button from '@root/elements/Button';
 
 function ComponentTester() {
   return (
     <ComponentTesterProvider>
-        <Box $css="position: relative;">
-            <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Fuga porro at asperiores. Ut adipisci aperiam veniam perspiciatis laborum sunt,
-              exercitationem totam atque numquam? Fugiat in ipsam provident quo dolore enim!
-            </Typography>
+        <Box $display="flex" $css="position: relative;">
+          <Button>
+            Hello
+          </Button>
         </Box>
     </ComponentTesterProvider>
   );
@@ -21,7 +19,7 @@ function ComponentTester() {
 
 function ComponentTesterProvider({ children }: { children: React.ReactNode }) {
     return (
-      <ThemeLayout>
+      <PageLayout>
           <Box
             $display="flex"
             $alignItems="center"
@@ -32,7 +30,7 @@ function ComponentTesterProvider({ children }: { children: React.ReactNode }) {
           >
             {children}
           </Box>
-      </ThemeLayout>
+      </PageLayout>
     );
   }
 

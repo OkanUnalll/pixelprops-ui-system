@@ -2,9 +2,9 @@ import Logo from '@/components/Logo';
 
 import routes from '@/routes';
 
-import Link from '@pixelprops/elements/Link';
-import Typography from '@pixelprops/elements/Typography';
-import Box from '@pixelprops/elements/Box';
+import Link from '@root/elements/Link';
+import Typography from '@root/elements/Typography';
+import Box from '@root/elements/Box';
 
 function PageNavbar() {
   return (

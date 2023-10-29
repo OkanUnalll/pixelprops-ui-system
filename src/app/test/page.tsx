@@ -10,7 +10,7 @@ function ComponentTester() {
     <ComponentTesterProvider>
         <Box $display="flex" $css="position: relative;">
           <Button>
-            Button
+            Hello
           </Button>
         </Box>
     </ComponentTesterProvider>

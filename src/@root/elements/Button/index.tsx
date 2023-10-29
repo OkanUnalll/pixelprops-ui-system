@@ -10,6 +10,7 @@ interface ButtonProps extends ICSSProps {
     $variant?: 'text' | 'contained' | 'outlined';
     $color?: string;
     $size?: 'small' | 'medium' | 'large';
+    $iconOnly?: boolean;
 }
 
 const Button = styled.button<ButtonProps>`
@@ -20,6 +21,9 @@ const Button = styled.button<ButtonProps>`
     transition: all .1s ease;
     text-transform: uppercase;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:disabled {
         opacity: .7;
@@ -58,7 +62,15 @@ const Button = styled.button<ButtonProps>`
 
     // Size
     ${props => {
-      const size = props.$size ?? 'medium';  
+      if (props.$iconOnly) {
+        return `
+          width: 45px;
+          height: 45px;
+        `;
+      }  
+
+      const size = props.$size ?? 'medium';
+
       if (size === 'small') return `
           padding: .4rem .7rem;
           font-size: 12px;

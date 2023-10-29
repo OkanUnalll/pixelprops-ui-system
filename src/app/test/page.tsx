@@ -1,9 +1,9 @@
 'use client';
 
-import ThemeLayout from '@/components/Layout/ThemeLayout';
+import Typography from '@root/elements/Typography';
+import Box from '@root/elements/Box';
 
-import Typography from '@pixelprops/elements/Typography';
-import Box from '@pixelprops/elements/Box';
+import PageLayout from '@/layouts/PageLayout';
 
 function ComponentTester() {
   return (
@@ -21,7 +21,7 @@ function ComponentTester() {
 
 function ComponentTesterProvider({ children }: { children: React.ReactNode }) {
     return (
-      <ThemeLayout>
+      <PageLayout>
           <Box
             $display="flex"
             $alignItems="center"
@@ -32,7 +32,7 @@ function ComponentTesterProvider({ children }: { children: React.ReactNode }) {
           >
             {children}
           </Box>
-      </ThemeLayout>
+      </PageLayout>
     );
   }
 

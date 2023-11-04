@@ -16,7 +16,7 @@ interface ButtonProps extends ICSSProps {
 const Button = styled.button<ButtonProps>`
     border-width: 1px;
     border-style: solid;
-    border-radius: 3px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all .1s ease;
     text-transform: uppercase;
@@ -77,12 +77,12 @@ const Button = styled.button<ButtonProps>`
       `;
       
       if (size === 'medium') return `
-          padding: .4rem .9rem;
+          padding: .6rem 1rem;
           font-size: 14px;
       `;
       
       if (size === 'large') return `
-          padding: .7rem 1rem;
+          padding: .8rem 1.3rem;
           font-size: 17px;
       `;
       

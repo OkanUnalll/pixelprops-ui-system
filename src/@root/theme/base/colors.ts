@@ -13,4 +13,17 @@ export const colors: IColors = {
         main: '#1c1c1c',
         focus: '#0f0f0f',
     },
+    grey: {
+        main: '#c1c1c1',
+        focus: '#9e9e9e',
+    },
+    grey2: {
+        main: '#313131',
+    },
+    white: {
+        main: '#ffffff',
+    },
+    black: {
+        main: '#000000',
+    }
 };

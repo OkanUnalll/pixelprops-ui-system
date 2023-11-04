@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import cssProps from '@root/theme/functions/cssProps';
 
-// interfaces
 import { ICSSProps } from '@root/models/theme/cssprops';
 
 /**

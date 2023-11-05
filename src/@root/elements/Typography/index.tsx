@@ -5,8 +5,6 @@ import { ICSSProps } from '@root/models/theme/cssprops';
 
 import cssProps from '@root/theme/functions/cssProps';
 
-import { colors } from '@root/theme';
-
 import { getVariantCSS } from '@root/elements/Typography/helpers';
 
 import type { ColorKeys } from '@root/models/theme/base/colors';
@@ -27,7 +25,7 @@ interface TypographyProps extends ICSSProps {
 
 const Typography = styled.span<TypographyProps>`
   display: inline-block;
-  color: ${props => colors[props.$color ?? 'white'].main};
+  color: ${props => props.theme.colors[props.$color ?? 'white'].main};
   font-weight: ${props => props.$fontWeight ?? '500'};
   ${props => props.$fontSize ? `font-size: ${props.$fontSize}` : ''}
   

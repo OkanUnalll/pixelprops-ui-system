@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import CSS from 'csstype';
 
-import { colors } from '@root/theme';
 import cssProps from '@root/theme/functions/cssProps';
 
 import type { ICSSProps } from '@root/models/theme/cssprops';
@@ -25,7 +24,7 @@ const Progress = styled.span<ProgressProps>`
   display: inline-block;
   border-style: solid;
   border-width: 5px;
-  border-color: ${props => colors[props.$color ?? 'primary'].main};
+  border-color: ${props => props.theme.colors[props.$color ?? 'primary'].main};
   border-top-color: transparent;
   border-radius: 50%;
   animation: 1s ${progressAnimation} infinite ${props => props.$timingFunction ?? 'ease'};

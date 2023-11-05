@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import CSS from 'csstype';
 
-import { colors, typography } from '@root/theme';
-
 /**
  * for examples: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
  *               https://www.htmlgoodies.com/html5/advanced-html-table-features/
@@ -19,9 +17,9 @@ interface TableHeadDataProps extends CustomCSS {
 
 const TableHeadData = styled.th<TableHeadDataProps>`
   padding: 1rem 2rem;
-  font-size: ${typography.h5.fontSize};
+  font-size: ${props => props.theme.typography.h5.fontSize};
   font-weight: 500;
-  color: ${colors.grey.main};
+  color: ${props => props.theme.colors.grey.main};
   cursor: default;
 
   text-align: ${props => props.$textAlign ?? 'left'};
@@ -32,7 +30,7 @@ const TableHeadData = styled.th<TableHeadDataProps>`
 
 const TableData = styled.td<CustomCSS>`
   padding: 1rem 2rem;
-  font-size: ${typography.text.fontSize};
+  font-size: ${props => props.theme.typography.text.fontSize};
 
   // Custom CSS
   ${props => props.$css}
@@ -40,7 +38,7 @@ const TableData = styled.td<CustomCSS>`
 
 // Row
 const TableRow = styled.tr<CustomCSS>`
-  border-bottom: 1px solid ${colors.grey2.main};
+  border-bottom: 1px solid ${props => props.theme.colors.grey2.main};
   transition: all .3s ease;
 
   &:nth-last-child(1) {
@@ -53,7 +51,7 @@ const TableRow = styled.tr<CustomCSS>`
 
 // Groupers
 const TableHead = styled.thead<CustomCSS>`
-  border-bottom: 1px solid ${colors.grey2.main};
+  border-bottom: 1px solid ${props => props.theme.colors.grey2.main};
 
   // Custom CSS
   ${props => props.$css}
@@ -61,7 +59,7 @@ const TableHead = styled.thead<CustomCSS>`
 
 const TableBody = styled.tbody<CustomCSS>`
   ${TableRow}:hover {
-    background-color: ${colors.grey2.main};
+    background-color: ${props => props.theme.colors.grey2.main};
   }
 
   // Custom CSS
@@ -90,7 +88,7 @@ const Table = styled.table<TableProps>`
     `;
 
     if (variant === 'widget') return `
-      background-color: ${colors.dark2.main};
+      background-color: ${props.theme.colors.dark2.main};
       border-radius: 12px;
     `;
   }}

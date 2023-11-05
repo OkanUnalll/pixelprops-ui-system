@@ -4,8 +4,6 @@ import cssProps from '@root/theme/functions/cssProps';
 
 import { ICSSProps } from '@root/models/theme/cssprops';
 
-import { colors } from '@root/theme';
-
 interface ButtonProps extends ICSSProps {
     $variant?: 'text' | 'contained' | 'outlined';
     $color?: string;
@@ -40,18 +38,21 @@ const Button = styled.button<ButtonProps>`
 
     // Variant
     ${props => {
-      const color = props.$color ?? colors.primary.focus;
+      const color = props.$color ?? props.theme.colors.primary.main;
       const variant = props.$variant ?? 'contained';
+
       if (variant === 'text') return `
           background-color: transparent;
           border-color: transparent;
           color: ${color};
       `;
+
       if (variant === 'contained') return `
           background-color: ${color};
           border-color: ${color};
           color: #fff;
       `;
+
       if (variant === 'outlined') return `
           background-color: transparent;
           border-color: ${color};

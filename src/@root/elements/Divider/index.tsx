@@ -39,7 +39,7 @@ const Divider = styled.div<DividerProps>`
   // Variant & Color
   ${props => {
     const variant = props.$variant;
-    const color = colors[props.$color ?? 'grey2'].main;
+    const color = props.theme.colors[props.$color ?? 'grey2'].main;
 
     if (variant === 'none' || !variant) return `
       background: ${color};

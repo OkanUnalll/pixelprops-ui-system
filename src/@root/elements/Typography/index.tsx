@@ -26,25 +26,28 @@ interface TypographyProps extends ICSSProps {
 }
 
 const Typography = styled.span<TypographyProps>`
-  ${
-    props => {
-      if (props.$limit) {
-        // ref: https://css-tricks.com/almanac/properties/l/line-clamp/
-        return `
-          display: -webkit-box;
-          -webkit-line-clamp: ${props.$limit.lineClamp ?? 1};
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          width: ${props.$limit.width ?? '100%'};
-          max-width: ${props.$limit.maxWidth ?? '100%'};
-        `;
-      }
-    }
-  }
-
+  display: inline-block;
   color: ${props => colors[props.$color ?? 'white'].main};
   font-weight: ${props => props.$fontWeight ?? '500'};
   ${props => props.$fontSize ? `font-size: ${props.$fontSize}` : ''}
+  
+  // Limit
+  ${props => {
+    const limit = props.$limit;
+
+    if (limit) {
+      // ref: https://css-tricks.com/almanac/properties/l/line-clamp/
+      return `
+        display: -webkit-box;
+        -webkit-line-clamp: ${limit.lineClamp ?? 1};
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        width: ${limit.width ?? '100%'};
+        max-width: ${limit.maxWidth ?? '100%'};
+      `;
+    }
+  }}
+
   ${props => getVariantCSS(props.$variant ?? 'text')}
   ${props => cssProps(props)}
 `;

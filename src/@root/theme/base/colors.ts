@@ -13,6 +13,9 @@ export const colors: IColors = {
         main: '#1c1c1c',
         focus: '#0f0f0f',
     },
+    dark2: {
+        main: '#252525',
+    },
     grey: {
         main: '#c1c1c1',
         focus: '#9e9e9e',

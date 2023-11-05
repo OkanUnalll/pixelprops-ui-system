@@ -6,6 +6,8 @@ import Divider from '@root/elements/Divider';
 
 import type { ICSSProps } from '@root/models/theme/cssprops';
 
+import { colors } from '@root/theme';
+
 import cssProps from '@root/theme/functions/cssProps';
 
 interface WidgetContainerTemplateProps {
@@ -22,7 +24,7 @@ function WidgetContainerTemplate({ className, children, title }: WidgetContainer
           <Typography $variant="h3">
             {title}
           </Typography>
-          <Divider $variant="to-right" $weight="large" />
+          <Divider $weight="large" />
         </Box>
       )}  
       <Box>
@@ -35,7 +37,7 @@ function WidgetContainerTemplate({ className, children, title }: WidgetContainer
 interface WidgetContainerProps extends ICSSProps {}
 
 const WidgetContainer = styled(WidgetContainerTemplate)<WidgetContainerProps>`
-  background-color: #252525;
+  background-color: ${colors.dark2.main};
   border-radius: 12px;
   padding: 1.3rem 1.7rem;
   position: relative;

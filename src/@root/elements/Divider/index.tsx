@@ -8,7 +8,7 @@ import cssProps from '@root/theme/functions/cssProps';
 import { colors } from '@root/theme';
 
 interface DividerProps extends ICSSProps {
-  $variant?: 'contained' | 'to-left' | 'to-right' | 'center';
+  $variant?: 'none' | 'to-left' | 'to-right' | 'center';
   $weight?: 'mediun' | 'large' | 'xlarge';
   $color?: ColorKeys;
 }
@@ -41,7 +41,7 @@ const Divider = styled.div<DividerProps>`
     const variant = props.$variant;
     const color = colors[props.$color ?? 'grey2'].main;
 
-    if (variant === 'contained' || !variant) return `
+    if (variant === 'none' || !variant) return `
       background: ${color};
     `;
 

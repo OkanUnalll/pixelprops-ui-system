@@ -1,8 +1,8 @@
 'use client';
 
 import Box from '@root/elements/Box';
-import WidgetContainer from '@root/elements/WidgetContainer';
-import Typography from '@root/elements/Typography';
+
+import DataTable from '@root/elements/Tables/DataTable';
 
 import PageLayout from '@/layouts/PageLayout';
 
@@ -10,11 +10,7 @@ function ComponentTester() {
   return (
     <ComponentTesterProvider>
         <Box $display="flex" $css="position: relative;">
-          <WidgetContainer $width="500px" title="Title">
-            <Typography>
-              hello
-            </Typography>
-          </WidgetContainer>
+          <DataTable $css="width: 800px;" />
         </Box>
     </ComponentTesterProvider>
   );

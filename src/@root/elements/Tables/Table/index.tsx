@@ -19,10 +19,10 @@ const TableHeadData = styled.th<TableHeadDataProps>`
   padding: 1rem 2rem;
   font-size: ${props => props.theme.typography.h5.fontSize};
   font-weight: 500;
-  color: ${props => props.theme.colors.grey.main};
   cursor: default;
-
   text-align: ${props => props.$textAlign ?? 'left'};
+
+  color: ${props => props.theme.colors.grey.main};
 
   // Custom CSS
   ${props => props.$css}
@@ -32,13 +32,19 @@ const TableData = styled.td<CustomCSS>`
   padding: 1rem 2rem;
   font-size: ${props => props.theme.typography.text.fontSize};
 
+  color: ${props => {
+    const theme = props.theme.mode;
+    
+    return theme === 'light' ? props.theme.colors.dark.main : props.theme.colors.white.main;
+  }};
+
   // Custom CSS
   ${props => props.$css}
 `;
 
 // Row
 const TableRow = styled.tr<CustomCSS>`
-  border-bottom: 1px solid ${props => props.theme.colors.grey2.main};
+  border-bottom: 1px solid ${props => props.theme.mode === 'light' ? props.theme.colors.grey.light : props.theme.colors.grey.dark};
   transition: all .3s ease;
 
   &:nth-last-child(1) {
@@ -51,7 +57,9 @@ const TableRow = styled.tr<CustomCSS>`
 
 // Groupers
 const TableHead = styled.thead<CustomCSS>`
-  border-bottom: 1px solid ${props => props.theme.colors.grey2.main};
+  border-bottom: 1px solid ${
+    props => props.theme.mode === 'light' ? props.theme.colors.grey.light : props.theme.colors.grey.dark
+  };
 
   // Custom CSS
   ${props => props.$css}
@@ -59,7 +67,9 @@ const TableHead = styled.thead<CustomCSS>`
 
 const TableBody = styled.tbody<CustomCSS>`
   ${TableRow}:hover {
-    background-color: ${props => props.theme.colors.grey2.main};
+    background-color: ${
+      props => props.theme.mode === 'light' ? props.theme.colors.grey.light : props.theme.colors.grey.dark
+    };
   }
 
   // Custom CSS
@@ -82,14 +92,16 @@ const Table = styled.table<TableProps>`
   // Variant
   ${props => {
     const variant = props.$variant;
+    const theme = props.theme.mode;
 
     if (variant === 'default' || !variant) return `
       background-color: transparent;
     `;
 
     if (variant === 'widget') return `
-      background-color: ${props.theme.colors.dark2.main};
+      background-color: ${theme === 'light' ? props.theme.colors.white.main : props.theme.colors.dark.light};
       border-radius: 12px;
+      ${theme === 'light' ? `box-shadow: ${props.theme.boxShadows.xs};` : ''}
     `;
   }}
 

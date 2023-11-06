@@ -22,7 +22,7 @@ function WidgetContainerTemplate({ className, children, title }: WidgetContainer
           <Typography $variant="h3">
             {title}
           </Typography>
-          <Divider $weight="large" />
+          <Divider $spacing="small" />
         </Box>
       )}  
       <Box>
@@ -35,11 +35,14 @@ function WidgetContainerTemplate({ className, children, title }: WidgetContainer
 interface WidgetContainerProps extends ICSSProps {}
 
 const WidgetContainer = styled(WidgetContainerTemplate)<WidgetContainerProps>`
-  background-color: ${props => props.theme.colors.dark2.main};
+  background-color: ${
+    props => props.theme.mode === 'light' ? props.theme.colors.white.main : props.theme.colors.dark.light
+  };
   border-radius: 12px;
   padding: 1.3rem 1.7rem;
   position: relative;
-  box-shadow: 0 0 45px rgba(20, 20, 20, 0.9);
+
+  ${props => props.theme.mode === 'light' ? `box-shadow: ${props.theme.boxShadows.xs}` : ''}
 
   ${props => cssProps(props)}
 `;

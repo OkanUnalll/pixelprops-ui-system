@@ -19,7 +19,7 @@ interface DataTableTemplateProps {
 
 function DataTableTemplate({ columns, rows, className }: DataTableTemplateProps) {
   return (
-    <Table className={className}>
+    <Table $variant="widget" className={className}>
       <TableHead>
         <TableRow>
             <TableHeadData>Name</TableHeadData>

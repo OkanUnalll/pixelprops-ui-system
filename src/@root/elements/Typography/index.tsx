@@ -7,7 +7,7 @@ import cssProps from '@root/theme/functions/cssProps';
 
 import { getVariantCSS } from '@root/elements/Typography/helpers';
 
-import type { ColorKeys } from '@root/models/theme/base/colors';
+import type { ColorKeys, ColorTypeKeys } from '@root/models/theme/base/colors';
 
 interface Limit {
   width?: CSS.Property.Width;
@@ -20,14 +20,25 @@ interface TypographyProps extends ICSSProps {
   $fontWeight?: CSS.Property.FontWeight;
   $fontSize?: CSS.Property.FontSize;
   $color?: ColorKeys;
+  $colorType?: ColorTypeKeys;
   $limit?: Limit;
 }
 
 const Typography = styled.span<TypographyProps>`
   display: inline-block;
-  color: ${props => props.theme.colors[props.$color ?? 'white'].main};
   font-weight: ${props => props.$fontWeight ?? '500'};
   ${props => props.$fontSize ? `font-size: ${props.$fontSize}` : ''}
+  color: ${props => {
+    const theme = props.theme.mode;
+
+    return props.theme.colors[
+      // color name
+      props.$color ?? (theme === 'light' ? 'dark' : 'white')
+    ][
+      // color type
+      props.$colorType ?? 'main'
+    ];
+  }};
   
   // Limit
   ${props => {

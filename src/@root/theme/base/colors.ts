@@ -3,27 +3,37 @@ import { IColors } from '@root/models/theme';
 export const colors: IColors = {
     primary: {
         main: '#26dbb0',
-        focus: '#0d8266',
+        light: '#7fc6b3',
+        dark: '#2e8c71',
     },
     secondary: {
         main: '#27d86e',
-        focus: '#18b557',
+        light: '#98cb9c',
+        dark: '#2a8536',
     },
     dark: {
         main: '#1c1c1c',
-        focus: '#0f0f0f',
+        light: '#252525',
+        dark: '',
     },
     grey: {
-        main: '#c1c1c1',
-        focus: '#9e9e9e',
-    },
-    grey2: {
-        main: '#313131',
+        main: '#9e9e9e',
+        light: '#eaeaea',
+        dark: '#323232',
     },
     white: {
         main: '#ffffff',
+        light: '',
+        dark: '',
     },
     black: {
         main: '#000000',
-    }
+        light: '',
+        dark: '',
+    },
+    blue: {
+        main: '#1976d2',
+        light: '#42a5f5',
+        dark: '#1565c0',
+    },
 };

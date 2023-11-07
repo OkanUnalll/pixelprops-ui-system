@@ -5,11 +5,9 @@ import { ICSSProps } from '@root/models/theme/cssprops';
 
 import cssProps from '@root/theme/functions/cssProps';
 
-import { colors } from '@root/theme';
-
 import { getVariantCSS } from '@root/elements/Typography/helpers';
 
-import type { ColorKeys } from '@root/models/theme/base/colors';
+import type { ColorKeys, ColorTypeKeys } from '@root/models/theme/base/colors';
 
 interface Limit {
   width?: CSS.Property.Width;
@@ -22,29 +20,43 @@ interface TypographyProps extends ICSSProps {
   $fontWeight?: CSS.Property.FontWeight;
   $fontSize?: CSS.Property.FontSize;
   $color?: ColorKeys;
+  $colorType?: ColorTypeKeys;
   $limit?: Limit;
 }
 
 const Typography = styled.span<TypographyProps>`
-  ${
-    props => {
-      if (props.$limit) {
-        // ref: https://css-tricks.com/almanac/properties/l/line-clamp/
-        return `
-          display: -webkit-box;
-          -webkit-line-clamp: ${props.$limit.lineClamp ?? 1};
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          width: ${props.$limit.width ?? '100%'};
-          max-width: ${props.$limit.maxWidth ?? '100%'};
-        `;
-      }
-    }
-  }
-
-  color: ${props => colors[props.$color ?? 'white'].main};
+  display: inline-block;
   font-weight: ${props => props.$fontWeight ?? '500'};
   ${props => props.$fontSize ? `font-size: ${props.$fontSize}` : ''}
+  color: ${props => {
+    const theme = props.theme.mode;
+
+    return props.theme.colors[
+      // color name
+      props.$color ?? (theme === 'light' ? 'dark' : 'white')
+    ][
+      // color type
+      props.$colorType ?? 'main'
+    ];
+  }};
+  
+  // Limit
+  ${props => {
+    const limit = props.$limit;
+
+    if (limit) {
+      // ref: https://css-tricks.com/almanac/properties/l/line-clamp/
+      return `
+        display: -webkit-box;
+        -webkit-line-clamp: ${limit.lineClamp ?? 1};
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        width: ${limit.width ?? '100%'};
+        max-width: ${limit.maxWidth ?? '100%'};
+      `;
+    }
+  }}
+
   ${props => getVariantCSS(props.$variant ?? 'text')}
   ${props => cssProps(props)}
 `;

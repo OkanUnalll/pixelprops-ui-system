@@ -1,5 +1,5 @@
 import Box from '@root/elements/Box';
-import ThemeLayout from '@/layouts/ThemeLayout';
+import ThemeProvier from '@root/theme/layouts/ThemeProvider';
 
 interface Props {
     children: React.ReactNode;
@@ -7,7 +7,7 @@ interface Props {
 
 function PageLayout({ children }: Props) {
   return (
-    <ThemeLayout>
+    <ThemeProvier>
       <Box
         $height="100%"
         $minHeight="100vh"
@@ -16,7 +16,7 @@ function PageLayout({ children }: Props) {
       >
         {children}
       </Box>
-    </ThemeLayout>
+    </ThemeProvier>
   );
 }
 

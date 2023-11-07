@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 import { ICSSProps } from '@root/models/theme/cssprops';
 
-import { colors } from '@root/theme';
 import cssProps from '@root/theme/functions/cssProps';
+import type { ColorKeys, ColorTypeKeys } from '@/@root/models/theme/base/colors';
 
 interface LinkProps extends ICSSProps {
   $underline?: boolean;
-  $color?: string;
+  $color?: ColorKeys;
+  $colorType?: ColorTypeKeys;
 }
 
 /**
@@ -16,10 +17,17 @@ interface LinkProps extends ICSSProps {
  *                    https://styled-components.com/docs/basics#adapting-based-on-props
  */
 const Link = styled(NextLink)<LinkProps>`
-  color: ${props => props.$color ?? colors.primary.main};
+  color: ${props => {
+    const theme = props.theme.mode;
+    return props.theme.colors[
+      props.$color ?? (theme === 'light' ? 'dark' : 'white')
+    ][
+      props.$colorType ?? 'main'
+    ];
+  }};
   text-decoration: ${props => props.$underline ? 'underline' : 'none'};
   &:hover {
-    color: ${colors.primary.focus}
+    opacity: 0.7;
   };
   ${props => cssProps(props)}
 `;

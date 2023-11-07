@@ -54,11 +54,11 @@ const CheckboxInput = styled.input.attrs(() => ({
 const CheckboxIcon = styled(Svg)`
   position: absolute;
   pointer-events: none;
-  z-index: 2;
   transition: all .2s ease;
   width: 100%;
   height: 100%;
   padding: .2rem .1rem;
+  z-index: 2;
   opacity: ${props => props.theme.opacity.hidden};
 `;
 
@@ -72,6 +72,7 @@ const CheckboxView = styled.span<CheckboxViewProps>`
   border-style: solid;
   border-width: 2px;
   border-radius: 6px;
+  position: relative;
 
   // $size Prop Styles
   ${props => {

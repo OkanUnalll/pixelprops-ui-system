@@ -1,0 +1,1 @@
+export * from 'ui-system/components/core/base/Tables/Table';

@@ -1,18 +1,17 @@
 'use client';
 
-import Box from 'ui-system/components/Box';
-
-import DataTable from '@root/elements/Tables/DataTable';
-
 import PageLayout from '@/layouts/PageLayout';
 
-import WidgetContainer from '@root/elements/WidgetContainer';
-import Typography from '@root/elements/Typography';
-import Chechbox from '@root/elements/Checkbox';
-import Divider from '@root/elements/Divider';
-import Tooltip from '@root/elements/Tooltip';
-import Link from '@root/elements/Link';
+import Box from 'ui-system/components/Box';
+import WidgetContainer from 'ui-system/components/WidgetContainer';
+import Typography from 'ui-system/components/Typography';
+import DataTable from 'ui-system/components/DataTable';
+import Checkbox from 'ui-system/components/Checkbox';
+import Progress from 'ui-system/components/Progress';
+import Tooltip from 'ui-system/components/Tooltip';
+import Divider from 'ui-system/components/Divider';
 import Button from 'ui-system/components/Button';
+import Link from 'ui-system/components/Link';
 import Icon from 'ui-system/components/Icon';
 
 function ComponentTester() {
@@ -137,6 +136,26 @@ function ComponentTester() {
           </Section>
         </Section>
         <Divider />
+        <Section container title="Progress">
+          <Section title="Sizes">
+            <Progress $size="small" />
+            <Progress $size="medium" />
+            <Progress $size="large" />
+          </Section>
+          <Section title="Colors">
+            <Progress $color="primary" />
+            <Progress $color="blue" />
+            <Progress $color="green" />
+            <Progress $color="purple" />
+            <Progress $color="red" />
+          </Section>
+          <Section title="Animations">
+            <Progress $timingFunction="linear" />
+            <Progress $timingFunction="ease" />
+            <Progress $timingFunction="ease-in-out" />
+          </Section>
+        </Section>
+        <Divider />
         <Section container title="Icons">
           <Section title="Sizes">
             <Box $display="flex" $alignItems="center" $gap={20}>
@@ -159,41 +178,52 @@ function ComponentTester() {
         <Divider />
         <Section container title="Checkbox">
           <Section>
-            <Chechbox />
-            <Chechbox defaultChecked />
-            <Chechbox defaultChecked disabled />
-            <Chechbox disabled />
+            <Checkbox />
+            <Checkbox defaultChecked />
+            <Checkbox defaultChecked disabled />
+            <Checkbox disabled />
           </Section>
           <Section>
-            <Chechbox label="Label" />
-            <Chechbox label="Disabled Label" disabled />
+            <Checkbox label="Label" />
+            <Checkbox label="Disabled Label" disabled />
           </Section>
           <Section>
-            <Chechbox $size="small" />
-            <Chechbox $size="medium" />
-            <Chechbox $size="large" />
+            <Checkbox $size="small" />
+            <Checkbox $size="medium" />
+            <Checkbox $size="large" />
           </Section>
           <Section>
-            <Chechbox label="Small" $size="small" />
-            <Chechbox label="Medium" $size="medium" />
-            <Chechbox label="Large" $size="large" />
+            <Checkbox label="Small" $size="small" />
+            <Checkbox label="Medium" $size="medium" />
+            <Checkbox label="Large" $size="large" />
           </Section>
           <Section>
-            <Chechbox $color="blue" />
-            <Chechbox $checkedColor="blue" defaultChecked />
-            <Chechbox $color="primary" />
-            <Chechbox $checkedColor="primary" defaultChecked />
-            <Chechbox $color="secondary" />
-            <Chechbox $checkedColor="secondary" defaultChecked />
+            <Checkbox $color="blue" />
+            <Checkbox $checkedColor="blue" defaultChecked />
+            <Checkbox $color="primary" />
+            <Checkbox $checkedColor="primary" defaultChecked />
+            <Checkbox $color="secondary" />
+            <Checkbox $checkedColor="secondary" defaultChecked />
           </Section>
         </Section>
         <Divider />
-        <Typography $variant="h2" $mb="3rem">Tooltip</Typography>
-        <Box>
-          <Tooltip title="Lock">
-            <Chechbox defaultChecked />
-          </Tooltip>
-        </Box>
+        <Section container title="Tooltip">
+          <Box $display="flex" $gap={24}>
+            <Tooltip title="Lock" placement="top">
+              <Checkbox disabled defaultChecked />
+            </Tooltip>
+            <Tooltip title="Click Here!">
+              <Button>
+                Button
+              </Button>
+            </Tooltip>
+            <Tooltip title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt fugit, libero incidunt ex perferendis quidem autem. Quasi id quam, maiores, error placeat, officia doloremque laudantium accusantium ullam possimus vero cupiditate!">
+              <Typography $limit={{ maxWidth: '200px' }}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt fugit, libero incidunt ex perferendis quidem autem. Quasi id quam, maiores, error placeat, officia doloremque laudantium accusantium ullam possimus vero cupiditate!
+              </Typography>
+            </Tooltip>
+          </Box>
+        </Section>
         <Divider />
         <Typography $variant="h2" $mb="3rem">Data Table</Typography>
         <DataTable $css="width: 800px;" />
@@ -208,10 +238,17 @@ function ComponentTester() {
           Example Link
         </Link>
         <Divider />
-        <Typography $variant="h2" $mb="3rem">Typography</Typography>
-        <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consectetur odio tempora pariatur nisi assumenda nemo ea modi ut nulla impedit placeat quam esse architecto, delectus vitae sapiente tempore incidunt.
-        </Typography>
+        <Section container title="Typography">
+          <Box>
+            <Typography $variant="h1">H1: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
+            <Typography $variant="h2">H2: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
+            <Typography $variant="h3">H3: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
+            <Typography $variant="h4">H4: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
+            <Typography $variant="h5">H5: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
+            <Typography $variant="h6">H6: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
+            <Typography $variant="text" >TEXT: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
+          </Box>
+        </Section>
         <Divider />
       </Box>
     </ComponentTesterProvider>

@@ -45,14 +45,14 @@ function ComponentTester() {
                 $iconOnly
                 $rounded="full"
               >
-                <Icon name="google_font_icons_check" $size="small" />
+                <Icon name="google_arrow_right" $size="small" />
               </Button>
               <Button
                 $size="medium"
                 $iconOnly
                 $rounded="full"
               >
-                <Icon name="google_font_icons_check" $size="medium" />
+                <Icon name="google_arrow_right" $size="medium" />
               </Button>
               <Button
                 $size="large"
@@ -60,38 +60,100 @@ function ComponentTester() {
                 $rounded="full"
                 $mr={10}
               >
-                <Icon name="google_font_icons_check" $size="large" />
+                <Icon name="google_arrow_right" $size="large" />
               </Button>
 
+
+
               <Button
-                iconLeft={<Icon name="google_font_icons_check" $size="small" />}
+                $iconOnly
+                $variant="text"
+              >
+                <Icon name="google_close" />
+              </Button>
+              <Button
+                $iconOnly
+                $variant="text"
+              >
+                <Icon name="google_check" />
+              </Button>
+              <Button
+                $iconOnly
+                $variant="text"
+                $mr={10}
+              >
+                <Icon name="google_search" />
+              </Button>
+
+
+
+              <Button
+                iconLeft={<Icon name="google_arrow_right" $size="small" />}
                 $size="small"
+                $color="secondary"
               >
-                Icon
+                Left
               </Button>
               <Button
-                iconLeft={<Icon name="google_font_icons_check" $size="medium" />}
+                iconLeft={<Icon name="google_arrow_right" $size="medium" />}
                 $size="medium"
+                $color="yellow"
               >
-                Icon
+                Left
               </Button>
               <Button
-                iconLeft={<Icon name="google_font_icons_check" $size="large" />}
+                iconLeft={<Icon name="google_arrow_right" $size="large" />}
                 $size="large"
+                $color="blue"
+                $mr={10}
               >
-                Icon
+                Left
+              </Button>
+
+
+
+              <Button
+                iconRight={<Icon name="google_arrow_right" $size="small" />}
+                $size="small"
+                $color="purple"
+              >
+                Right
+              </Button>
+              <Button
+                iconRight={<Icon name="google_arrow_right" $size="medium" />}
+                $size="medium"
+                $color="red"
+              >
+                Right
+              </Button>
+              <Button
+                iconRight={<Icon name="google_arrow_right" $size="large" />}
+                $size="large"
+                $color="green"
+              >
+                Right
               </Button>
             </Box>
           </Section>
         </Section>
         <Divider />
         <Section container title="Icons">
-          <Section>
+          <Section title="Sizes">
             <Box $display="flex" $alignItems="center" $gap={20}>
-              <Icon name="google_font_icons_check" $size="small" />
-              <Icon name="google_font_icons_check" $size="medium" />
-              <Icon name="google_font_icons_check" $size="large" />
+              <Icon name="google_arrow_right" $size="small" />
+              <Icon name="google_arrow_right" $size="medium" />
+              <Icon name="google_arrow_right" $size="large" />
             </Box>
+          </Section>
+          <Section title="All Icons">
+            <Typography>Google Font Icons</Typography>
+            <Icon name="google_arrow_bottom" />
+            <Icon name="google_arrow_left" />
+            <Icon name="google_arrow_top" />
+            <Icon name="google_arrow_right" />
+            <Icon name="google_check" />
+            <Icon name="google_close" />
+            <Icon name="google_search" />
           </Section>
         </Section>
         <Divider />

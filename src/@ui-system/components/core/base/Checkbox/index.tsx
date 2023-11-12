@@ -109,7 +109,6 @@ const CheckboxContainer = styled.label<CheckboxContainerProps>`
     display: inline-flex;
     align-items: center;
     transition: ${props => props.theme.transition.fast};
-    opacity: ${props => props.disabled ? props.theme.opacity.md : props.theme.opacity.visible};
 
     // Checkbox Icon Checked Style 
     ${CheckboxInput}:checked ~ ${CheckboxView} ${CheckboxIcon} {
@@ -139,6 +138,9 @@ const CheckboxContainer = styled.label<CheckboxContainerProps>`
         `;
       }}
     }
+
+    // disabled Prop Styles
+    ${({ disabled, theme }) => disabled && `opacity: ${theme.opacity.disabled};`}
 
     // $size Prop Styles
     ${props => {

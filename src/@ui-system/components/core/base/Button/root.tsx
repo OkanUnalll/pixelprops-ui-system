@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 import { cssProps } from 'ui-system/core';
 
-import type { ICSSProps, Rounded } from 'ui-system/core';
+import type { ICSSProps, Rounded, Color } from 'ui-system/core';
 
 export interface ButtonWrapperCSSProps extends ICSSProps {
   disabled?: boolean;
   $variant?: 'text' | 'contained' | 'outlined';
-  $color?: string;
+  $color?: Color;
   $size?: 'small' | 'medium' | 'large';
   $iconOnly?: boolean;
   $rounded?: Rounded;
@@ -23,11 +23,12 @@ const ButtonWrapper = styled.button<ButtonWrapperCSSProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: '${({ theme }) => theme.font.roboto}', sans-serif;
     border-radius: ${({ $rounded, theme }) => theme.rounded[$rounded ?? 'md']};
 
     &:disabled {
-      opacity: .5;
-      cursor: no-drop;
+      opacity: ${({ theme }) => theme.opacity.disabled};
+      cursor: default;
     }
 
     ${({ disabled }) => {
@@ -46,7 +47,8 @@ const ButtonWrapper = styled.button<ButtonWrapperCSSProps>`
 
     // $variant Prop Styles
     ${({ $variant, $color, theme }) => {
-    const color = $color ?? theme.colors?.primary.main;
+    const color = $color ? theme.colors[$color].main : theme.colors?.primary.main;
+    const textColor = $color ? theme.colors[$color].contrastText : theme.colors?.primary.contrastText;
     const variant = $variant ?? 'contained';
 
     switch (variant) {
@@ -62,10 +64,10 @@ const ButtonWrapper = styled.button<ButtonWrapperCSSProps>`
       case 'contained': return `
         background-color: ${color};
         border-color: ${color};
-        color: #000;
+        color: ${textColor};
 
         svg {
-          fill: #000;
+          fill: ${textColor};
         }
       `;
       case 'outlined': return `

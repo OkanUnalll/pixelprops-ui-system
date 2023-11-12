@@ -2,6 +2,7 @@ import {
   boxShadow,
   device,
   colors,
+  font,
   opacity,
   rounded,
   typography,
@@ -12,6 +13,7 @@ import type {
   IBoxShadow,
   ISize,
   IColors,
+  IFont,
   IOpacity,
   IRounded,
   ITypography,
@@ -25,6 +27,7 @@ export interface ITheme {
     boxShadow: IBoxShadow;
     device: ISize;
     colors: IColors;
+    font: IFont;
     opacity: IOpacity;
     rounded: IRounded;
     typography: ITypography;
@@ -35,6 +38,7 @@ const theme: ITheme = {
   boxShadow,
   device,
   colors,
+  font,
   opacity,
   rounded,
   typography,

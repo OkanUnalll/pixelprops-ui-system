@@ -6,6 +6,7 @@ export interface IOpacity {
   lg: string;
   xl: string;
   visible: string;
+  disabled: string;
 };
 
 export const opacity: IOpacity = {
@@ -16,4 +17,5 @@ export const opacity: IOpacity = {
   lg: '0.70',
   xl: '0.85',
   visible: '1',
+  disabled: '0.50',
 };

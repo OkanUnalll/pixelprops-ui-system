@@ -17,9 +17,9 @@ function Button({
 }: ButtonProps) {
   return (
     <ButtonWrapper {...rest}>
-      <>{iconLeft}</>
+      <>{iconLeft}&nbsp;</>
       {children}
-      <>{iconRight}</>
+      <>&nbsp;{iconRight}</>
     </ButtonWrapper>
   );  
 }

@@ -19,22 +19,26 @@ const IconTemplate = styled(InlineSVG)<IconTemplateCSSProps>`
     const color = theme.mode === 'light' ? theme.colors.dark.main : theme.colors.white.main;
     return $color ? theme.colors[$color].main : color;
   }};
+
+  path {
+    width: 100%;
+  }
   
   ${({ $size }) => {
     const size = $size ?? 'medium';
 
     switch(size) {
       case 'small': return `
-        width: 22px;
-        height: 22px;
+        width: 13px;
+        height: 13px;
       `;
       case 'medium': return `
-        width: 30px;
-        height: 30px;
+        width: 18px;
+        height: 18px;
       `;
       case 'large': return `
-        width: 37px;
-        height: 37px;
+        width: 23px;
+        height: 23px;
       `;
     }
   }}

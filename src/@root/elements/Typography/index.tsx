@@ -26,7 +26,7 @@ interface TypographyProps extends ICSSProps {
 
 const Typography = styled.span<TypographyProps>`
   display: inline-block;
-  font-weight: ${props => props.$fontWeight ?? '500'};
+  font-weight: ${({ $fontWeight }) => $fontWeight ?? 'normal'};
   ${props => props.$fontSize ? `font-size: ${props.$fontSize}` : ''}
   color: ${props => {
     const theme = props.theme.mode;

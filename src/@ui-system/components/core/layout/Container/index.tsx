@@ -6,7 +6,7 @@ interface ContainerProps extends ContainerTemplateCSSProps{
   readonly className?: string;
 }
 
-function Container({ children, className, ...rest }: ContainerProps) {
+function Container({ children, className, ...rest }: ContainerProps) { 
   return (
     <ContainerTemplate { ...rest }>
       {children}

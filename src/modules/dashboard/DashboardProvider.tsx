@@ -1,8 +1,10 @@
+'use client';
+
 import { createContext, useMemo } from 'react';
 
 export const DashboardContext = createContext({});
 
-function DashboardProvider({ children }: { children: React.ReactNode }) {
+function DashboardProvider({ children }: { readonly children: React.ReactNode }) {
   const data = 5;
 
   const contextData = useMemo(() => ({

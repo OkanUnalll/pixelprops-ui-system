@@ -88,44 +88,44 @@ const cssProps = (props: ICSSProps): string => {
     // CSS PROPS
     const templates = {
       my: `
-        margin-top: ${typeof $my === 'number' ? `calc(${$my} * 1px)` : $my};
-        margin-bottom: ${typeof $my === 'number' ? `calc(${$my} * 1px)` : $my};
+        margin-top: ${typeof $my === 'number' ? `${$my}rem` : $my};
+        margin-bottom: ${typeof $my === 'number' ? `${$my}rem` : $my};
       `,
       mx: `
-        margin-left: ${typeof $mx === 'number' ? `calc(${$mx} * 1px)` : $mx};
-        margin-right: ${typeof $mx === 'number' ? `calc(${$mx} * 1px)` : $mx};
+        margin-left: ${typeof $mx === 'number' ? `${$mx}rem` : $mx};
+        margin-right: ${typeof $mx === 'number' ? `${$mx}rem` : $mx};
       `,
       mt: `
-        margin-top: ${typeof $mt === 'number' ? `calc(${$mt} * 1px)` : $mt};
+        margin-top: ${typeof $mt === 'number' ? `${$mt}rem` : $mt};
       `,
       mr: `
-        margin-right: ${typeof $mr === 'number' ? `calc(${$mr} * 1px)` : $mr};
+        margin-right: ${typeof $mr === 'number' ? `${$mr}rem` : $mr};
       `,
       mb: `
-        margin-bottom: ${typeof $mb === 'number' ? `calc(${$mb} * 1px)` : $mb};
+        margin-bottom: ${typeof $mb === 'number' ? `${$mb}rem` : $mb};
       `,
       ml: `
-        margin-left: ${typeof $ml === 'number' ? `calc(${$ml} * 1px)` : $ml};
+        margin-left: ${typeof $ml === 'number' ? `${$ml}rem` : $ml};
       `,
       py: `
-        padding-top: ${typeof $py === 'number' ? `calc(${$py} * 1px)` : $py};
-        padding-bottom: ${typeof $py === 'number' ? `calc(${$py} * 1px)` : $py};
+        padding-top: ${typeof $py === 'number' ? `${$py}rem` : $py};
+        padding-bottom: ${typeof $py === 'number' ? `${$py}rem` : $py};
       `,
       px: `
-        padding-left: ${typeof $px === 'number' ? `calc(${$px} * 1px)` : $px};
-        padding-right: ${typeof $px === 'number' ? `calc(${$px} * 1px)` : $px};
+        padding-left: ${typeof $px === 'number' ? `${$px}rem` : $px};
+        padding-right: ${typeof $px === 'number' ? `${$px}rem` : $px};
       `,
       pt: `
-        padding-top: ${typeof $pt === 'number' ? `calc(${$pt} * 1px)` : $pt};
+        padding-top: ${typeof $pt === 'number' ? `${$pt}rem` : $pt};
       `,
       pr: `
-        padding-right: ${typeof $pr === 'number' ? `calc(${$pr} * 1px)` : $pr};
+        padding-right: ${typeof $pr === 'number' ? `${$pr}rem` : $pr};
       `,
       pb: `
-        padding-bottom: ${typeof $pb === 'number' ? `calc(${$pb} * 1px)` : $pb};
+        padding-bottom: ${typeof $pb === 'number' ? `${$pb}rem` : $pb};
       `,
       pl: `
-      margin-left: ${typeof $pl === 'number' ? `calc(${$pl} * 1px)` : $pl};
+      margin-left: ${typeof $pl === 'number' ? `${$pl}rem` : $pl};
       `,
       display: `
         display: ${$display};
@@ -140,25 +140,25 @@ const cssProps = (props: ICSSProps): string => {
         justify-content: ${$justifyContent};
       `,
       gap: `
-        gap: ${typeof $gap === 'number' ? `calc(${$gap} * 1px)` : $gap};
+        gap: ${typeof $gap === 'number' ? `${$gap}rem` : $gap};
       `,
       width: `
-        width: ${typeof $width === 'number' ? `calc(${$width} * 1px)` : $width};
+        width: ${typeof $width === 'number' ? `${$width}rem` : $width};
       `,
       minWidth: `
-        min-width: ${typeof $minWidth === 'number' ? `calc(${$minWidth} * 1px)` : $minWidth};
+        min-width: ${typeof $minWidth === 'number' ? `${$minWidth}rem` : $minWidth};
       `,
       maxWidth: `
-        max-width: ${typeof $maxWidth === 'number' ? `calc(${$maxWidth} * 1px)` : $maxWidth};
+        max-width: ${typeof $maxWidth === 'number' ? `${$maxWidth}rem` : $maxWidth};
       `,
       height: `
-        height: ${typeof $height === 'number' ? `calc(${$height} * 1px)` : $height};
+        height: ${typeof $height === 'number' ? `${$height}rem` : $height};
       `,
       minHeight: `
-        min-height: ${typeof $minHeight === 'number' ? `calc(${$minHeight} * 1px)` : $minHeight};
+        min-height: ${typeof $minHeight === 'number' ? `${$minHeight}rem` : $minHeight};
       `,
       maxHeight: `
-        max-height: ${typeof $maxHeight === 'number' ? `calc(${$maxHeight} * 1px)` : $maxHeight};
+        max-height: ${typeof $maxHeight === 'number' ? `${$maxHeight}rem` : $maxHeight};
       `,
       cursor: `
         cursor: ${$cursor};

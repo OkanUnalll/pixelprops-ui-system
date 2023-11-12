@@ -2,7 +2,7 @@ import Box from 'ui-system/components/Box';
 import ThemeProvider from 'ui-system/layouts/ThemeProvider';
 
 interface Props {
-    children: React.ReactNode;
+  children: React.ReactNode;
 };
 
 function PageLayout({ children }: Props) {

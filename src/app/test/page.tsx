@@ -17,7 +17,7 @@ import Icon from 'ui-system/components/Icon';
 function ComponentTester() {
   return (
     <ComponentTesterProvider>
-      <Box $display="flex" $flexDirection="column" $py={24} $css="position: relative;">
+      <Box $display="flex" $flexDirection="column" $py={3} $css="position: relative;">
         <Typography $variant="h1" $mb="3rem">Elements</Typography>
         <Section container title="Button">
           <Section title="Variant">
@@ -31,14 +31,14 @@ function ComponentTester() {
             <Button disabled $variant="outlined">Disabled</Button>
           </Section>
           <Section title="Sizes">
-            <Box $display="flex" $alignItems="center" $gap={10}>
+            <Box $display="flex" $alignItems="center" $gap={1}>
               <Button $size="small">Small</Button>
               <Button $size="medium">Medium</Button>
               <Button $size="large">Large</Button>
             </Box>
           </Section>
           <Section title="With Icons">
-            <Box $display="flex" $alignItems="center" $gap={10}>
+            <Box $display="flex" $alignItems="center" $gap={1}>
               <Button
                 $size="small"
                 $iconOnly
@@ -57,7 +57,7 @@ function ComponentTester() {
                 $size="large"
                 $iconOnly
                 $rounded="full"
-                $mr={10}
+                $mr={1}
               >
                 <Icon name="google_arrow_right" $size="large" />
               </Button>
@@ -79,7 +79,7 @@ function ComponentTester() {
               <Button
                 $iconOnly
                 $variant="text"
-                $mr={10}
+                $mr={1}
               >
                 <Icon name="google_search" />
               </Button>
@@ -104,7 +104,7 @@ function ComponentTester() {
                 iconLeft={<Icon name="google_arrow_right" $size="large" />}
                 $size="large"
                 $color="blue"
-                $mr={10}
+                $mr={1}
               >
                 Left
               </Button>
@@ -257,9 +257,9 @@ function ComponentTester() {
 
 function Section({ title, children, container }: { title?: string; children: React.ReactNode; container?: boolean; }) {
   return (
-    <Box $mb={container ? 24 : 0}>
+    <Box $mb={container ? 2 : 0}>
       {title && <Typography $variant={container ? 'h2' : 'h3'} $fontWeight={container ? '600' : '400'} $mb="2em">{title}</Typography>}
-      <Box $display="flex" $flexDirection={container ? 'column' : 'row'} $gap={container ? '5rem' : 12}>
+      <Box $display="flex" $flexDirection={container ? 'column' : 'row'} $gap={container ? '5rem' : 1}>
         {children}
       </Box>
     </Box>

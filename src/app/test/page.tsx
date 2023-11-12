@@ -158,7 +158,7 @@ function ComponentTester() {
         <Divider />
         <Section container title="Icons">
           <Section title="Sizes">
-            <Box $display="flex" $alignItems="center" $gap={20}>
+            <Box $display="flex" $alignItems="center" $gap={1}>
               <Icon name="google_arrow_right" $size="small" />
               <Icon name="google_arrow_right" $size="medium" />
               <Icon name="google_arrow_right" $size="large" />
@@ -208,7 +208,7 @@ function ComponentTester() {
         </Section>
         <Divider />
         <Section container title="Tooltip">
-          <Box $display="flex" $gap={24}>
+          <Box $display="flex" $gap={2}>
             <Tooltip title="Lock" placement="top">
               <Checkbox disabled defaultChecked />
             </Tooltip>

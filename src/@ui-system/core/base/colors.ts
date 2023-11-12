@@ -9,6 +9,7 @@ export interface IColors {
     primary: IColorTypes;
     secondary: IColorTypes;
     dark: IColorTypes;
+    light: IColorTypes;
     grey: IColorTypes;
     white: IColorTypes;
     black: IColorTypes;
@@ -19,7 +20,7 @@ export interface IColors {
     green: IColorTypes;
 };
 
-export type Color = 'primary' | 'secondary' | 'dark' | 'grey' | 'white' | 'black' | 'blue' | 'purple' | 'red' | 'yellow' | 'green';
+export type Color = 'primary' | 'secondary' | 'dark' | 'light' | 'grey' | 'white' | 'black' | 'blue' | 'purple' | 'red' | 'yellow' | 'green';
 export type ColorType = 'main' | 'light' | 'dark' | 'contrastText';
 
 export const colors: IColors = {
@@ -40,6 +41,12 @@ export const colors: IColors = {
         light: '#252525',
         dark: '',
         contrastText: '#ACACAC',
+    },
+    light: {
+        main: '#e8e8e8',
+        light: '',
+        dark: '#d1d1d1',
+        contrastText: '#000000',
     },
     grey: {
         main: '#9e9e9e',

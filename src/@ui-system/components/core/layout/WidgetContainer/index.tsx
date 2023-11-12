@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import Box from '@root/elements/Box';
-import Typography from '@root/elements/Typography';
-import Divider from '@root/elements/Divider';
+import Box from 'ui-system/components/Box';
+import Typography from 'ui-system/components/Typography';
+import Divider from 'ui-system/components/Divider';
 
-import type { ICSSProps } from '@root/models/theme/cssprops';
+import { cssProps } from 'ui-system/core';
 
-import cssProps from '@root/theme/functions/cssProps';
+import type { ICSSProps } from 'ui-system/core';
 
 interface WidgetContainerTemplateProps {
   readonly children: React.ReactNode;
@@ -47,4 +47,4 @@ const WidgetContainer = styled(WidgetContainerTemplate)<WidgetContainerProps>`
   ${props => cssProps(props)}
 `;
 
-export default WidgetContainer;
+export { WidgetContainer };

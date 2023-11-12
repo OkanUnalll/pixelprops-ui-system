@@ -58,4 +58,4 @@ const DataTable = styled(DataTableTemplate)<DataTableProps>`
   ${props => cssProps(props)}
 `;
 
-export default DataTable;
+export { DataTable };

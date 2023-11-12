@@ -19,6 +19,7 @@
       }
     ],
     "paths": {
+      "ui-system/*": ["./src/@ui-system/*"],
       "@/*": ["./src/*"],
       "@root/*": ["./src/@root/*"],
     }

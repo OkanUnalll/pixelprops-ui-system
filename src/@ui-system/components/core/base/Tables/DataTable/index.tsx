@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import cssProps from '@root/theme/functions/cssProps';
-import type { ICSSProps } from '@root/models/theme/cssprops';
+import { cssProps } from 'ui-system/core';
+import type { ICSSProps } from 'ui-system/core';
 
-import { Table, TableData, TableHead, TableHeadData, TableRow, TableBody } from '@root/elements/Tables/Table';
+import { Table, TableData, TableHead, TableHeadData, TableRow, TableBody } from 'ui-system/components/Table';
 
 interface Column {
   field: string;

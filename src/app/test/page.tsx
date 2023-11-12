@@ -1,9 +1,8 @@
 'use client';
 
-import Box from 'ui-system/components/Box';
-
 import PageLayout from '@/layouts/PageLayout';
 
+import Box from 'ui-system/components/Box';
 import WidgetContainer from 'ui-system/components/WidgetContainer';
 import Typography from 'ui-system/components/Typography';
 import DataTable from 'ui-system/components/DataTable';

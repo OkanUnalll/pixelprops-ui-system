@@ -2,17 +2,19 @@ export interface ITypographyStyles {
     fontSize?: string;
     fontWeight?: string;
     lineHeight?: string,
-  }
+}
   
-  export interface ITypography {
-      h1: ITypographyStyles;
-      h2: ITypographyStyles;
-      h3: ITypographyStyles;
-      h4: ITypographyStyles;
-      h5: ITypographyStyles;
-      h6: ITypographyStyles;
-      text: ITypographyStyles;
-  };
+export interface ITypography {
+    h1: ITypographyStyles;
+    h2: ITypographyStyles;
+    h3: ITypographyStyles;
+    h4: ITypographyStyles;
+    h5: ITypographyStyles;
+    h6: ITypographyStyles;
+    text: ITypographyStyles;
+};
+
+export type Typography = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'text';
 
 export const typography: ITypography = {
     h1: {

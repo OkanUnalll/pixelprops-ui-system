@@ -18,6 +18,7 @@ export interface TypographyTemplateCSSProps extends ICSSProps {
   $limit?: Limit;
   $fontWeight?: CSS.Property.FontWeight;
   $fontSize?: CSS.Property.FontSize;
+  $textAlign?: CSS.Property.TextAlign;
 }
 
 const TypographyTemplate = styled.span.attrs<TypographyTemplateCSSProps>(({ theme, $variant, $color }) => ({
@@ -28,8 +29,11 @@ const TypographyTemplate = styled.span.attrs<TypographyTemplateCSSProps>(({ them
   font-weight: ${({ $fontWeight }) => $fontWeight ?? '500'};
   color: ${({ $color }) => $color};
 
+  // $textAlign Prop Styles
+  ${({ $textAlign }) => $textAlign && `text-align: ${$textAlign};`}
+
   // $fontSize Prop Styles
-  ${({ $fontSize }) => $fontSize ? `font-size: ${$fontSize}` : ''}
+  ${({ $fontSize }) => $fontSize && `font-size: ${$fontSize};`}
   
   // $limit Prop Styles
   ${props => {

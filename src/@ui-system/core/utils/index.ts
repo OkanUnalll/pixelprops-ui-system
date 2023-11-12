@@ -1,0 +1,1 @@
+export * from 'ui-system/core/utils/getResponsive';

@@ -1,7 +1,7 @@
 import { cssProps, getResponsive } from 'ui-system/core';
-import type { ICSSProps, Size } from 'ui-system/core';
+import type { ICSSProps, BreakPoint } from 'ui-system/core';
 
-export const responsiveProps = (size: Size, props: ICSSProps): string => {
+export const responsiveProps = (size: BreakPoint, props: ICSSProps): string => {
   let css = '';
 
   if (props) {

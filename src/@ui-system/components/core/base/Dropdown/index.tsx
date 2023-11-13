@@ -2,9 +2,10 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import NextLink from 'next/link';
 
-import { ICSSProps } from '@root/models/theme/cssprops';
-import cssProps from '@root/theme/functions/cssProps';
-import Box from '@root/elements/Box';
+import { cssProps } from 'ui-system/core';
+import type { ICSSProps } from 'ui-system/core';
+
+import Box from 'ui-system/components/Box';
 
 interface DropdownWrapperProps extends ICSSProps {}
 

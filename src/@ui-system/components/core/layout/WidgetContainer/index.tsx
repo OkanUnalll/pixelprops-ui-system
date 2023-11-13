@@ -42,7 +42,7 @@ const WidgetContainer = styled(WidgetContainerTemplate)<WidgetContainerProps>`
   padding: 1.3rem 1.7rem;
   position: relative;
 
-  ${props => props.theme.mode === 'light' ? `box-shadow: ${props.theme.boxShadows.xs}` : ''}
+  ${props => props.theme.mode === 'light' ? `box-shadow: ${props.theme.boxShadow.xs}` : ''}
 
   ${props => cssProps(props)}
 `;

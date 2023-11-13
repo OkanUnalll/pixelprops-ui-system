@@ -1,5 +1,3 @@
-export type Library = 'GOOGLE_FONT_ICONS' | 'METERIAL_UI_ICONS'
-
 export type GoogleFontIcons = 'google_search'
   | 'google_close'
   | 'google_check'

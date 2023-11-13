@@ -1,6 +1,6 @@
 ## Pixel Props Theme - Next JS / Typescript (Beta)
 
-It is a Theme repository prepared by Pixel Props, containing UI components aimed at speeding up the project development phase.
+It is a Theme repository prepared by Pixel Props (Okan Ü.), containing UI components aimed at speeding up the project development phase.
 
 It contains pre-made components that will help you design a web application or a website.
 

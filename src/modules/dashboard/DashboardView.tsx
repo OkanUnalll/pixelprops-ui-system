@@ -1,6 +1,7 @@
 'use client';
 
 import PageLayout from '@/layouts/PageLayout';
+import Banner from 'ui-system/components/Banner';
 
 import Section from 'ui-system/components/Section';
 

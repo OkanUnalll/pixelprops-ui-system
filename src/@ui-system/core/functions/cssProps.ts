@@ -1,6 +1,6 @@
 import type CSS from 'csstype';
 
-import type { ISize } from 'ui-system/core';
+import type { IDevice } from 'ui-system/core';
 
 import { getResponsive, responsiveProps } from 'ui-system/core';
 
@@ -33,7 +33,7 @@ export interface ICSSProps {
   $zIndex?: number;
   // custom css props
   $css?: string; 
-  $responsive?: ISize;
+  $responsive?: IDevice;
   // responsive props
   $xs?: ICSSProps,
   $sm?: ICSSProps,

@@ -1,12 +1,11 @@
-export type Library = 'GOOGLE_FONT_ICONS' | 'METERIAL_UI_ICONS'
-
 export type GoogleFontIcons = 'google_search'
   | 'google_close'
   | 'google_check'
   | 'google_arrow_right'
   | 'google_arrow_bottom'
   | 'google_arrow_left'
-  | 'google_arrow_top';
+  | 'google_arrow_top'
+  | 'google_menu';
 
 export type MeterialUIIcons = 'bar' | 'menu' | 'check'
 
@@ -43,5 +42,9 @@ export const icons: IIcon[] = [
   {
     name: 'google_arrow_top',
     path: '/icons/google-font-icon/arrow-top.svg',
+  },
+  {
+    name: 'google_menu',
+    path: '/icons/google-font-icon/menu.svg',
   },
 ];

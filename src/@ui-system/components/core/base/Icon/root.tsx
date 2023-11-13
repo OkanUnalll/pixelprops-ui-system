@@ -15,10 +15,7 @@ export interface IconTemplateCSSProps extends ICSSProps, InlineSVGProps {
 
 const IconTemplate = styled(InlineSVG)<IconTemplateCSSProps>`
   display: inline-block;
-  fill: ${({ $color, theme }) => {
-    const color = theme.mode === 'light' ? theme.colors.dark.main : theme.colors.white.main;
-    return $color ? theme.colors[$color].main : color;
-  }};
+  fill: ${({ $color, theme }) => theme.colors[$color ?? (theme.mode === 'light' ? 'dark' : 'white')].main};
 
   path {
     width: 100%;

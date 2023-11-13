@@ -101,7 +101,7 @@ const Table = styled.table<TableProps>`
     if (variant === 'widget') return `
       background-color: ${theme === 'light' ? props.theme.colors.white.main : props.theme.colors.dark.light};
       border-radius: 12px;
-      ${theme === 'light' ? `box-shadow: ${props.theme.boxShadows.xs};` : ''}
+      ${theme === 'light' ? `box-shadow: ${props.theme.boxShadow.xs};` : ''}
     `;
   }}
 

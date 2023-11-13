@@ -47,8 +47,8 @@ const ButtonWrapper = styled.button<ButtonWrapperCSSProps>`
 
     // $variant Prop Styles
     ${({ $variant, $color, theme }) => {
-    const color = $color ? theme.colors[$color].main : theme.colors?.primary.main;
-    const textColor = $color ? theme.colors[$color].contrastText : theme.colors?.primary.contrastText;
+    const color = theme.colors[$color ?? 'primary'].main;
+    const textColor = theme.colors[$color ?? 'primary'].contrastText;
     const variant = $variant ?? 'contained';
 
     switch (variant) {

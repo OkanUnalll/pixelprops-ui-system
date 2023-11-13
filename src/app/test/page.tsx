@@ -13,6 +13,8 @@ import Divider from 'ui-system/components/Divider';
 import Button from 'ui-system/components/Button';
 import Link from 'ui-system/components/Link';
 import Icon from 'ui-system/components/Icon';
+import Container from 'ui-system/components/Container';
+import Navbar from 'ui-system/components/Navbar';
 
 function ComponentTester() {
   return (
@@ -269,11 +271,14 @@ function Section({ title, children, container }: { title?: string; children: Rea
 function ComponentTesterProvider({ children }: { readonly children: React.ReactNode }) {
     return (
       <PageLayout>
-        <Box
-          $css="position: relative;"
-        >
-          {children}
-        </Box>
+        <Navbar $variant="none" />
+        <Container>
+          <Box
+            $css="position: relative;"
+          >
+            {children}
+          </Box>
+        </Container>
       </PageLayout>
   );
 }

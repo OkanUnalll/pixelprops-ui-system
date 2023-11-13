@@ -1,13 +1,14 @@
 'use client';
 
 import PageLayout from '@/layouts/PageLayout';
-import Banner from 'ui-system/components/Banner';
+import Navbar from 'ui-system/components/Navbar';
 
 import Section from 'ui-system/components/Section';
 
 function DashboardView() {  
   return (
     <PageLayout>
+      <Navbar />
       <Section $bgImageSrc="/images/example-image-1.jpg" title="Section 1">
         Hello from Dashboard View
       </Section>

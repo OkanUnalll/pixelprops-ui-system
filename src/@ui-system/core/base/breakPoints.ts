@@ -1,28 +1,37 @@
-export interface ISize {
-  xs?: string
-  sm?: string
-  md?: string
-  lg?: string
-  xl?: string
-  xxl?: string
+export interface IBreakPoint {
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
 };
 
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+export type BreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-export const size: ISize = {
-  xs: '400px', // small screen mobile
-  sm: '600px', // mobile screen
-  md: '900px', // tablets
-  lg: '1280px', // laptops
-  xl: '1440px', // desktop / monitors
-  xxl: '1920px', // big screens
+export const breakPoint: IBreakPoint = {
+  xs: 400, // small screen mobile
+  sm: 600, // mobile screen
+  md: 900, // tablets
+  lg: 1280, // laptops
+  xl: 1440, // desktop / monitors
+  xxl: 1920, // big screens
 };
 
-export const device = {
-  xs: `(max-width: ${size.xs})`,
-  sm: `(max-width: ${size.sm})`,
-  md: `(max-width: ${size.md})`,
-  lg: `(max-width: ${size.lg})`,
-  xl: `(max-width: ${size.xl})`,
-  xxl: `(max-width: ${size.xxl})`,
+export interface IDevice {
+  xs?: string;
+  sm?: string;
+  md?: string;
+  lg?: string;
+  xl?: string;
+  xxl?: string;
+}
+
+export const device: IDevice = {
+  xs: `(max-width: ${breakPoint.xs}px)`,
+  sm: `(max-width: ${breakPoint.sm}px)`,
+  md: `(max-width: ${breakPoint.md}px)`,
+  lg: `(max-width: ${breakPoint.lg}px)`,
+  xl: `(max-width: ${breakPoint.xl}px)`,
+  xxl: `(max-width: ${breakPoint.xxl}px)`,
 };

@@ -1,5 +1,6 @@
 import {
   boxShadow,
+  breakPoint,
   device,
   colors,
   font,
@@ -11,8 +12,9 @@ import {
 
 import type {
   IBoxShadow,
-  ISize,
+  IBreakPoint,
   IColors,
+  IDevice,
   IFont,
   IOpacity,
   IRounded,
@@ -25,7 +27,8 @@ export interface ITheme {
     text?: string;
     mode?: 'light' | 'dark';
     boxShadow: IBoxShadow;
-    device: ISize;
+    breakPoint: IBreakPoint;
+    device: IDevice;
     colors: IColors;
     font: IFont;
     opacity: IOpacity;
@@ -36,6 +39,7 @@ export interface ITheme {
 
 const theme: ITheme = {
   boxShadow,
+  breakPoint,
   device,
   colors,
   font,

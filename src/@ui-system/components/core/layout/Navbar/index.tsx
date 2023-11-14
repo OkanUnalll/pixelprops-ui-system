@@ -18,7 +18,7 @@ import { useTheme } from 'styled-components';
 function NavbarLinksWrapper({ ...rest }: NavbarLinksCSSProps) {
   const links = [
     { id: 1, name: 'Home', href: '/' },
-    { id: 2, name: 'Components', href: '/test' },
+    { id: 2, name: 'Components', href: '/components' },
     { id: 3, name: 'Docs', href: '/' },
   ];  
 
@@ -159,7 +159,7 @@ function Navbar({ transparent = true, ...rest }: NavbarProps) {
     <>
       <NavbarContainer $opacity={transparent ? opacity : defaultOpacity} $blur={transparent ? blur : defaultBlur} {...rest}>
         <Container>
-          <NavbarContent>
+          <NavbarContent $py={2}>
             <Box>
                 <Logo width={50} />
             </Box>

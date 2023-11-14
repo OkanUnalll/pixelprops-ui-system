@@ -1,3 +1,6 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { HTMLAttributes } from 'react';
 
 import { ButtonWrapper } from 'ui-system/components/core/base/Button/root';
@@ -7,16 +10,26 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement>, ButtonWrapperCS
   readonly children?: React.ReactNode;
   readonly iconLeft?: React.ReactElement
   readonly iconRight?: React.ReactElement;
+  readonly href?: string;
 }
 
 function Button({
   children,
   iconLeft,
   iconRight,
+  href,
   ...rest
 }: ButtonProps) {
+  const router = useRouter();
+
+  const onRoute = () => {
+    if (href) {
+      router.push(href);
+    }
+  };
+
   return (
-    <ButtonWrapper {...rest}>
+    <ButtonWrapper onClick={onRoute} {...rest}>
       <>{iconLeft}&nbsp;</>
       {children}
       <>&nbsp;{iconRight}</>

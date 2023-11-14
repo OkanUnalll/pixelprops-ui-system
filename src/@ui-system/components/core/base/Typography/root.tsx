@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CSS from 'csstype';
 
 import { cssProps } from 'ui-system/core';
-import type { ICSSProps, Color, Typography } from 'ui-system/core';
+import type { ICSSProps, Color, Typography, Font } from 'ui-system/core';
 
 import { getVariantCSS } from 'ui-system/components/core/base/Typography/helpers';
 
@@ -18,7 +18,9 @@ export interface TypographyTemplateCSSProps extends ICSSProps {
   $limit?: Limit;
   $fontWeight?: CSS.Property.FontWeight;
   $fontSize?: CSS.Property.FontSize;
+  $fontFamily?: Font;
   $textAlign?: CSS.Property.TextAlign;
+  $lineHeight?: CSS.Property.LineHeight;
 }
 
 const TypographyTemplate = styled.span.attrs<TypographyTemplateCSSProps>(({ theme, $variant, $color }) => ({
@@ -32,8 +34,14 @@ const TypographyTemplate = styled.span.attrs<TypographyTemplateCSSProps>(({ them
   // $textAlign Prop Styles
   ${({ $textAlign }) => $textAlign && `text-align: ${$textAlign};`}
 
+  // $lineHeight Prop Styles
+  ${({ $lineHeight }) => $lineHeight && `line-height: ${$lineHeight};`}
+
   // $fontSize Prop Styles
   ${({ $fontSize }) => $fontSize && `font-size: ${$fontSize};`}
+
+  // $fontFamily Prop Styles
+  ${({ $fontFamily }) => $fontFamily && `font-family: ${$fontFamily};`}
   
   // $limit Prop Styles
   ${props => {

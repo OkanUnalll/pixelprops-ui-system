@@ -15,6 +15,7 @@ export interface LinkTemplateCSSProps extends ICSSProps, NextLinkProps {
  *                    https://styled-components.com/docs/basics#adapting-based-on-props
  */
 const LinkTemplate = styled(NextLink)<LinkTemplateCSSProps>`
+  display: inline-block;
   color: ${({ theme, $color }) => {
     return theme.colors[$color ?? (theme.mode === 'light' ? 'dark' : 'white')].main;
   }};

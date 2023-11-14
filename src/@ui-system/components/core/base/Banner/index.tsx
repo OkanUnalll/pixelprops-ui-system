@@ -26,8 +26,8 @@ function Banner({
       <BannerImage
         src={src}
         alt={alt}
-        width={1050}
-        height={1000}
+        width={1920}
+        height={1080}
         $opacity={imageOpacity}
       />
     </BannerWrapper>

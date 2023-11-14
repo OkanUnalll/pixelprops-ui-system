@@ -6,6 +6,7 @@ interface TooltipBoxCSSProps {
 }
 
 const TooltipBox = styled.span<TooltipBoxCSSProps>`
+  text-align: center;
   position: absolute;
   padding: 0.3rem 0.8rem;
   border-radius: 5px;

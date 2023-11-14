@@ -251,7 +251,6 @@ function ComponentTester() {
             <Typography $variant="text" >TEXT: Lorem ipsum dolor sit amet consectetur adipisicing elit.</Typography>
           </Box>
         </Section>
-        <Divider />
       </Box>
     </ComponentTesterProvider>
   );
@@ -271,7 +270,7 @@ function Section({ title, children, container }: { title?: string; children: Rea
 function ComponentTesterProvider({ children }: { readonly children: React.ReactNode }) {
     return (
       <PageLayout>
-        <Navbar $variant="none" />
+        <Navbar $variant="sticky" />
         <Container>
           <Box
             $css="position: relative;"

@@ -44,11 +44,14 @@ const NavbarContainer = styled.nav.attrs<NavbarContainerCSSProps>(
   ${props => cssProps(props)}
 `;
 
-const NavbarContent = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
+export interface NavbarContentCSSProps extends ICSSProps {}
+
+const NavbarContent = styled.div<NavbarContentCSSProps>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ${props => cssProps(props)}
 `;
 
 export interface NavbarLinksCSSProps extends ICSSProps {}

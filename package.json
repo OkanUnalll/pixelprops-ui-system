@@ -1,6 +1,8 @@
 {
   "name": "pixelprops",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": "Okan Ünal",
+  "description": "Pixel Props UI Design System - Next JS & Styled Components",
   "private": true,
   "scripts": {
     "dev": "next dev",

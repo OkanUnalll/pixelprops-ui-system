@@ -1,4 +1,4 @@
-## Pixel Props UI System - Next JS / Typescript (Beta)
+## Pixel Props UI System - Next JS / Typescript (Alpha)
 
 It is a Theme repository prepared by Pixel Props (Okan Ü.), containing UI components aimed at speeding up the project development phase.
 

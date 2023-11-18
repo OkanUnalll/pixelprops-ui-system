@@ -1,0 +1,21 @@
+export interface Opacities {
+  hidden: string;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  visible: string;
+  disabled: string;
+};
+
+export const opacities: Opacities = {
+  hidden: '0',  
+  xs: '0.15', 
+  sm: '0.30',  
+  md: '0.50',
+  lg: '0.70',
+  xl: '0.85',
+  visible: '1',
+  disabled: '0.50',
+};

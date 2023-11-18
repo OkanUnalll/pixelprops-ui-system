@@ -2,19 +2,19 @@
 
 import PageLayout from '@/layouts/PageLayout';
 
-import Box from 'ui-system/components/Box';
-import WidgetContainer from 'ui-system/components/WidgetContainer';
-import Typography from 'ui-system/components/Typography';
-import DataTable from 'ui-system/components/DataTable';
-import Checkbox from 'ui-system/components/Checkbox';
-import Progress from 'ui-system/components/Progress';
-import Tooltip from 'ui-system/components/Tooltip';
-import Divider from 'ui-system/components/Divider';
-import Button from 'ui-system/components/Button';
-import Link from 'ui-system/components/Link';
-import Icon from 'ui-system/components/Icon';
-import Container from 'ui-system/components/Container';
-import Navbar from 'ui-system/components/Navbar';
+import {
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  DataTable,
+  Divider,
+  Icon,
+  Progress,
+  Tooltip,
+  Typography,
+  WidgetContainer
+} from 'ui-system';
 
 function ComponentTester() {
   return (

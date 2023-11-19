@@ -1,6 +1,8 @@
 import { CSSObject } from '@emotion/styled';
+
 import CSS from 'csstype';
-import { unitDetector } from 'ui-system/utils/unitDetector';
+
+import { unitDetector } from 'ui-system/utils';
 
 export interface MarginProperties {
   /**

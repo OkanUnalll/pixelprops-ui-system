@@ -1,7 +1,7 @@
 import '@emotion/react';
 
-import { Theme as AppTheme } from 'ui-system/theme';
+import { ThemeProperties } from 'ui-system/core';
 
 declare module '@emotion/react' {
-  export interface Theme extends AppTheme {}
+  export interface Theme extends ThemeProperties {}
 }

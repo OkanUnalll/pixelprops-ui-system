@@ -1,17 +1,16 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
-import { cssProps } from 'ui-system/core';
-import type { ICSSProps } from 'ui-system/core';
+import { baseProperties } from 'ui-system/core';
+import type { BaseProperties } from 'ui-system/core';
 
-/**
- * attrs feature ref: https://styled-components.com/docs/basics#attaching-additional-props
- *                    https://styled-components.com/docs/basics#adapting-based-on-props
-*/
+interface BoxProps extends BaseProperties {
+  color?: string;
+}
 
-export interface BoxWrapperCSSProps extends ICSSProps {};
+const Box = styled('div')<BoxProps>({
+}, (props) => ({
+  ...baseProperties(props),
+}));
 
-const BoxWrapper = styled.div<BoxWrapperCSSProps>`
-  ${props => cssProps(props)}
-`;
 
-export { BoxWrapper };
+export { Box };

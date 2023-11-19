@@ -1,3 +1,5 @@
+'use client';
+
 import { ThemeProvider } from '../core/ThemeProvider';
 
 interface Props {

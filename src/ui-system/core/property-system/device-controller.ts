@@ -18,8 +18,8 @@ export interface Devices<T> {
 
 export type Device = 'default' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-export const deviceListener = (
-  value: any,
+export const onDevice = (
+  value: Devices<any> | string | number | undefined,
   config = { numberToRem: false }
 ): any => {
   const { numberToRem } = config;
@@ -62,6 +62,10 @@ export const deviceListener = (
     return properties;
   }
 
-  // If the responsive feature is not added to the value, return the value itself.
-  return numberToRem ? convertRem(value) : value;
+  if (typeof value === 'string' || typeof value === 'number') {
+    // If the responsive feature is not added to the value, return the value itself.
+    return numberToRem ? convertRem(value) : value;
+  }
+
+  return undefined;
 };

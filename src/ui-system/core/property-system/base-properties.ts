@@ -2,9 +2,10 @@ import { CSSObject } from '@emotion/styled';
 
 import CSS from 'csstype';
 
+import { devices } from '..';
 import { breaker } from './breaker';
-import { deviceListener } from './device-listener';
-import type { Devices } from './device-listener';
+import { onDevice } from './device-controller';
+import type { Device, Devices } from './device-controller';
 
 export interface MarginProperties {
   /**
@@ -169,6 +170,7 @@ export interface LayoutProperties {
 
 interface CustomCSSProperties {
   css?: CSSObject;
+  responsive?: Devices<CSSObject>;
 }
 
 export interface BaseProperties extends
@@ -179,44 +181,69 @@ CustomCSSProperties
 {}
 
 export const baseProperties = (props: BaseProperties) => {
-  const customCSS = (): any => {
+  const customCSS = (): CSSObject | null => {
     if (props.css) {
       return { ...props.css };
     }
 
-    return undefined;
+    return null;
+  };
+
+  const responsiveCSS = (): CSSObject | null => {
+    if (props.responsive) {
+      const deviceKeys = Object.keys(props.responsive);
+      
+      const css: CSSObject = {
+        // default properties
+        ...props.responsive.default,
+      };
+
+      deviceKeys.forEach((deviceKey) => {
+        const key = deviceKey as Device;
+        if (key !== 'default') {
+          const mediaQuery = devices[key];
+
+          css[mediaQuery] = props.responsive ? props.responsive[key] : null;
+        }
+      });
+
+      return css;
+    }
+
+    return null;
   };
 
   const css: CSSObject = {
     /* MARGIN PROPS */
-    marginTop: deviceListener(props.mt ?? props.my, { numberToRem: true }),
-    marginBottom: deviceListener(props.mb ?? props.my, { numberToRem: true }),
-    marginRight: deviceListener(props.mr ?? props.mx, { numberToRem: true }),
-    marginLeft: deviceListener(props.ml ?? props.mx, { numberToRem: true }),
+    marginTop: onDevice(props.mt ?? props.my, { numberToRem: true }),
+    marginBottom: onDevice(props.mb ?? props.my, { numberToRem: true }),
+    marginRight: onDevice(props.mr ?? props.mx, { numberToRem: true }),
+    marginLeft: onDevice(props.ml ?? props.mx, { numberToRem: true }),
     /* PADDING PROPS */
-    paddingTop: deviceListener(props.pt ?? props.py, { numberToRem: true }),
-    paddingBottom: deviceListener(props.pb ?? props.py, { numberToRem: true }),
-    paddingRight: deviceListener(props.pr ?? props.px, { numberToRem: true }),
-    paddingLeft: deviceListener(props.pl ?? props.px, { numberToRem: true }),
+    paddingTop: onDevice(props.pt ?? props.py, { numberToRem: true }),
+    paddingBottom: onDevice(props.pb ?? props.py, { numberToRem: true }),
+    paddingRight: onDevice(props.pr ?? props.px, { numberToRem: true }),
+    paddingLeft: onDevice(props.pl ?? props.px, { numberToRem: true }),
     /* LAYOUT PROPS */
-    display: deviceListener(props._display),
-    alignItems: deviceListener(props.alignItems),
-    alignContent: deviceListener(props.alignContent),
-    alignSelf: deviceListener(props.alignSelf),
-    justifyContent: deviceListener(props.justifyContent),
-    justifyItems: deviceListener(props.justifyItems),
-    justifySelf: deviceListener(props.justifySelf),
-    gap: deviceListener(props.gap, { numberToRem: true }),
-    rowGap: deviceListener(props.gapY, { numberToRem: true }),
-    columnGap: deviceListener(props.gapX, { numberToRem: true }),
-    width: deviceListener(props.w, { numberToRem: true }),
-    minWidth: deviceListener(props.minW, { numberToRem: true }),
-    maxWidth: deviceListener(props.maxW, { numberToRem: true }),
-    height: deviceListener(props.h, { numberToRem: true }),
-    minHeight: deviceListener(props.minH, { numberToRem: true }),
-    maxHeight: deviceListener(props.maxH, { numberToRem: true }),
+    display: onDevice(props._display),
+    alignItems: onDevice(props.alignItems),
+    alignContent: onDevice(props.alignContent),
+    alignSelf: onDevice(props.alignSelf),
+    justifyContent: onDevice(props.justifyContent),
+    justifyItems: onDevice(props.justifyItems),
+    justifySelf: onDevice(props.justifySelf),
+    gap: onDevice(props.gap, { numberToRem: true }),
+    rowGap: onDevice(props.gapY, { numberToRem: true }),
+    columnGap: onDevice(props.gapX, { numberToRem: true }),
+    width: onDevice(props.w, { numberToRem: true }),
+    minWidth: onDevice(props.minW, { numberToRem: true }),
+    maxWidth: onDevice(props.maxW, { numberToRem: true }),
+    height: onDevice(props.h, { numberToRem: true }),
+    minHeight: onDevice(props.minH, { numberToRem: true }),
+    maxHeight: onDevice(props.maxH, { numberToRem: true }),
     /* CUSTOM CSS */
     ...customCSS(),
+    ...responsiveCSS(),
   };
 
   /**

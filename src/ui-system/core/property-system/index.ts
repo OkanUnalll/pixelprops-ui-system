@@ -1,3 +1,3 @@
 export * from './base-properties';
 export * from './breaker';
-export * from './device-listener';
+export * from './device-controller';

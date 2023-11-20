@@ -3,9 +3,8 @@ import { CSSObject } from '@emotion/styled';
 import CSS from 'csstype';
 
 import { devices } from '..';
-import { breaker } from './breaker';
-import { onDevice } from './device-controller';
-import type { Device, Devices } from './device-controller';
+import { onDevice, breaker } from './device.controller';
+import type { Device, Devices } from './device.controller';
 
 export interface MarginProperties {
   /**
@@ -246,28 +245,5 @@ export const baseProperties = (props: BaseProperties) => {
     ...responsiveCSS(),
   };
 
-  /**
-   * @example
-   * 
-   * breaker({
-   *   color: [
-   *    'red', // mobile large+ screens
-   *    'yellow' // mobile small screen
-   *   ]
-   * })
-   * 
-   * OUTPUT:
-   * @media (min-width: 420px) {
-   *   .css-rbuh8g {
-   *     color: red;
-   *   }
-   * }
-   *
-   * @media (min-width: 920px) {
-   *   .css-rbuh8g {
-   *     color: yello;
-   *   }
-   * }
-  */
   return breaker(css);
 };

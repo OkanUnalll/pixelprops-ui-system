@@ -7,13 +7,9 @@ function DashboardView() {
   return (
     <UIProvider>
       <Box
-        responsive={{
-          default: {
-            color: 'blue',
-          },
-          lg: {
-            color: 'red',
-          }
+        backgroundColor={{
+          default: 'red',
+          md: 'blue',
         }}
       >
         Box1

@@ -1,3 +1,2 @@
 export * from './base-properties';
-export * from './breaker';
-export * from './device-controller';
+export * from './device.controller';

@@ -1,2 +1,2 @@
 export * from 'ui-system/utils/hexToRgba';
-export * from 'ui-system/utils/unitDetector';
+export * from 'ui-system/utils/numberToRem';

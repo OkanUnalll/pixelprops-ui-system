@@ -3,10 +3,15 @@
 import { Box } from 'ui-system/components/Box/root';
 import { UIProvider } from 'ui-system/providers';
 
-function DashboardView() {  
+function DashboardView() {
   return (
     <UIProvider>
-      <Box>
+      <Box
+        backgroundColor={{
+          default: 'green',
+          xl: 'blue'
+        }}
+      >
         Box1
       </Box>
     </UIProvider>

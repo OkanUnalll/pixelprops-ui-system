@@ -17,3 +17,11 @@ export const breakPoints: BreakPoints = {
   xl: 1200,
   xxl: 1400,
 };
+
+export const devices = {
+  sm: `@media (min-width: ${breakPoints.sm}px)`,
+  md: `@media (min-width: ${breakPoints.md}px)`,
+  lg: `@media (min-width: ${breakPoints.lg}px)`,
+  xl: `@media (min-width: ${breakPoints.xl}px)`,
+  xxl: `@media (min-width: ${breakPoints.xxl}px)`,
+};

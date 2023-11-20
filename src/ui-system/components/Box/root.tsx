@@ -1,15 +1,18 @@
 import styled from '@emotion/styled';
 
-import { baseProperties } from 'ui-system/core';
-import type { BaseProperties } from 'ui-system/core';
+import { baseProperties, breaker, deviceListener } from 'ui-system/core';
+import type { BaseProperties, Color, Devices } from 'ui-system/core';
 
 interface BoxProps extends BaseProperties {
-  color?: string;
+  backgroundColor?: Color | Devices<Color>;
 }
 
 const Box = styled('div')<BoxProps>({
 }, (props) => ({
   ...baseProperties(props),
+  ...breaker({
+    backgroundColor: deviceListener(props.backgroundColor),
+  }),
 }));
 
 

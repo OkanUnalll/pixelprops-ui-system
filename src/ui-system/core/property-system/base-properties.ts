@@ -2,255 +2,245 @@ import { CSSObject } from '@emotion/styled';
 
 import CSS from 'csstype';
 
-import { unitDetector } from 'ui-system/utils';
+import { breaker } from './breaker';
+import { deviceListener } from './device-listener';
+import type { Devices } from './device-listener';
 
 export interface MarginProperties {
   /**
    * CSS Equivalent: @example
    * {
-   * margin-right: <css-property>;
-   * margin-left: <css-property>;
+   * margin-right: <property-value>;
+   * margin-left: <property-value>;
    * }
   */
-  mx?: string | number;
+  mx?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
    * {
-   *   margin-top: <css-property>;
-   *   margin-bottom: <css-property>;
+   *   margin-top: <property-value>;
+   *   margin-bottom: <property-value>;
    * }
   */
-  my?: string | number;
+  my?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  margin-top: <css-property>;  }
+   * {  margin-top: <property-value>;  }
   */
-  mt?: string | number;
+  mt?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  margin-right: <css-property>;  }
+   * {  margin-right: <property-value>;  }
   */
-  mr?: string | number;
+  mr?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  margin-bottom: <css-property>;  }
+   * {  margin-bottom: <property-value>;  }
   */
-  mb?: string | number;
+  mb?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  margin-left: <css-property>;  }
+   * {  margin-left: <property-value>;  }
   */
-  ml?: string | number;
+  ml?: string | number | Devices<string | number>;
 }
 
 export interface PaddingProperties {
   /**
    * CSS Equivalent: @example
    * {
-   *   padding-right: <css-property>;
-   *   padding-left: <css-property>;
+   *   padding-right: <property-value>;
+   *   padding-left: <property-value>;
    * }
   */
-  px?: string | number;
+  px?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
    * {
-   *   padding-top: <css-property>;
-   *   padding-bottom: <css-property>;
+   *   padding-top: <property-value>;
+   *   padding-bottom: <property-value>;
    * }
   */
-  py?: string | number;
+  py?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  padding-top: <css-property>;  }
+   * {  padding-top: <property-value>;  }
   */
-  pt?: string | number;
+  pt?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  padding-right: <css-property>;  }
+   * {  padding-right: <property-value>;  }
   */
-  pr?: string | number;
+  pr?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  padding-bottom: <css-property>;  }
+   * {  padding-bottom: <property-value>;  }
   */
-  pb?: string | number;
+  pb?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  padding-left: <css-property>;  }
+   * {  padding-left: <property-value>;  }
   */
-  pl?: string | number;
+  pl?: string | number | Devices<string | number>;
 }
 
 export interface LayoutProperties {
   /**
    * CSS Equivalent: @example
-   * {  display: block;  }
+   * {  display: <property-value>;  }
   */
-  block?: boolean;
+  _display?: CSS.Property.Display | Devices<CSS.Property.Display>;
   /**
    * CSS Equivalent: @example
-   * {  display: inline-block;  }
+   * {  align-items: <property-value>;  }
   */
-  inlineBlock?: boolean;
+  alignItems?: CSS.Property.AlignItems | Devices<CSS.Property.AlignItems>;
   /**
    * CSS Equivalent: @example
-   * {  display: inline;  }
+   * {  align-content: <property-value>;  }
   */
-  inline?: boolean;
+  alignContent?: CSS.Property.AlignContent | Devices<CSS.Property.AlignContent>;
   /**
    * CSS Equivalent: @example
-   * {  display: flex;  }
+   * {  align-self: <property-value>;  }
   */
-  flex?: boolean;
+  alignSelf?: CSS.Property.AlignSelf | Devices<CSS.Property.AlignSelf>;
   /**
    * CSS Equivalent: @example
-   * {  display: inline-flex;  }
+   * {  justify-content: <property-value>;  }
   */
-  inlineFlex?: boolean;
+  justifyContent?: CSS.Property.JustifyContent | Devices<CSS.Property.JustifyContent>;
   /**
    * CSS Equivalent: @example
-   * {  display: grid;  }
+   * {  justify-items: <property-value>;  }
   */
-  grid?: boolean;
+  justifyItems?: CSS.Property.JustifyItems | Devices<CSS.Property.JustifyItems>;
   /**
    * CSS Equivalent: @example
-   * {  display: inline-grid;  }
+   * {  justify-self: <property-value>;  }
   */
-  inlineGrid?: boolean;
+  justifySelf?: CSS.Property.JustifySelf | Devices<CSS.Property.JustifySelf>;
   /**
    * CSS Equivalent: @example
-   * {  display: none;  }
+   * {  gap: <property-value>;  }
   */
-  notVisible?: boolean;
+  gap?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  align-items: <css-property>;  }
+   * {  column-gap: <property-value>;  }
   */
-  alignItems?: CSS.Property.AlignItems;
+  gapX?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  align-content: <css-property>;  }
+   * {  row-gap: <property-value>;  }
   */
-  alignContent?: CSS.Property.AlignContent;
+  gapY?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  align-self: <css-property>;  }
+   * {  width: <property-value>;  }
   */
-  alignSelf?: CSS.Property.AlignSelf;
+  w?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  justify-content: <css-property>;  }
+   * {  min-width: <property-value>;  }
   */
-  justifyContent?: CSS.Property.JustifyContent;
+  minW?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  justify-items: <css-property>;  }
+   * {  max-width: <property-value>;  }
   */
-  justifyItems?: CSS.Property.JustifyItems;
+  maxW?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  justify-self: <css-property>;  }
+   * {  height: <property-value>;  }
   */
-  justifySelf?: CSS.Property.JustifySelf;
+  h?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  gap: <css-property>;  }
+   * {  min-height: <property-value>;  }
   */
-  gap?: string | number;
+  minH?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
-   * {  column-gap: <css-property>;  }
+   * {  max-height: <property-value>;  }
   */
-  gapX?: string | number;
-  /**
-   * CSS Equivalent: @example
-   * {  row-gap: <css-property>;  }
-  */
-  gapY?: string | number;
-  /**
-   * CSS Equivalent: @example
-   * {  width: <css-property>;  }
-  */
-  w?: string | number;
-  /**
-   * CSS Equivalent: @example
-   * {  min-width: <css-property>;  }
-  */
-  minW?: string | number;
-  /**
-   * CSS Equivalent: @example
-   * {  max-width: <css-property>;  }
-  */
-  maxW?: string | number;
-  /**
-   * CSS Equivalent: @example
-   * {  height: <css-property>;  }
-  */
-  h?: string | number;
-  /**
-   * CSS Equivalent: @example
-   * {  min-height: <css-property>;  }
-  */
-  minH?: string | number;
-  /**
-   * CSS Equivalent: @example
-   * {  max-height: <css-property>;  }
-  */
-  maxH?: string | number;
+  maxH?: string | number | Devices<string | number>;
+}
+
+interface CustomCSSProperties {
+  css?: CSSObject;
 }
 
 export interface BaseProperties extends
 MarginProperties,
 PaddingProperties,
-LayoutProperties
+LayoutProperties,
+CustomCSSProperties
 {}
 
 export const baseProperties = (props: BaseProperties) => {
-  const displayProps = () => {
-    switch (true) {
-      case props.block: return 'block';
-      case props.inlineBlock: return 'inline-block';
-      case props.inline: return 'inline';
-      case props.flex: return 'flex';
-      case props.inlineFlex: return 'inline-flex';
-      case props.grid: return 'grid';
-      case props.inlineGrid: return 'inline-grid';
-      case props.notVisible: return 'none';
-      default: return undefined;
+  const customCSS = (): any => {
+    if (props.css) {
+      return { ...props.css };
     }
+
+    return undefined;
   };
 
   const css: CSSObject = {
     /* MARGIN PROPS */
-    marginTop: unitDetector(props.mt ?? props.my),
-    marginBottom: unitDetector(props.mb ?? props.my),
-    marginRight: unitDetector(props.mr ?? props.mx),
-    marginLeft: unitDetector(props.ml ?? props.mx),
+    marginTop: deviceListener(props.mt ?? props.my, { numberToRem: true }),
+    marginBottom: deviceListener(props.mb ?? props.my, { numberToRem: true }),
+    marginRight: deviceListener(props.mr ?? props.mx, { numberToRem: true }),
+    marginLeft: deviceListener(props.ml ?? props.mx, { numberToRem: true }),
     /* PADDING PROPS */
-    paddingTop: unitDetector(props.pt ?? props.py),
-    paddingBottom: unitDetector(props.pb ?? props.py),
-    paddingRight: unitDetector(props.pr ?? props.px),
-    paddingLeft: unitDetector(props.pl ?? props.px),
+    paddingTop: deviceListener(props.pt ?? props.py, { numberToRem: true }),
+    paddingBottom: deviceListener(props.pb ?? props.py, { numberToRem: true }),
+    paddingRight: deviceListener(props.pr ?? props.px, { numberToRem: true }),
+    paddingLeft: deviceListener(props.pl ?? props.px, { numberToRem: true }),
     /* LAYOUT PROPS */
-    display: displayProps(),
-    alignItems: props.alignItems,
-    alignContent: props.alignContent,
-    alignSelf: props.alignSelf,
-    justifyContent: props.justifyContent,
-    justifyItems: props.justifyItems,
-    justifySelf: props.justifySelf,
-    gap: unitDetector(props.gap),
-    rowGap: unitDetector(props.gapY),
-    columnGap: unitDetector(props.gapX),
-    width: unitDetector(props.w),
-    minWidth: unitDetector(props.minW),
-    maxWidth: unitDetector(props.maxW),
-    height: unitDetector(props.h),
-    minHeight: unitDetector(props.minH),
-    maxHeight: unitDetector(props.maxH),
-    /* OTHER PROPS */
+    display: deviceListener(props._display),
+    alignItems: deviceListener(props.alignItems),
+    alignContent: deviceListener(props.alignContent),
+    alignSelf: deviceListener(props.alignSelf),
+    justifyContent: deviceListener(props.justifyContent),
+    justifyItems: deviceListener(props.justifyItems),
+    justifySelf: deviceListener(props.justifySelf),
+    gap: deviceListener(props.gap, { numberToRem: true }),
+    rowGap: deviceListener(props.gapY, { numberToRem: true }),
+    columnGap: deviceListener(props.gapX, { numberToRem: true }),
+    width: deviceListener(props.w, { numberToRem: true }),
+    minWidth: deviceListener(props.minW, { numberToRem: true }),
+    maxWidth: deviceListener(props.maxW, { numberToRem: true }),
+    height: deviceListener(props.h, { numberToRem: true }),
+    minHeight: deviceListener(props.minH, { numberToRem: true }),
+    maxHeight: deviceListener(props.maxH, { numberToRem: true }),
+    /* CUSTOM CSS */
+    ...customCSS(),
   };
 
-  return css;
+  /**
+   * @example
+   * 
+   * breaker({
+   *   color: [
+   *    'red', // mobile large+ screens
+   *    'yellow' // mobile small screen
+   *   ]
+   * })
+   * 
+   * OUTPUT:
+   * @media (min-width: 420px) {
+   *   .css-rbuh8g {
+   *     color: red;
+   *   }
+   * }
+   *
+   * @media (min-width: 920px) {
+   *   .css-rbuh8g {
+   *     color: yello;
+   *   }
+   * }
+  */
+  return breaker(css);
 };

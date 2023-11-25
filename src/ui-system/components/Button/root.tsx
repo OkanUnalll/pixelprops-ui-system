@@ -1,128 +1,134 @@
-import styled from 'styled-components';
+import styled, { CSSObject } from '@emotion/styled';
 
-import { cssProps } from 'ui-system/core';
+import { baseProperties } from 'ui-system/core';
 
-import type { ICSSProps, Rounded, Color } from 'ui-system/core';
+import type { BaseButtonProps } from './Button.props';
 
-export interface ButtonWrapperCSSProps extends ICSSProps {
-  disabled?: boolean;
-  $variant?: 'text' | 'contained' | 'outlined';
-  $color?: Color;
-  $size?: 'small' | 'medium' | 'large';
-  $iconOnly?: boolean;
-  $rounded?: Rounded;
+interface Props {
+  baseProps: BaseButtonProps;
 }
 
-const ButtonWrapper = styled.button<ButtonWrapperCSSProps>`
-    border-width: 1px;
-    border-style: solid;
-    cursor: pointer;
-    transition: all .1s ease;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: '${({ theme }) => theme.font.roboto}', sans-serif;
-    border-radius: ${({ $rounded, theme }) => theme.rounded[$rounded ?? 'md']};
+export const ButtonTemplate = styled.button<Props>((props) => {
+  /* PROPS */
+  const { baseProps, theme, disabled } = props;
 
-    &:disabled {
-      opacity: ${({ theme }) => theme.opacity.disabled};
-      cursor: default;
-    }
+  /* BASE PROPS */
+  const { variant, color, size, iconOnly, rounded } = baseProps;
 
-    ${({ disabled }) => {
-      if (disabled) return;
+  /* BASE PROPS STYLES */
+  const variantStyles = () => {
+    const colorStyle = theme.colors[color ?? 'primary'].main;
+    const textColorStyle = theme.colors[color ?? 'primary'].contrastText;
 
-      return `
-        &:hover {
-          opacity: .8;
-        }
+    const textVariant: CSSObject = {
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+      color: colorStyle,
 
-        &:active {
-          opacity: .6;
-        }
-      `;  
-    }}
+      'svg': {
+        fill: colorStyle,
+      },
+    };
 
-    // $variant Prop Styles
-    ${({ $variant, $color, theme }) => {
-    const color = theme.colors[$color ?? 'primary'].main;
-    const textColor = theme.colors[$color ?? 'primary'].contrastText;
-    const variant = $variant ?? 'contained';
+    const containedVariant: CSSObject = {
+      backgroundColor: colorStyle,
+      borderColor: colorStyle,
+      color: textColorStyle,
+
+      'svg': {
+        fill: textColorStyle,
+      },
+    };
+
+    const outlinedVariant: CSSObject = {
+      backgroundColor: 'transparent',
+      borderColor: colorStyle,
+      color: colorStyle,
+
+      'svg': {
+        fill: colorStyle,
+      },
+    };
 
     switch (variant) {
-      case 'text': return `
-        background-color: transparent;
-        border-color: transparent;
-        color: ${color};
-
-        svg {
-          fill: ${color};
-        }
-      `;
-      case 'contained': return `
-        background-color: ${color};
-        border-color: ${color};
-        color: ${textColor};
-
-        svg {
-          fill: ${textColor};
-        }
-      `;
-      case 'outlined': return `
-        background-color: transparent;
-        border-color: ${color};
-        color: ${color};
-
-        svg {
-          fill: ${color};
-        }
-      `;
+      case 'text': return textVariant;
+      case 'contained': return containedVariant;
+      case 'outlined': return outlinedVariant;
     }
-  }}
+  };
 
-    // $size Prop Styles
-    ${({ $iconOnly, $size }) => {
-      const size = $size ?? 'medium';
-
-      if ($iconOnly) {
-        switch(size) {
-          case 'small': return `
-            width: 29px;
-            height: 29px;
-          `;
-          case 'medium': return `
-            width: 36px;
-            height: 36px;
-          `;
-          case 'large': return `
-            width: 42px;
-            height: 42px;
-          `;
-        };
+  const sizeStyles = () => {
+    if (iconOnly) {
+      switch (size) {
+        case 'sm': return {
+          width: '29px',
+          height: '29px',
+        } as CSSObject;
+        case 'md': return {
+          width: '36px',
+          height: '36px',
+        } as CSSObject;
+        case 'lg': return {
+          width: '42px',
+          height: '42px',
+        } as CSSObject;
       }
+    }
+    
 
-      switch(size) {
-        case 'small': return `
-          height: 29px;
-          padding: 0 0.7rem;
-          font-size: 13px;
-        `;  
-        case 'medium': return `
-          height: 36px;
-          padding: 0 0.9rem;
-          font-size: 14px;
-        `;  
-        case 'large': return `
-          height: 42px;
-          padding: 0 1rem;
-          font-size: 15px;
-        `;
-      };
-    }}
+    switch (size) {
+      case 'sm': return {
+        height: '29px',
+        padding: '0 0.7rem',
+        fontSize: '13px',
+      } as CSSObject;
+      case 'md': return {
+        height: '36px',
+        padding: '0 0.9rem',
+        fontSize: '14px',
+      } as CSSObject;
+      case 'lg': return {
+        height: '42px',
+        padding: '0 1rem',
+        fontSize: '15px',
+      } as CSSObject;
+    }
+  };
 
-    ${props => cssProps(props)}
-`;
+  const roundedStyles = () => {
+    return {
+      borderRadius: theme.edges[rounded ?? 'md'],
+    } as CSSObject;
+  };
+  /* END - BASE PROPS STYLES */
 
-export { ButtonWrapper };
+  return {
+    /* DEFAULT STYLES */
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    cursor: 'pointer',
+    transition: theme.transitions.mid,
+    textTransform: 'uppercase',
+    fontWeight: '600',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: `${theme.fonts.roboto}, sans-serif`,
+    '&:hover': {
+      opacity: !disabled ? theme.opacities.lg : undefined,
+    },
+    '&:active': {
+      opacity: !disabled ? theme.opacities.md : undefined,
+    },
+    '&:disabled': {
+      opacity: theme.opacities.disabled,
+      cursor: 'default',
+    },
+    /* BASE BUTTON PROPS STYLES */
+    ...variantStyles(),
+    ...sizeStyles(),
+    ...roundedStyles(),
+    /* BASE PROPERTIES */
+    ...baseProperties(props),
+  };
+});

@@ -173,6 +173,6 @@ export const onDevice = (
     return numberToRem ? convertRem(value) : value;
   }
 
-  return undefined;
+  return null;
 };
 /* **** END - ON-DEVICE **** */

@@ -1,19 +1,15 @@
 'use client';
 
-import { Box } from 'ui-system/components/Box/root';
+import { Button } from 'ui-system/components/Button';
 import { UIProvider } from 'ui-system/providers';
 
 function DashboardView() {
   return (
     <UIProvider>
-      <Box
-        backgroundColor={{
-          default: 'red',
-          md: 'blue',
-        }}
-      >
-        Box1
-      </Box>
+      <Button>Button</Button>
+      <Button>Button</Button>
+      <Button>Button</Button>
+      <Button>Button</Button>
     </UIProvider>
   );
 }

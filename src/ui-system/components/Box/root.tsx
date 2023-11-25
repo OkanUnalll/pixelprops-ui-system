@@ -8,7 +8,6 @@ interface BoxProps extends BaseProperties {
 }
 
 const Box = styled('div')<BoxProps>(
-  {},
   (props) => ({
     ...baseProperties(props),
     ...breaker({

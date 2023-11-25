@@ -29,7 +29,13 @@ export class CSS {
       deviceKeys.forEach((deviceKey) => {
         const key = deviceKey as Device;
         if (key !== 'default') {
-          const mediaQuery = devices[key];
+          /** IMPORTANT WARNING:
+           * ? Do not delete the space in the template literals character specified below.
+           * ? This space is included to prevent other media query features from conflicting with each other.
+           * ! const mediaQuery = `${devices[key]}    `;
+           * !                                    ^^^^
+          */
+          const mediaQuery = `${devices[key]}    `;
 
           css[mediaQuery] = props.responsive ? props.responsive[key] : null;
         }

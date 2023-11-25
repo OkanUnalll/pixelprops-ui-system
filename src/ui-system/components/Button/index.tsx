@@ -1,7 +1,7 @@
 import { ButtonTemplate } from './root';
-import type { ButtonProps } from './Button.props';
+import type { ButtonProps } from './Prop-Model';
 
-interface Props extends ButtonProps {
+interface ButtonComponentProps extends ButtonProps {
   readonly children?: React.ReactNode;
 }
 
@@ -14,8 +14,8 @@ function Button({
   iconOnly = false,
   rounded = 'md',
   // Other Props
-  ...attrs
-}: Props) {
+  ...rest
+}: ButtonComponentProps) {
   return (
     <ButtonTemplate
       baseProps={{
@@ -25,7 +25,7 @@ function Button({
         iconOnly,
         rounded,
       }}
-      {...attrs}
+      {...rest}
     >
       {children}
     </ButtonTemplate>

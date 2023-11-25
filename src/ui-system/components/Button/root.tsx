@@ -2,13 +2,10 @@ import styled, { CSSObject } from '@emotion/styled';
 
 import { baseProperties } from 'ui-system/core';
 
-import type { BaseButtonProps } from './Button.props';
+import type { BaseButtonProps } from './Prop-Model';
+import { Template } from '../_props-models_';
 
-interface Props {
-  baseProps: BaseButtonProps;
-}
-
-export const ButtonTemplate = styled.button<Props>((props) => {
+export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) => {
   /* PROPS */
   const { baseProps, theme, disabled } = props;
 

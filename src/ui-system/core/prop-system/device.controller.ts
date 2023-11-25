@@ -42,7 +42,13 @@ export type Device = 'default' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 /* **** BREAKER **** */
 const breakpoints = Object.values(devices);
 
-const breakerFn = facepaint(breakpoints);
+/** IMPORTANT WARNING:
+ * ? Do not delete the space in the template literals character specified below.
+ * ? This space is included to prevent other media query features from conflicting with each other.
+ * ! const breakerFn = facepaint(breakpoints.map((breakpoint) => `${breakpoint}   `));
+ * !                                                                           ^^^
+*/
+const breakerFn = facepaint(breakpoints.map((breakpoint) => `${breakpoint}   `));
 
 /** 
  * ABOUT BREAKER

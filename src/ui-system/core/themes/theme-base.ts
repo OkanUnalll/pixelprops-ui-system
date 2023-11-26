@@ -12,7 +12,9 @@ import {
 import type {
     BoxShadows,
     BreakPoints,
+    Color,
     Colors,
+    Edge,
     Edges,
     Fonts,
     Opacities,
@@ -46,6 +48,8 @@ export type ThemeMode = 'light' | 'dark';
 
 export interface ThemeProperties extends BaseThemeProperties {
     mode: ThemeMode;
-    textColor: string;
-    backgroundColor: string;
+    textColor: Color;
+    backgroundColor: Color;
+    defaultPrimaryColor: Color;
+    defaultRadius: Edge;
 }

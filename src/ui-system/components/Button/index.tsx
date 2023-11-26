@@ -8,12 +8,13 @@ interface ButtonComponentProps extends ButtonProps {
 function Button({
   children,
   // Base Props
-  color = 'primary',
-  variant = 'contained',
-  size = 'md',
-  iconOnly = false,
-  rounded = 'md',
-  full = false,
+  color,
+  variant,
+  size,
+  iconOnly,
+  rounded,
+  full,
+  isUppercase,
   // Other Props
   ...rest
 }: ButtonComponentProps) {
@@ -26,6 +27,7 @@ function Button({
         iconOnly,
         rounded,
         full,
+        isUppercase,
       }}
       {...rest}
     >

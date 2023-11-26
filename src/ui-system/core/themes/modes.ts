@@ -1,17 +1,20 @@
-import { colors } from '..';
 import type { ThemeProperties } from './theme-base';
 import { themeBase } from './theme-base';
 
 export const darkTheme: ThemeProperties = {
     ...themeBase,
     mode: 'dark',
-    backgroundColor: colors.dark.main,
-    textColor: colors.grey.light,
+    backgroundColor: 'dark',
+    textColor: 'grey',
+    defaultPrimaryColor: 'primary',
+    defaultRadius: 'md',
 };
 
 export const lightTheme: ThemeProperties = {
     ...themeBase,
     mode: 'light',
-    backgroundColor: colors.white.main,
-    textColor: colors.dark.main,
+    backgroundColor: 'white',
+    textColor: 'dark',
+    defaultPrimaryColor: 'primary',
+    defaultRadius: 'md',
 };

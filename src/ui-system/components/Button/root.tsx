@@ -1,25 +1,31 @@
 import styled, { CSSObject } from '@emotion/styled';
 
-import { Color, baseProperties } from 'ui-system/core';
+import { baseProperties } from 'ui-system/core';
 
 import type { BaseButtonProps } from './props.model';
 import { Template } from '../models';
 import { hexToRgba } from 'ui-system/utils';
-
-const DEFAULT_COLOR: Color = 'primary';
 
 export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) => {
   /* PROPS */
   const { baseProps, theme, disabled } = props;
 
   /* BASE PROPS */
-  const { variant, color, size, iconOnly, rounded, full } = baseProps;
+  const {
+    variant = 'contained',
+    color = theme.defaultPrimaryColor,
+    size = 'md',
+    iconOnly = false,
+    rounded = theme.defaultRadius,
+    full = false,
+    isUppercase = true,
+  } = baseProps;
 
   /* BASE PROPS STYLES */
   const variantStyles = () => {
-    const colorValue = theme.colors[color ?? DEFAULT_COLOR].main;
-    const darkColorValue = theme.colors[color ?? DEFAULT_COLOR].dark;
-    const textColorValue = theme.colors[color ?? DEFAULT_COLOR].contrastText;
+    const colorValue = theme.colors[color].main;
+    const darkColorValue = theme.colors[color].dark;
+    const textColorValue = theme.colors[color].contrastText;
 
     const textVariant: CSSObject = {
       backgroundColor: 'transparent',
@@ -157,6 +163,10 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
           width: '42px',
           height: '42px',
         } as CSSObject;
+        case 'xl': return {
+          width: '48px',
+          height: '48px',
+        } as CSSObject;
       }
     }
 
@@ -176,12 +186,17 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         padding: '0 1rem',
         fontSize: '15px',
       } as CSSObject;
+      case 'xl': return {
+        height: '48px',
+        padding: '0 1.1rem',
+        fontSize: '16px',
+      } as CSSObject;
     }
   };
 
   const roundedStyles = () => {
     return {
-      borderRadius: theme.edges[rounded ?? 'md'],
+      borderRadius: theme.edges[rounded],
     } as CSSObject;
   };
 
@@ -190,13 +205,18 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       width: full ? '100%' : 'auto',
     } as CSSObject;
   };
+
+  const isUppercaseStyles = () => {
+    return {
+      textTransform: isUppercase ? 'uppercase' : 'none',
+    } as CSSObject;
+  };
   /* END - BASE PROPS STYLES */
 
   return {
     /* DEFAULT STYLES */
     cursor: 'pointer',
     transition: theme.transitions.mid,
-    textTransform: 'uppercase',
     fontWeight: '500',
     display: 'flex',
     alignItems: 'center',
@@ -212,6 +232,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     ...sizeStyles(),
     ...roundedStyles(),
     ...fullStyles(),
+    ...isUppercaseStyles(),
     /* BASE PROPERTIES */
     ...baseProperties(props),
   };

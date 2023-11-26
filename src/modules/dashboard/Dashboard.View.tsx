@@ -16,9 +16,10 @@ function DashboardView() {
             <Button color="blue" variant="bootstrap">bootstrap</Button>
           </GridItem>
           <GridItem xs={12} gap={1} _display="flex" justifyContent="center">
-            <Button size="sm">text</Button>
-            <Button size="md">text</Button>
-            <Button size="lg">text</Button>
+            <Button size="sm">Small</Button>
+            <Button size="md">Medium</Button>
+            <Button size="lg">Large</Button>
+            <Button size="xl">X Large</Button>
           </GridItem>
         </Grid>
       </Box>

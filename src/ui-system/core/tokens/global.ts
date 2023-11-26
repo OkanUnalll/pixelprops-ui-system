@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-import { ThemeProperties } from '..';
+import { ThemeProperties, colors } from '..';
 
 export const globals = (theme: ThemeProperties) => css({
   '*': {
@@ -13,8 +13,8 @@ export const globals = (theme: ThemeProperties) => css({
     scrollBehavior: 'smooth',
   },
   body: {
-    backgroundColor: theme.backgroundColor,
-    color: theme.textColor,
+    backgroundColor: colors[theme.backgroundColor].main,
+    color: colors[theme.textColor].main,
   },
   a: {
     textDecoration: 'none',

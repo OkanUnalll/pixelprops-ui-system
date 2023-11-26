@@ -51,7 +51,7 @@ export const colors: Colors = {
     grey: {
         main: '#9e9e9e',
         light: '#eaeaea',
-        dark: '#323232',
+        dark: '#7f7f7f',
         contrastText: '#111111',
     },
     white: {

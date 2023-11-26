@@ -8,12 +8,14 @@ export type GoogleFontIcons =
   | 'google_arrow_top'
   | 'google_menu';
 
-interface Icon {
+interface Icons {
   name: GoogleFontIcons;
   path: string;
 }
 
-export const icons: Icon[] = [
+export type Icon = GoogleFontIcons;
+
+export const icons: Icons[] = [
   {
     name: 'google_search',
     path: '/icons/google-icon/search.svg',

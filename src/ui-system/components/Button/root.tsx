@@ -42,7 +42,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
-        opacity: !disabled ? theme.opacities.md : undefined,
+        opacity: !disabled ? theme.opacities.sm : undefined,
       },
     };
 
@@ -61,7 +61,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
-        opacity: !disabled ? theme.opacities.md : undefined,
+        opacity: !disabled ? theme.opacities.sm : undefined,
       },
     };
 
@@ -80,7 +80,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
-        opacity: !disabled ? theme.opacities.md : undefined,
+        opacity: !disabled ? theme.opacities.sm : undefined,
       },
     };
 
@@ -127,7 +127,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         transform: 'translate(-50%, -50%)',
         width: '100%',
         height: '100%',
-        borderRadius: `calc(${theme.edges[rounded ?? 'md']} + 4px)`,
+        borderRadius: `calc(${theme.edges[rounded]} + 4px)`,
         backgroundColor: hexToRgba(colorValue, 0.3),
         zIndex: -1,
         transition: theme.transitions.fast,
@@ -167,6 +167,10 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
           width: '48px',
           height: '48px',
         } as CSSObject;
+        case 'container': return {
+          width: 'auto',
+          height: 'auto',
+        } as CSSObject;
       }
     }
 
@@ -191,6 +195,10 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         padding: '0 1.1rem',
         fontSize: '16px',
       } as CSSObject;
+      case 'container': return {
+        width: 'auto',
+        height: 'auto',
+      } as CSSObject;
     }
   };
 
@@ -201,9 +209,11 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
   };
 
   const fullWidthStyles = () => {
-    return {
-      width: fullWidth ? '100%' : 'auto',
-    } as CSSObject;
+    const css = fullWidth ? {
+      width: '100%',
+    } as CSSObject : undefined;
+
+    return css;
   };
 
   const isUppercaseStyles = () => {
@@ -221,8 +231,6 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: `${theme.fonts.roboto}, sans-serif`,
-    lineHeight: 0,
     '&:disabled': {
       opacity: theme.opacities.disabled,
       cursor: 'default',

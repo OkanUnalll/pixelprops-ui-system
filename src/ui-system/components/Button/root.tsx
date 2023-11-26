@@ -17,7 +17,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     size = 'md',
     iconOnly = false,
     rounded = theme.defaultRadius,
-    full = false,
+    fullWidth = false,
     isUppercase = true,
   } = baseProps;
 
@@ -200,9 +200,9 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     } as CSSObject;
   };
 
-  const fullStyles = () => {
+  const fullWidthStyles = () => {
     return {
-      width: full ? '100%' : 'auto',
+      width: fullWidth ? '100%' : 'auto',
     } as CSSObject;
   };
 
@@ -231,7 +231,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     ...variantStyles(),
     ...sizeStyles(),
     ...roundedStyles(),
-    ...fullStyles(),
+    ...fullWidthStyles(),
     ...isUppercaseStyles(),
     /* BASE PROPERTIES */
     ...baseProperties(props),

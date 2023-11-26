@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
 
-import { ThemeProperties, colors } from '..';
+import { colors } from '..';
+
+import { ThemeProperties } from 'ui-system/theme';
 
 export const globals = (theme: ThemeProperties) => css({
   '*': {

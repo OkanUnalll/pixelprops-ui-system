@@ -9,14 +9,15 @@ import {
   /* THEMES */
   darkTheme,
   lightTheme,
-  /* TOKENS */
-  globals,
-} from 'ui-system/core';
+  appleTheme,
+} from 'ui-system/theme';
 
 import type {
   ThemeMode,
   ThemeProperties,
-} from 'ui-system/core';
+} from 'ui-system/theme';
+
+import { globals } from 'ui-system/core';
 
 import * as themeProviderHelpers from './ThemeProvider.helpers';
 
@@ -26,7 +27,7 @@ import * as themeProviderHelpers from './ThemeProvider.helpers';
  */
 const DEFAULT_THEME: ThemeProperties = darkTheme;
 /* You must enter all existing themes in this section. Otherwise the theme will not appear. */
-const THEMES: ThemeProperties[] = [darkTheme, lightTheme];
+const THEMES: ThemeProperties[] = [darkTheme, lightTheme, appleTheme];
 
 type SwitchTheme = (mode: ThemeMode) => void;
 
@@ -67,13 +68,15 @@ export function ThemeProvider({ children }: Props) {
   }), [switchTheme, currentTheme]);
 
   useEffect(() => {
-    setCurrentTheme(findTheme(themeProviderHelpers.getCurrentThemeModeFromLS() ?? DEFAULT_THEME.mode));
+    setCurrentTheme(
+      findTheme(themeProviderHelpers.getCurrentThemeModeFromLS() ?? DEFAULT_THEME.mode)
+    );
   }, []);
 
   return (
     <EmotionRootStyleRegistry>
       <ThemeContext.Provider value={values}>
-        <EmotionThemeProvider theme={darkTheme}>
+        <EmotionThemeProvider theme={currentTheme}>
           <Global styles={globals(currentTheme)} />
           {children}
         </EmotionThemeProvider>

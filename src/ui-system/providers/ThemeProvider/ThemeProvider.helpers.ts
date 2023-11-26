@@ -1,4 +1,4 @@
-import type { ThemeMode } from 'ui-system/core';
+import type { ThemeMode } from 'ui-system/theme';
 
 const CURRENT_THEME_LS_KEY = 'user_theme';
 

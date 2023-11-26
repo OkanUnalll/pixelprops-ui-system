@@ -1,2 +1,2 @@
-export * from './modes';
+export * from './themes';
 export * from './theme-base';

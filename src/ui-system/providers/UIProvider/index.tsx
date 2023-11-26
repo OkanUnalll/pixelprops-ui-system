@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeProvider } from '../core/ThemeProvider';
+import { ThemeProvider } from '../ThemeProvider';
 
 interface Props {
   readonly children?: React.ReactNode;

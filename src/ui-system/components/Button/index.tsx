@@ -13,7 +13,7 @@ function Button({
   size,
   iconOnly,
   rounded,
-  full,
+  fullWidth,
   isUppercase,
   // Other Props
   ...rest
@@ -26,7 +26,7 @@ function Button({
         size,
         iconOnly,
         rounded,
-        full,
+        fullWidth,
         isUppercase,
       }}
       {...rest}

@@ -7,7 +7,7 @@ export interface BaseButtonProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   iconOnly?: boolean;
   rounded?: Edge;
-  full?: boolean;
+  fullWidth?: boolean;
   isUppercase?: boolean;
 }
 

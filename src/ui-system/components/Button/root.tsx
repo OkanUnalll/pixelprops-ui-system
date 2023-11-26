@@ -2,8 +2,8 @@ import styled, { CSSObject } from '@emotion/styled';
 
 import { baseProperties } from 'ui-system/core';
 
-import type { BaseButtonProps } from './Prop-Model';
-import { Template } from '../_props-models_';
+import type { BaseButtonProps } from './props.model';
+import { Template } from '../models';
 
 export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) => {
   /* PROPS */

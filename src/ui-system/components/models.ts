@@ -1,3 +1,3 @@
 export interface Template<T> {
-    baseProps: T;
+  baseProps: T;
 }

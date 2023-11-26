@@ -1,4 +1,4 @@
-import { GridItemProps, GridProps } from './Prop-Model';
+import { GridItemProps, GridProps } from './props.model';
 import { GridItemTemplate, GridTemplate } from './root';
 
 interface GridComponentProps extends GridProps {

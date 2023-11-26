@@ -1,17 +1,27 @@
-import styled from '@emotion/styled';
+import styled, { CSSObject } from '@emotion/styled';
 
 import { baseProperties } from 'ui-system/core';
-import type { BaseProperties, Color, Devices } from 'ui-system/core';
+import { Template } from '../models';
+import { BaseBoxProps } from './props.model';
 
-interface BoxProps extends BaseProperties {
-  backgroundColor?: Color | Devices<Color>;
-}
+export const BoxTemplate = styled.div<Template<BaseBoxProps>>((props) => {
+  /* PROPS */
+  const { baseProps, theme } = props;
 
-const Box = styled('div')<BoxProps>(
-  (props) => ({
+  /* BASE PROPS */
+  const { backgroundColor } = baseProps;
+
+  const backgroundColorStyles = () => {
+    return {
+      backgroundColor: backgroundColor ? theme.colors[backgroundColor].main : 'transparent',
+    } as CSSObject;
+  };
+
+  return {
+    display: 'block',
+    /* BASE BOX PROPS STYLES */
+    ...backgroundColorStyles(),
+    /* BASE PROPERTIES */
     ...baseProperties(props),
-  })
-);
-
-
-export { Box };
+  };
+});

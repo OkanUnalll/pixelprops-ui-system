@@ -20,5 +20,5 @@ export const globals = (theme: ThemeProperties) => css({
     textDecoration: 'none',
     outline: 'none',
     transition: 'all .3s ease',
-}
+  }
 });

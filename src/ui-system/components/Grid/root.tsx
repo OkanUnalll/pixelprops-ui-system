@@ -2,8 +2,8 @@ import styled, { CSSObject } from '@emotion/styled';
 
 import { baseProperties, devices } from 'ui-system/core';
 
-import { Template } from '../_props-models_';
-import { BaseGridItemProps, BaseGridProps } from './Prop-Model';
+import { Template } from '../models';
+import { BaseGridItemProps, BaseGridProps } from './props.model';
 
 const GRID_COLUMN = 12;
 

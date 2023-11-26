@@ -1,5 +1,5 @@
 import { ButtonTemplate } from './root';
-import type { ButtonProps } from './Prop-Model';
+import type { ButtonProps } from './props.model';
 
 interface ButtonComponentProps extends ButtonProps {
   readonly children?: React.ReactNode;

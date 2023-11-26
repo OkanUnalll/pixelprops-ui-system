@@ -30,19 +30,21 @@ export const GridItemTemplate = styled.div<Template<BaseGridItemProps>>((props) 
       let css: CSSObject = {};
 
       values.forEach((value) => {
-        if (value.key !== 'xs') {
-          const mediaQuery = devices[value.key];
-
-          css[mediaQuery] = {
-            width: `calc(100% * ${value.value} / ${GRID_COLUMN})`,
-          } as CSSObject;
-        }
-
-        if (value.key === 'xs') {
-          css = {
-            ...css,
-            width: `calc(100% * ${xs} / ${GRID_COLUMN})`,
-          };
+        if (value.value) {
+          if (value.key !== 'xs') {
+            const mediaQuery = devices[value.key];
+  
+            css[mediaQuery] = {
+              width: `calc(100% * ${value.value} / ${GRID_COLUMN})`,
+            } as CSSObject;
+          }
+  
+          if (value.key === 'xs') {
+            css = {
+              ...css,
+              width: `calc(100% * ${xs} / ${GRID_COLUMN})`,
+            };
+          }
         }
       });
 

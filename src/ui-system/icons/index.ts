@@ -1,4 +1,5 @@
-export type GoogleFontIcons = 'google_search'
+export type GoogleFontIcons =
+    'google_search'
   | 'google_close'
   | 'google_check'
   | 'google_arrow_right'
@@ -7,44 +8,42 @@ export type GoogleFontIcons = 'google_search'
   | 'google_arrow_top'
   | 'google_menu';
 
-export type MeterialUIIcons = 'bar' | 'menu' | 'check'
-
-interface IIcon {
-  name: GoogleFontIcons | MeterialUIIcons;
+interface Icon {
+  name: GoogleFontIcons;
   path: string;
 }
 
-export const icons: IIcon[] = [
+export const icons: Icon[] = [
   {
     name: 'google_search',
-    path: '/icons/google-font-icon/search.svg',
+    path: '/icons/google-icon/search.svg',
   },
   {
     name: 'google_close',
-    path: '/icons/google-font-icon/close.svg',
+    path: '/icons/google-icon/close.svg',
   },
   {
     name: 'google_check',
-    path: '/icons/google-font-icon/check.svg',
+    path: '/icons/google-icon/check.svg',
   },
   {
     name: 'google_arrow_right',
-    path: '/icons/google-font-icon/arrow-right.svg',
+    path: '/icons/google-icon/arrow-right.svg',
   },
   {
     name: 'google_arrow_bottom',
-    path: '/icons/google-font-icon/arrow-bottom.svg',
+    path: '/icons/google-icon/arrow-bottom.svg',
   },
   {
     name: 'google_arrow_left',
-    path: '/icons/google-font-icon/arrow-left.svg',
+    path: '/icons/google-icon/arrow-left.svg',
   },
   {
     name: 'google_arrow_top',
-    path: '/icons/google-font-icon/arrow-top.svg',
+    path: '/icons/google-icon/arrow-top.svg',
   },
   {
     name: 'google_menu',
-    path: '/icons/google-font-icon/menu.svg',
+    path: '/icons/google-icon/menu.svg',
   },
 ];

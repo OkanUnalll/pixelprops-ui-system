@@ -13,6 +13,7 @@ function Button({
   size = 'md',
   iconOnly = false,
   rounded = 'md',
+  full = false,
   // Other Props
   ...rest
 }: ButtonComponentProps) {
@@ -24,6 +25,7 @@ function Button({
         size,
         iconOnly,
         rounded,
+        full,
       }}
       {...rest}
     >

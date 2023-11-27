@@ -19,8 +19,8 @@
       }
     ],
     "paths": {
-      "ui-system": ["./src/ui-system/components"],
-      "ui-system/*": ["./src/ui-system/*"],
+      "ui-system": ["./src/__ui-system__/components"],
+      "ui-system/*": ["./src/__ui-system__/*"],
       "@/*": ["./src/*"],
     }
   },

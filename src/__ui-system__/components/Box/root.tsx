@@ -1,6 +1,6 @@
 import styled, { CSSObject } from '@emotion/styled';
 
-import { baseProperties } from 'ui-system/core';
+import { baseProperties, layoutProperties } from 'ui-system/core';
 import { Template } from '../models';
 import { BaseBoxProps } from './props.model';
 
@@ -23,5 +23,6 @@ export const BoxTemplate = styled.div<Template<BaseBoxProps>>((props) => {
     ...backgroundColorStyles(),
     /* BASE PROPERTIES */
     ...baseProperties(props),
+    ...layoutProperties(props),
   };
 });

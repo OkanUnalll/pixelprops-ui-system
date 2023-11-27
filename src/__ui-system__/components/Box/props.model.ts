@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import type { BaseProperties } from 'ui-system/core';
+import type { BaseProperties, LayoutProperties } from 'ui-system/core';
 import type { Color } from 'ui-system/theme';
 
 export interface BaseBoxProps {
@@ -8,4 +8,4 @@ export interface BaseBoxProps {
 
 type BoxMergedHTMLAttributes = BaseBoxProps & React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-export interface BoxProps extends BaseProperties, BoxMergedHTMLAttributes {}
+export interface BoxProps extends BaseProperties, LayoutProperties, BoxMergedHTMLAttributes {}

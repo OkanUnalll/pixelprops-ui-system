@@ -1,6 +1,6 @@
 import styled, { CSSObject } from '@emotion/styled';
 
-import { baseProperties } from 'ui-system/core';
+import { baseProperties, layoutProperties } from 'ui-system/core';
 import { devices } from 'ui-system/theme';
 
 import { Template } from '../models';
@@ -58,6 +58,7 @@ export const GridItemTemplate = styled.div<Template<BaseGridItemProps>>((props) 
       ...gridResponsiveStyles(),
       /* BASE PROPERTIES */
       ...baseProperties(props),
+      ...layoutProperties(props),
     };
 });
 
@@ -86,5 +87,6 @@ export const GridTemplate = styled.div<Template<BaseGridProps>>((props) => {
     ...spacingStyles(),
     /* BASE PROPERTIES */
     ...baseProperties(props),
+    ...layoutProperties(props),
   };
 });

@@ -82,6 +82,105 @@ export interface PaddingProperties {
   pl?: string | number | Devices<string | number>;
 }
 
+interface CustomCSSProperties {
+  css?: CSSObject;
+  responsive?: Devices<CSSObject>;
+}
+
+export interface BaseProperties extends
+MarginProperties,
+PaddingProperties,
+CustomCSSProperties
+{}
+
+export const baseProperties = (props: BaseProperties | any) => {
+  /* *** PROPERTIES *** */
+  /**
+   * 
+   * You can add a new property or change the CSS equivalents of existing properties.
+   * 
+   */
+
+  /* -- MARGIN PROPS */
+  const mt = new Property(/* PROP KEY: */ 'mt', /* PROP CSS: */ (value) => ({
+    marginTop: onDevice(value, { numberToRem: true })  
+  }));
+
+  const mr = new Property(/* PROP KEY: */ 'mr', /* PROP CSS: */ (value) => ({
+    marginRight: onDevice(value, { numberToRem: true }),  
+  }));
+
+  const mb = new Property(/* PROP KEY: */ 'mb', /* PROP CSS: */ (value) => ({
+    marginBottom: onDevice(value, { numberToRem: true }),  
+  }));
+
+  const ml = new Property(/* PROP KEY: */ 'ml', /* PROP CSS: */ (value) => ({
+    marginLeft: onDevice(value, { numberToRem: true }),  
+  }));
+
+  const my = new Property(/* PROP KEY: */ 'my', /* PROP CSS: */ (value) => ({
+    marginTop: onDevice(value, { numberToRem: true }),  
+    marginBottom: onDevice(value, { numberToRem: true })  
+  }));
+
+  const mx = new Property(/* PROP KEY: */ 'mx', /* PROP CSS: */ (value) => ({
+    marginRight: onDevice(value, { numberToRem: true }),  
+    marginLeft: onDevice(value, { numberToRem: true })  
+  }));
+
+  /* -- PADDING PROPS */
+  const pt = new Property(/* PROP KEY: */ 'pt', /* PROP CSS: */ (value) => ({
+    paddingTop: onDevice(value, { numberToRem: true })  
+  }));
+
+  const pr = new Property(/* PROP KEY: */ 'pr', /* PROP CSS: */ (value) => ({
+    paddingRight: onDevice(value, { numberToRem: true }),  
+  }));
+
+  const pb = new Property(/* PROP KEY: */ 'pb', /* PROP CSS: */ (value) => ({
+    paddingBottom: onDevice(value, { numberToRem: true }),  
+  }));
+
+  const pl = new Property(/* PROP KEY: */ 'pl', /* PROP CSS: */ (value) => ({
+    paddingLeft: onDevice(value, { numberToRem: true }),  
+  }));
+
+  const py = new Property(/* PROP KEY: */ 'py', /* PROP CSS: */ (value) => ({
+    paddingTop: onDevice(value, { numberToRem: true }),  
+    paddingBottom: onDevice(value, { numberToRem: true })  
+  }));
+
+  const px = new Property(/* PROP KEY: */ 'px', /* PROP CSS: */ (value) => ({
+    paddingRight: onDevice(value, { numberToRem: true }),  
+    paddingLeft: onDevice(value, { numberToRem: true })  
+  }));
+  /* END - PROPERTIES */
+
+  /* CUSTOM CSS PROPERTIES */
+  const css = new CSS();
+  /* END - CUSTOM CSS PROPERTIES */
+
+  return breaker({
+    /* -- MARGIN PROPS */
+    ...mt.get(props),
+    ...mr.get(props),
+    ...mb.get(props),
+    ...ml.get(props),
+    ...my.get(props),
+    ...mx.get(props),
+    /* -- PADDING PROPS */
+    ...pt.get(props),
+    ...pr.get(props),
+    ...pb.get(props),
+    ...pl.get(props),
+    ...py.get(props),
+    ...px.get(props),
+    /* CUSTOM CSS PROPERTIES */
+    ...css.get(props),
+    ...css.getResponsive(props),
+  } as CSSObject);
+};
+
 export interface LayoutProperties {
   /**
    * CSS Equivalent: @example
@@ -165,82 +264,15 @@ export interface LayoutProperties {
   maxH?: string | number | Devices<string | number>;
 }
 
-interface CustomCSSProperties {
-  css?: CSSObject;
-  responsive?: Devices<CSSObject>;
-}
-
-export interface BaseProperties extends
-MarginProperties,
-PaddingProperties,
-LayoutProperties,
-CustomCSSProperties
-{}
-
-export const baseProperties = (props: BaseProperties | any) => {
+export const layoutProperties = (props: LayoutProperties | any) => {
   /* *** PROPERTIES *** */
   /**
    * 
    * You can add a new property or change the CSS equivalents of existing properties.
    * 
    */
-
-  /* -- MARGIN PROPS */
-  const mt = new Property(/* PROP KEY: */ 'mt', /* PROP CSS: */ (value) => ({
-    marginTop: onDevice(value, { numberToRem: true })  
-  }));
-
-  const mr = new Property(/* PROP KEY: */ 'mr', /* PROP CSS: */ (value) => ({
-    marginRight: onDevice(value, { numberToRem: true }),  
-  }));
-
-  const mb = new Property(/* PROP KEY: */ 'mb', /* PROP CSS: */ (value) => ({
-    marginBottom: onDevice(value, { numberToRem: true }),  
-  }));
-
-  const ml = new Property(/* PROP KEY: */ 'ml', /* PROP CSS: */ (value) => ({
-    marginLeft: onDevice(value, { numberToRem: true }),  
-  }));
-
-  const my = new Property(/* PROP KEY: */ 'my', /* PROP CSS: */ (value) => ({
-    marginTop: onDevice(value, { numberToRem: true }),  
-    marginBottom: onDevice(value, { numberToRem: true })  
-  }));
-
-  const mx = new Property(/* PROP KEY: */ 'mx', /* PROP CSS: */ (value) => ({
-    marginRight: onDevice(value, { numberToRem: true }),  
-    marginLeft: onDevice(value, { numberToRem: true })  
-  }));
-
-  /* -- PADDING PROPS */
-  const pt = new Property(/* PROP KEY: */ 'pt', /* PROP CSS: */ (value) => ({
-    paddingTop: onDevice(value, { numberToRem: true })  
-  }));
-
-  const pr = new Property(/* PROP KEY: */ 'pr', /* PROP CSS: */ (value) => ({
-    paddingRight: onDevice(value, { numberToRem: true }),  
-  }));
-
-  const pb = new Property(/* PROP KEY: */ 'pb', /* PROP CSS: */ (value) => ({
-    paddingBottom: onDevice(value, { numberToRem: true }),  
-  }));
-
-  const pl = new Property(/* PROP KEY: */ 'pl', /* PROP CSS: */ (value) => ({
-    paddingLeft: onDevice(value, { numberToRem: true }),  
-  }));
-
-  const py = new Property(/* PROP KEY: */ 'py', /* PROP CSS: */ (value) => ({
-    paddingTop: onDevice(value, { numberToRem: true }),  
-    paddingBottom: onDevice(value, { numberToRem: true })  
-  }));
-
-  const px = new Property(/* PROP KEY: */ 'px', /* PROP CSS: */ (value) => ({
-    paddingRight: onDevice(value, { numberToRem: true }),  
-    paddingLeft: onDevice(value, { numberToRem: true })  
-  }));
-
   /* -- LAYOUT PROPS */
-  const _display = new Property(/* PROP KEY: */ '_display' , /* PROP CSS: */ (value) => ({
+  const display = new Property(/* PROP KEY: */ '_display' , /* PROP CSS: */ (value) => ({
     display: onDevice(value),
   }));
 
@@ -310,22 +342,8 @@ export const baseProperties = (props: BaseProperties | any) => {
   /* END - CUSTOM CSS PROPERTIES */
 
   return breaker({
-    /* -- MARGIN PROPS */
-    ...mt.get(props),
-    ...mr.get(props),
-    ...mb.get(props),
-    ...ml.get(props),
-    ...my.get(props),
-    ...mx.get(props),
-    /* -- PADDING PROPS */
-    ...pt.get(props),
-    ...pr.get(props),
-    ...pb.get(props),
-    ...pl.get(props),
-    ...py.get(props),
-    ...px.get(props),
     /* -- LAYOUT PROPS */
-    ..._display.get(props),
+    ...display.get(props),
     ...alignItems.get(props),
     ...alignContent.get(props),
     ...alignSelf.get(props),

@@ -114,6 +114,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       borderStyle: 'solid',
       color: textColorValue,
       position: 'relative',
+      zIndex: 1,
 
       'svg': {
         fill: textColorValue,
@@ -133,7 +134,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         height: '100%',
         borderRadius: `calc(${theme.edges[rounded]} + 4px)`,
         backgroundColor: hexToRgba(colorValue, 0.3),
-        zIndex: -1,
+        zIndex: 0,
         transition: theme.transitions.fast,
         pointerEvents: 'none',
       },

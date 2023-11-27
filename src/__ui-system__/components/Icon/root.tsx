@@ -20,20 +20,20 @@ export const IconTemplate = styled(InlineSVG)<Template<BaseIconProps>>((props) =
   const sizeStyles = () => {
     switch(size) {
       case 'sm': return {
-        width: '10px',
-        height: '10px',
+        width: '11px',
+        height: '11px',
       } as CSSObject;
       case 'md': return {
-        width: '13px',
-        height: '13px',
+        width: '14px',
+        height: '14px',
       } as CSSObject;
       case 'lg': return {
-        width: '16px',
-        height: '16px',
+        width: '17px',
+        height: '17px',
       } as CSSObject;
       case 'xl': return {
-        width: '19px',
-        height: '19px',
+        width: '20px',
+        height: '20px',
       } as CSSObject;
     }
   };

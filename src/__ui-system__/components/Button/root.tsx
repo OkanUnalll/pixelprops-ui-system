@@ -39,9 +39,10 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       },
 
       '&:hover': {
-      opacity: !disabled ? theme.opacities.lg : undefined,
+        opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
+        transform: !disabled ? 'scale(0.99)' : undefined,
         opacity: !disabled ? theme.opacities.sm : undefined,
       },
     };
@@ -61,6 +62,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
+        transform: !disabled ? 'scale(0.99)' : undefined,
         opacity: !disabled ? theme.opacities.sm : undefined,
       },
     };
@@ -80,6 +82,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
+        transform: !disabled ? 'scale(0.99)' : undefined,
         opacity: !disabled ? theme.opacities.sm : undefined,
       },
     };
@@ -99,6 +102,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         backgroundColor: !disabled ? hexToRgba(colorValue, 0.1) : undefined,
       },
       '&:active': {
+        transform: !disabled ? 'scale(0.99)' : undefined,
         opacity: !disabled ? theme.opacities.md : undefined,
       },
     };
@@ -152,20 +156,20 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     if (iconOnly) {
       switch (size) {
         case 'sm': return {
-          width: '29px',
-          height: '29px',
+          width: '27px',
+          height: '27px',
         } as CSSObject;
         case 'md': return {
-          width: '36px',
-          height: '36px',
+          width: '32px',
+          height: '32px',
         } as CSSObject;
         case 'lg': return {
-          width: '42px',
-          height: '42px',
+          width: '37px',
+          height: '37px',
         } as CSSObject;
         case 'xl': return {
-          width: '48px',
-          height: '48px',
+          width: '42px',
+          height: '42px',
         } as CSSObject;
         case 'container': return {
           width: 'auto',
@@ -176,24 +180,24 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
 
     switch (size) {
       case 'sm': return {
-        height: '29px',
+        height: '27px',
         padding: '0 0.7rem',
-        fontSize: '13px',
+        fontSize: '12px',
       } as CSSObject;
       case 'md': return {
-        height: '36px',
+        height: '32px',
         padding: '0 0.9rem',
-        fontSize: '14px',
+        fontSize: '13px',
       } as CSSObject;
       case 'lg': return {
-        height: '42px',
+        height: '37px',
         padding: '0 1rem',
-        fontSize: '15px',
+        fontSize: '14px',
       } as CSSObject;
       case 'xl': return {
-        height: '48px',
+        height: '42px',
         padding: '0 1.1rem',
-        fontSize: '16px',
+        fontSize: '15px',
       } as CSSObject;
       case 'container': return {
         width: 'auto',

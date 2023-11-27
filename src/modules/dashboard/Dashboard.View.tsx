@@ -65,23 +65,17 @@ function DashboardView() {
             <Button color="secondary" variant="bootstrap">button</Button>
           </GridItem>
           <GridItem xs={12} gap={1} _display="flex" justifyContent="center">
-            <Button size="sm">Small</Button>
-            <Button size="md">Medium</Button>
-            <Button size="lg">Large</Button>
-            <Button size="xl">X Large</Button>
-          </GridItem>
-          <GridItem xs={12} gap={1} _display="flex" justifyContent="center">
             <Button size="sm" iconRight="google_arrow_right">
-              Icon
+              Small
             </Button>
             <Button size="md" iconRight="google_arrow_right">
-              Icon
+              Medium
             </Button>
             <Button size="lg" iconRight="google_arrow_right">
-              Icon
+              Large
             </Button>
             <Button size="xl" iconRight="google_arrow_right">
-              Icon
+              XLarge
             </Button>
           </GridItem>
           <GridItem xs={12} gap={1} _display="flex" justifyContent="center">

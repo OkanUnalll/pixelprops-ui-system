@@ -4,7 +4,7 @@ import type { Device, Devices } from '.';
 import { devices } from 'ui-system/theme';
 
 export class CSS {
-  public get(props: { css: CSSObject; [key: string]: any }): CSSObject | null {
+  public getInProps(props: { css: CSSObject; [key: string]: any }): CSSObject | null {
     if (props.css) {
       return { ...props.css };
     }
@@ -12,7 +12,7 @@ export class CSS {
     return null;
   }
 
-  public getResponsive(
+  public getInPropsResponsive(
     props: {
       responsive: Devices<CSSObject>;
       [key: string]: any
@@ -48,18 +48,48 @@ export class CSS {
   }
 };
 
-export class Property {
-  private key: string;
-  private cssCallback: (value: any) => CSSObject;
+export class Property<T> {
+  private css: ((value: T) => CSSObject) | CSSObject | undefined | null;
+  private cssRepo: { [key: string]: CSSObject } = {};
 
-  constructor(key: string, cssCallback: (value: any) => CSSObject) {
-    this.key = key;
-    this.cssCallback = cssCallback;
+  constructor(css?: ((value: T) => CSSObject) | CSSObject | undefined | null) {
+    this.css = css;
   }
 
-  public get(props: any) {
-    if (props[this.key]) {
-      return this.cssCallback(props[this.key]);
+  public get(value: T) {
+    let cssValue = {
+      baseCSS: {},
+      repo: {},
+    };
+
+    if (typeof this.css === 'function') {
+      cssValue.baseCSS = { ...this.css(value) };
     }
+
+    if (typeof this.css === 'object') {
+      cssValue.baseCSS = { ...this.css };
+    }
+    
+    if (this.cssRepo[String(value)]) {
+      cssValue.repo = { ...this.cssRepo[String(value)] };
+    }
+
+    return { ...cssValue.baseCSS, ...cssValue.repo };
+  }
+
+  public getInProps(key: string | undefined, props: any) {
+    if (key) {
+      const propsValue = props[key];
+      if (propsValue) {
+        return this.get(propsValue);
+      }
+    }
+  }
+
+  public if(condition: T, cssValue: CSSObject) {
+    this.cssRepo = {
+      ...this.cssRepo,
+      [String(condition)]: cssValue,
+    };
   }
 }

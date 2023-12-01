@@ -1,5 +1,5 @@
 import { ButtonTemplate } from './root';
-import type { ButtonProps } from './props.model';
+import type { ButtonProps } from './props.types';
 import type { Icon as TIcon } from 'ui-system/icons';
 import { Icon } from '../Icon';
 

@@ -6,6 +6,7 @@ import { UIProvider } from 'ui-system/providers';
 function DashboardView() {
   return (
     <UIProvider>
+      <Box>hello</Box>
       <Container my={3} css={{ border: 'solid 1px #464646', borderRadius: '10px' }}>
         <Box py={4} minH="100vh" w="100%" _display="flex" alignItems="center">
           <Grid spacing={20} w="100%">

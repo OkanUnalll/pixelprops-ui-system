@@ -1,8 +1,8 @@
 import styled, { CSSObject } from '@emotion/styled';
 
-import { baseProperties } from 'ui-system/core';
+import { Property, baseProperties } from 'ui-system/core';
 
-import type { BaseButtonProps } from './props.model';
+import type { BaseButtonProps, Variant } from './props.types';
 import { Template } from '../models';
 import { hexToRgba } from 'ui-system/utils';
 
@@ -21,8 +21,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     isUppercase = true,
   } = baseProps;
 
-  /* BASE PROPS STYLES */
-  const variantStyles = () => {
+  const variantProp = new Property<Variant>((value) => {
     const colorValue = theme.colors[color].main;
     const darkColorValue = theme.colors[color].dark;
     const textColorValue = theme.colors[color].contrastText;
@@ -114,7 +113,6 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       borderStyle: 'solid',
       color: textColorValue,
       position: 'relative',
-      zIndex: 1,
 
       'svg': {
         fill: textColorValue,
@@ -133,26 +131,28 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         width: '100%',
         height: '100%',
         borderRadius: `calc(${theme.edges[rounded]} + 4px)`,
-        backgroundColor: hexToRgba(colorValue, 0.3),
-        zIndex: 0,
+        border: `solid 5px ${hexToRgba(colorValue, 0.3)}`,
+        backgroundColor: 'transparent',
         transition: theme.transitions.fast,
         pointerEvents: 'none',
+        opacity: 0,
       },
 
       '&:focus::before': {
-        padding: '5.5px',
+        opacity: 1,
       },
     };
 
-    switch (variant) {
+    switch (value) {
       case 'text': return textVariant;
       case 'contained': return containedVariant;
       case 'outlined': return outlinedVariant;
       case 'ghost': return ghostVarinat;
       case 'bootstrap': return bootstrapVarinat;
     }
-  };
+  });
 
+  /* BASE PROPS STYLES */
   const sizeStyles = () => {
     if (iconOnly) {
       switch (size) {
@@ -241,7 +241,7 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       cursor: 'default',
     },
     /* BASE BUTTON PROPS STYLES */
-    ...variantStyles(),
+    ...variantProp.get(variant),
     ...sizeStyles(),
     ...roundedStyles(),
     ...fullWidthStyles(),

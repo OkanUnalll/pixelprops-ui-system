@@ -102,55 +102,55 @@ export const baseProperties = (props: BaseProperties | any) => {
    */
 
   /* -- MARGIN PROPS */
-  const mt = new Property(/* PROP KEY: */ 'mt', /* PROP CSS: */ (value) => ({
+  const mt = new Property((value: any) => ({
     marginTop: onDevice(value, { numberToRem: true })  
   }));
 
-  const mr = new Property(/* PROP KEY: */ 'mr', /* PROP CSS: */ (value) => ({
+  const mr = new Property((value: any) => ({
     marginRight: onDevice(value, { numberToRem: true }),  
   }));
 
-  const mb = new Property(/* PROP KEY: */ 'mb', /* PROP CSS: */ (value) => ({
+  const mb = new Property((value: any) => ({
     marginBottom: onDevice(value, { numberToRem: true }),  
   }));
 
-  const ml = new Property(/* PROP KEY: */ 'ml', /* PROP CSS: */ (value) => ({
+  const ml = new Property((value: any) => ({
     marginLeft: onDevice(value, { numberToRem: true }),  
   }));
 
-  const my = new Property(/* PROP KEY: */ 'my', /* PROP CSS: */ (value) => ({
+  const my = new Property((value: any) => ({
     marginTop: onDevice(value, { numberToRem: true }),  
     marginBottom: onDevice(value, { numberToRem: true })  
   }));
 
-  const mx = new Property(/* PROP KEY: */ 'mx', /* PROP CSS: */ (value) => ({
+  const mx = new Property((value: any) => ({
     marginRight: onDevice(value, { numberToRem: true }),  
     marginLeft: onDevice(value, { numberToRem: true })  
   }));
 
   /* -- PADDING PROPS */
-  const pt = new Property(/* PROP KEY: */ 'pt', /* PROP CSS: */ (value) => ({
+  const pt = new Property((value: any) => ({
     paddingTop: onDevice(value, { numberToRem: true })  
   }));
 
-  const pr = new Property(/* PROP KEY: */ 'pr', /* PROP CSS: */ (value) => ({
+  const pr = new Property((value: any) => ({
     paddingRight: onDevice(value, { numberToRem: true }),  
   }));
 
-  const pb = new Property(/* PROP KEY: */ 'pb', /* PROP CSS: */ (value) => ({
+  const pb = new Property((value: any) => ({
     paddingBottom: onDevice(value, { numberToRem: true }),  
   }));
 
-  const pl = new Property(/* PROP KEY: */ 'pl', /* PROP CSS: */ (value) => ({
+  const pl = new Property((value: any) => ({
     paddingLeft: onDevice(value, { numberToRem: true }),  
   }));
 
-  const py = new Property(/* PROP KEY: */ 'py', /* PROP CSS: */ (value) => ({
+  const py = new Property((value: any) => ({
     paddingTop: onDevice(value, { numberToRem: true }),  
     paddingBottom: onDevice(value, { numberToRem: true })  
   }));
 
-  const px = new Property(/* PROP KEY: */ 'px', /* PROP CSS: */ (value) => ({
+  const px = new Property((value: any) => ({
     paddingRight: onDevice(value, { numberToRem: true }),  
     paddingLeft: onDevice(value, { numberToRem: true })  
   }));
@@ -162,22 +162,22 @@ export const baseProperties = (props: BaseProperties | any) => {
 
   return breaker({
     /* -- MARGIN PROPS */
-    ...mt.get(props),
-    ...mr.get(props),
-    ...mb.get(props),
-    ...ml.get(props),
-    ...my.get(props),
-    ...mx.get(props),
+    ...mt.getInProps('mt', props),
+    ...mr.getInProps('mr', props),
+    ...mb.getInProps('mb', props),
+    ...ml.getInProps('ml', props),
+    ...my.getInProps('my', props),
+    ...mx.getInProps('mx', props),
     /* -- PADDING PROPS */
-    ...pt.get(props),
-    ...pr.get(props),
-    ...pb.get(props),
-    ...pl.get(props),
-    ...py.get(props),
-    ...px.get(props),
+    ...pt.getInProps('pt', props),
+    ...pr.getInProps('pr', props),
+    ...pb.getInProps('pb', props),
+    ...pl.getInProps('pl', props),
+    ...py.getInProps('py', props),
+    ...px.getInProps('px', props),
     /* CUSTOM CSS PROPERTIES */
-    ...css.get(props),
-    ...css.getResponsive(props),
+    ...css.getInProps(props),
+    ...css.getInPropsResponsive(props),
   } as CSSObject);
 };
 
@@ -272,67 +272,67 @@ export const layoutProperties = (props: LayoutProperties | any) => {
    * 
    */
   /* -- LAYOUT PROPS */
-  const display = new Property(/* PROP KEY: */ '_display' , /* PROP CSS: */ (value) => ({
+  const display = new Property((value: any) => ({
     display: onDevice(value),
   }));
 
-  const alignItems = new Property(/* PROP KEY: */ 'alignItems', /* PROP CSS: */ (value) => ({
+  const alignItems = new Property((value: any) => ({
     alignItems: onDevice(value),
   }));
 
-  const alignContent = new Property(/* PROP KEY: */ 'alignContent', /* PROP CSS: */ (value) => ({
+  const alignContent = new Property((value: any) => ({
     alignContent: onDevice(value),
   }));
 
-  const alignSelf = new Property(/* PROP KEY: */ 'alignSelf', /* PROP CSS: */ (value) => ({
+  const alignSelf = new Property((value: any) => ({
     alignSelf: onDevice(value),
   }));
 
-  const justifyContent = new Property(/* PROP KEY: */ 'justifyContent', /* PROP CSS: */ (value) => ({
+  const justifyContent = new Property((value: any) => ({
     justifyContent: onDevice(value),
   }));
 
-  const justifyItems = new Property(/* PROP KEY: */ 'justifyItems', /* PROP CSS: */ (value) => ({
+  const justifyItems = new Property((value: any) => ({
     justifyItems: onDevice(value),
   }));
 
-  const justifySelf = new Property(/* PROP KEY: */ 'justifySelf', /* PROP CSS: */ (value) => ({
+  const justifySelf = new Property((value: any) => ({
     justifySelf: onDevice(value),
   }));
 
-  const gap = new Property(/* PROP KEY: */ 'gap', /* PROP CSS: */ (value) => ({
+  const gap = new Property((value: any) => ({
     gap: onDevice(value, { numberToRem: true }),
   }));
 
-  const gapX = new Property(/* PROP KEY: */ 'gapX', /* PROP CSS: */ (value) => ({
+  const gapX = new Property((value: any) => ({
     columnGap: onDevice(value, { numberToRem: true }),
   }));
 
-  const gapY = new Property(/* PROP KEY: */ 'gapY', /* PROP CSS: */ (value) => ({
+  const gapY = new Property((value: any) => ({
     rowGap: onDevice(value, { numberToRem: true }),
   }));
 
-  const w = new Property(/* PROP KEY: */ 'w', /* PROP CSS: */ (value) => ({
+  const w = new Property((value: any) => ({
     width: onDevice(value, { numberToRem: true }),
   }));
 
-  const minW = new Property(/* PROP KEY: */ 'minW', /* PROP CSS: */ (value) => ({
+  const minW = new Property((value: any) => ({
     minWidth: onDevice(value, { numberToRem: true }),
   }));
 
-  const maxW = new Property(/* PROP KEY: */ 'maxW', /* PROP CSS: */ (value) => ({
+  const maxW = new Property((value: any) => ({
     maxWidth: onDevice(value, { numberToRem: true }),
   }));
 
-  const h = new Property(/* PROP KEY: */ 'h', /* PROP CSS: */ (value) => ({
+  const h = new Property((value: any) => ({
     height: onDevice(value, { numberToRem: true }),
   }));
 
-  const minH = new Property(/* PROP KEY: */ 'minH', /* PROP CSS: */ (value) => ({
+  const minH = new Property((value: any) => ({
     minHeight: onDevice(value, { numberToRem: true })
   }));
 
-  const maxH = new Property(/* PROP KEY: */ 'maxH', /* PROP CSS: */ (value) => ({
+  const maxH = new Property((value: any) => ({
     maxHeight: onDevice(value, { numberToRem: true }),
   }));
   /* END - PROPERTIES */
@@ -343,24 +343,24 @@ export const layoutProperties = (props: LayoutProperties | any) => {
 
   return breaker({
     /* -- LAYOUT PROPS */
-    ...display.get(props),
-    ...alignItems.get(props),
-    ...alignContent.get(props),
-    ...alignSelf.get(props),
-    ...justifyContent.get(props),
-    ...justifyItems.get(props),
-    ...justifySelf.get(props),
-    ...gap.get(props),
-    ...gapX.get(props),
-    ...gapY.get(props),
-    ...w.get(props),
-    ...minW.get(props),
-    ...maxW.get(props),
-    ...h.get(props),
-    ...minH.get(props),
-    ...maxH.get(props),
+    ...display.getInProps('_display', props),
+    ...alignItems.getInProps('alignItems', props),
+    ...alignContent.getInProps('alignContent', props),
+    ...alignSelf.getInProps('alignSelf', props),
+    ...justifyContent.getInProps('justifyContent', props),
+    ...justifyItems.getInProps('justifyItems', props),
+    ...justifySelf.getInProps('justifySelf', props),
+    ...gap.getInProps('gap', props),
+    ...gapX.getInProps('gapX', props),
+    ...gapY.getInProps('gapY', props),
+    ...w.getInProps('w', props),
+    ...minW.getInProps('minW', props),
+    ...maxW.getInProps('maxW', props),
+    ...h.getInProps('h', props),
+    ...minH.getInProps('minH', props),
+    ...maxH.getInProps('maxH', props),
     /* CUSTOM CSS PROPERTIES */
-    ...css.get(props),
-    ...css.getResponsive(props),
+    ...css.getInProps(props),
+    ...css.getInPropsResponsive(props),
   } as CSSObject);
 };

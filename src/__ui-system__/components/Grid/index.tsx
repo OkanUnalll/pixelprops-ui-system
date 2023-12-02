@@ -1,58 +1,55 @@
-import { GridItemProps, GridProps } from './props.model';
-import { GridItemTemplate, GridTemplate } from './root';
-
-interface GridComponentProps extends GridProps {
-  readonly children?: React.ReactNode;
-}
+import { GridProps } from './props.model';
+import { GridItemRoot, GridContainerRoot } from './root';
 
 function Grid({
   children,
-   // Base Props
-   spacing = 0,
-   // Other Props
-   ...rest
-}: GridComponentProps) {
-  return (
-    <GridTemplate
-      baseProps={{ spacing }}
+  // Base Props
+  container,
+  item,
+  xs,
+  sm,
+  md,
+  lg,
+  xl,
+  xxl,
+  spacing,
+  ...rest
+}: GridProps) {
+  const renderGridContainer = () => (
+    <GridContainerRoot
+      baseProps={{
+        spacing,
+      }}
       {...rest}
     >
-      {children}  
-    </GridTemplate>
-  ); 
-};
+      {children}
+    </GridContainerRoot>
+  );
 
-interface GridItemComponentProps extends GridItemProps {
-  readonly children?: React.ReactNode;
+  const renderGridItem = () => (
+    <GridItemRoot
+      baseProps={{
+        xs,
+        sm,
+        md,
+        lg,
+        xl,
+        xxl,
+      }}
+      {...rest}
+    >
+      {children}
+    </GridItemRoot>
+  );
+
+  const renderComponent = () => {
+    if (container) return renderGridContainer();
+    if (item) return renderGridItem();
+
+    return renderGridItem();
+  };
+
+  return renderComponent();
 }
 
-function GridItem({
-    children,
-     // Base Props
-     xs,
-     sm,
-     md,
-     lg,
-     xl,
-     xxl,
-     // Other Props
-     ...rest
-  }: GridItemComponentProps) {
-    return (
-      <GridItemTemplate
-        baseProps={{ 
-          xs,
-          sm,
-          md,
-          lg,
-          xl,
-          xxl,
-        }}
-        {...rest}
-      >
-        {children}  
-      </GridItemTemplate>
-    ); 
-};
-
-export { Grid, GridItem };
+export { Grid };

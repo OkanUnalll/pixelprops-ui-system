@@ -1,9 +1,5 @@
-import { BoxProps } from './props.model';
-import { ContainerTemplate } from './root';
-
-interface BoxComponentProps extends BoxProps {
-  readonly children: React.ReactNode;  
-}
+import { ContainerProps } from './props.model';
+import { ContainerRoot } from './root';
 
 function Container({
   children,
@@ -11,16 +7,16 @@ function Container({
   backgroundColor,
   // Other Props
   ...rest
-}: BoxComponentProps) {
+}: ContainerProps) {
   return (
-    <ContainerTemplate
+    <ContainerRoot
       baseProps={{
         backgroundColor,
       }}
       {...rest}
     >
       {children}
-    </ContainerTemplate>
+    </ContainerRoot>
   );
 }
 

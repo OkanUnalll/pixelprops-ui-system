@@ -1,22 +1,21 @@
-import styled, { CSSObject } from '@emotion/styled';
+import styled from '@emotion/styled';
 
-import { baseProperties, layoutProperties } from 'ui-system/core';
-import { Template } from '../models';
-import { BaseContainerProps } from './props.model';
+import { Property, baseProperties, layoutProperties } from 'ui-system/core';
 import { devices } from 'ui-system/theme';
 
-export const ContainerTemplate = styled.div<Template<BaseContainerProps>>((props) => {
+import type { BackgroundColor, ContainerBaseProps } from './props.model';
+import type { Template } from '../models';
+
+export const ContainerRoot = styled.div<Template<ContainerBaseProps>>((props) => {
   /* PROPS */
   const { baseProps, theme } = props;
 
   /* BASE PROPS */
   const { backgroundColor } = baseProps;
 
-  const backgroundColorStyles = () => {
-    return {
-      backgroundColor: backgroundColor ? theme.colors[backgroundColor].main : 'transparent',
-    } as CSSObject;
-  };
+  const backgroundColorProperty = new Property<BackgroundColor>((value) => ({
+    backgroundColor: value ? theme.colors[value].main : 'transparent',
+  }));
 
   return {
     display: 'block',
@@ -46,7 +45,7 @@ export const ContainerTemplate = styled.div<Template<BaseContainerProps>>((props
       padding: 0,
     },
     /* BASE BOX PROPS STYLES */
-    ...backgroundColorStyles(),
+    ...backgroundColorProperty.get(backgroundColor),
     /* BASE PROPERTIES */
     ...baseProperties(props),
     ...layoutProperties(props),

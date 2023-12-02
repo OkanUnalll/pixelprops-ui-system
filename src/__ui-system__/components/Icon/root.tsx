@@ -1,13 +1,13 @@
-import styled, { CSSObject } from '@emotion/styled';
+import styled from '@emotion/styled';
 
 import InlineSVG from 'react-inlinesvg';
 
-import { baseProperties } from 'ui-system/core';
+import { Property, baseProperties } from 'ui-system/core';
 
-import type { BaseIconProps } from './props.model';
-import { Template } from '../models';
+import type { IconBaseProps, Size } from './props.model';
+import type { Template } from '../models';
 
-export const IconTemplate = styled(InlineSVG)<Template<BaseIconProps>>((props) => {
+export const IconRoot = styled(InlineSVG)<Template<IconBaseProps>>((props) => {
   /* PROPS */
   const { baseProps } = props;
 
@@ -16,33 +16,44 @@ export const IconTemplate = styled(InlineSVG)<Template<BaseIconProps>>((props) =
     size = 'md',
   } = baseProps;
 
-  /* BASE PROPS STYLES */
-  const sizeStyles = () => {
-    switch(size) {
-      case 'sm': return {
-        width: '11px',
-        height: '11px',
-      } as CSSObject;
-      case 'md': return {
-        width: '14px',
-        height: '14px',
-      } as CSSObject;
-      case 'lg': return {
-        width: '17px',
-        height: '17px',
-      } as CSSObject;
-      case 'xl': return {
-        width: '20px',
-        height: '20px',
-      } as CSSObject;
-    }
-  };
-  /* END -  BASE PROPS STYLES */
+  /* ------ BASE PROPS STYLES ------ */
+  /* -- SIZE PROPERTY STYLES -- */
+  const sizeProperty = new Property<Size>();
+  sizeProperty.if(
+    'sm',
+    {
+      width: '11px',
+      height: '11px',
+    },
+  );
+  sizeProperty.if(
+    'md',
+    {
+      width: '14px',
+      height: '14px',
+    },
+  );
+  sizeProperty.if(
+    'lg',
+    {
+      width: '17px',
+      height: '17px',
+    },
+  );
+  sizeProperty.if(
+    'xl',
+    {
+      width: '20px',
+      height: '20px',
+    },
+  );
+  /* -- END - SIZE PROPERTY STYLES -- */
+  /* ------ END - BASE PROPS STYLES ------ */
   
   return {
     /* DEFAULT STYLES */
     /* BASE BUTTON PROPS STYLES */
-    ...sizeStyles(),
+    ...sizeProperty.get(size),
     /* BASE PROPERTIES */
     ...baseProperties(props),
   };

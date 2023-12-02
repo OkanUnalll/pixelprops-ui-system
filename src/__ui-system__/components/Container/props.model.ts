@@ -2,10 +2,18 @@ import type { HTMLAttributes } from 'react';
 import type { BaseProperties, LayoutProperties } from 'ui-system/core';
 import type { Color } from 'ui-system/theme';
 
-export interface BaseContainerProps {
-  backgroundColor?: Color;
+/* ------ BASE PROPS TYPES ------ */
+export type BackgroundColor = Color | undefined;
+/* ------------------ */
+
+/* ------ ALL PROPS ------ */
+export interface ContainerBaseProps {
+  readonly backgroundColor?: BackgroundColor;
 }
+type HTMLProps = React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;;
+type CoreProps = BaseProperties & LayoutProperties;
+/* ------------------ */
 
-type BoxMergedHTMLAttributes = BaseContainerProps & React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-
-export interface BoxProps extends BaseProperties, LayoutProperties, BoxMergedHTMLAttributes {}
+export interface ContainerProps extends CoreProps, HTMLProps, ContainerBaseProps {
+  readonly children: React.ReactNode;
+}

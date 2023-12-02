@@ -189,6 +189,11 @@ export interface LayoutProperties {
   _display?: CSSType.Property.Display | Devices<CSSType.Property.Display>;
   /**
    * CSS Equivalent: @example
+   * {  flex-direction: <property-value>;  }
+  */
+  flexDirection?: CSSType.Property.FlexDirection | Devices<CSSType.Property.FlexDirection>;
+  /**
+   * CSS Equivalent: @example
    * {  align-items: <property-value>;  }
   */
   alignItems?: CSSType.Property.AlignItems | Devices<CSSType.Property.AlignItems>;
@@ -267,13 +272,15 @@ export interface LayoutProperties {
 export const layoutProperties = (props: LayoutProperties | any) => {
   /* *** PROPERTIES *** */
   /**
-   * 
    * You can add a new property or change the CSS equivalents of existing properties.
-   * 
    */
   /* -- LAYOUT PROPS */
   const display = new Property((value: any) => ({
     display: onDevice(value),
+  }));
+
+  const flexDirection = new Property((value: any) => ({
+    flexDirection: onDevice(value),
   }));
 
   const alignItems = new Property((value: any) => ({
@@ -344,6 +351,7 @@ export const layoutProperties = (props: LayoutProperties | any) => {
   return breaker({
     /* -- LAYOUT PROPS */
     ...display.getInProps('_display', props),
+    ...flexDirection.getInProps('flexDirection', props),
     ...alignItems.getInProps('alignItems', props),
     ...alignContent.getInProps('alignContent', props),
     ...alignSelf.getInProps('alignSelf', props),

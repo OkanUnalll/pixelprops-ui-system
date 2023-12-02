@@ -1,4 +1,5 @@
 export interface Edges {
+  none: string;
   xs: string;
   sm: string;
   md: string;
@@ -8,14 +9,15 @@ export interface Edges {
   full: string;
 }
 
-export type Edge = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full';
+export type Edge = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full';
 
 export const edges: Edges = {
+  none: '0px',
   xs: '2px',
   sm: '4px',
   md: '6px',
-  lg: '10px',
-  xl: '14px',
-  xxl: '18px',
+  lg: '8px',
+  xl: '10px',
+  xxl: '12px',
   full: '50px',
 };

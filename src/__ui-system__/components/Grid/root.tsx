@@ -1,60 +1,72 @@
-import styled, { CSSObject } from '@emotion/styled';
+import styled from '@emotion/styled';
+import type { CSSObject } from '@emotion/react';
 
-import { baseProperties, layoutProperties } from 'ui-system/core';
+import { Property, baseProperties, layoutProperties } from 'ui-system/core';
 import { devices } from 'ui-system/theme';
 
-import { Template } from '../models';
-import { BaseGridItemProps, BaseGridProps } from './props.model';
+import { Template } from 'ui-system/components/models';
+import { GridItemBaseProps, GridContainerBaseProps, Spacing } from './props.model';
 
 const GRID_COLUMN = 12;
 
-export const GridItemTemplate = styled.div<Template<BaseGridItemProps>>((props) => {
+export const GridItemRoot = styled.div<Template<GridItemBaseProps>>((props) => {
     /* PROPS */
     const { baseProps } = props;
-    
+
     /* BASE PROPS */
     const { xs, sm, md, lg, xl, xxl } = baseProps;
 
+    /* ------ BASE PROPS STYLES ------ */
+    /* -- GRID RESPONSIVE STYLES -- */
     const gridResponsiveStyles = () => {
-      const values: {
+      interface Values {
         key: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-        value: any;
-      }[] = [
-        { key: 'xs', value: xs },
-        { key: 'sm', value: sm },
-        { key: 'md', value: md },
-        { key: 'lg', value: lg },
-        { key: 'xl', value: xl },
-        { key: 'xxl', value: xxl },
+        value: number;
+      }
+
+      const values: Values[] = [
+        { key: 'xs', value: xs as number },
+        { key: 'sm', value: sm as number},
+        { key: 'md', value: md as number},
+        { key: 'lg', value: lg as number},
+        { key: 'xl', value: xl as number},
+        { key: 'xxl', value: xxl as number},
       ];
 
       let css: CSSObject = {};
 
+      const currentValues: Values[] = [];
+
       values.forEach((value) => {
-        if (value.value) {
-          if (value.key !== 'xs') {
-            const mediaQuery = devices[value.key];
-  
-            css[mediaQuery] = {
-              width: `calc(100% * ${value.value} / ${GRID_COLUMN})`,
-            } as CSSObject;
-          }
-  
-          if (value.key === 'xs') {
-            css = {
-              ...css,
-              width: `calc(100% * ${xs} / ${GRID_COLUMN})`,
-            };
-          }
-        }
+        if (value.value) currentValues.push(value);
       });
 
-      return { ...css };
+      currentValues.forEach((value, index) => {
+        if (index === 0 || value.key === 'xs') {
+          css = {
+            ...css,
+            width: `calc(100% * ${value.value} / ${GRID_COLUMN})`,
+          };
+        } else {
+          const mediaQuery = devices[value.key];
+  
+          css[mediaQuery] = {
+            width: `calc(100% * ${value.value} / ${GRID_COLUMN})`,
+          } as CSSObject;
+        }
+        
+      });
+
+      return css;
     };
+    /* -- END - GRID RESPONSIVE STYLES -- */
+  /* ------ END - BASE PROPS STYLES ------ */
+  
 
     return {
       boxSizing: 'border-box',
       /* BASE GRID ITEM PROPS STYLES */
+      // ...gridResponsiveStyles(),
       ...gridResponsiveStyles(),
       /* BASE PROPERTIES */
       ...baseProperties(props),
@@ -62,29 +74,35 @@ export const GridItemTemplate = styled.div<Template<BaseGridItemProps>>((props) 
     };
 });
 
-export const GridTemplate = styled.div<Template<BaseGridProps>>((props) => {
+export const GridContainerRoot = styled.div<Template<GridContainerBaseProps>>((props) => {
   /* PROPS */
   const { baseProps } = props;
 
   /* BASE PROPS */
-  const { spacing } = baseProps;
+  const {
+    spacing = 0,
+  } = baseProps;
 
-  const spacingStyles = () => {
-    const gridItem = `${GridItemTemplate}`;
+  /* ------ BASE PROPS STYLES ------ */
+  /* -- SPACING STYLES -- */
+  const spacingProperty = new Property<Spacing>((value) => {
+    const gridItem = `${GridItemRoot}`;
 
     return {
       [gridItem]: {
-        padding: spacing ?? 0,
+        padding: value,
       },
-    } as CSSObject;
-  };
+    };
+  });
+  /* -- END - SPACING STYLES -- */
+  /* ------ END - BASE PROPS STYLES ------ */
 
   return {
     display: 'flex',
     flexFlow: 'wrap',
     minWidth: '0px',
-    /* BASE GRID PROPS STYLES */
-    ...spacingStyles(),
+    /* BASE GRID CONTAINER PROPS STYLES */
+    ...spacingProperty.get(spacing),
     /* BASE PROPERTIES */
     ...baseProperties(props),
     ...layoutProperties(props),

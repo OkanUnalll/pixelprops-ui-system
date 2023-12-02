@@ -1,7 +1,9 @@
-import { ButtonTemplate } from './root';
-import type { ButtonProps } from './props.types';
 import type { Icon as TIcon } from 'ui-system/icons';
+
 import { Icon } from '../Icon';
+
+import { ButtonRoot } from './root';
+import type { ButtonProps } from './props.types';
 
 interface ButtonComponentProps extends ButtonProps {
   readonly children?: React.ReactNode;
@@ -38,7 +40,7 @@ function Button({
   };
 
   return (
-    <ButtonTemplate
+    <ButtonRoot
       baseProps={{
         color,
         variant,
@@ -69,7 +71,7 @@ function Button({
           <Icon name={icon} size={iconSize()} />
         </>
       )}
-    </ButtonTemplate>
+    </ButtonRoot>
   );
 };
 

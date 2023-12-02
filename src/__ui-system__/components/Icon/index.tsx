@@ -1,16 +1,9 @@
 import { useTheme } from '@emotion/react';
 
-import type { Color } from 'ui-system/theme';
-import { Icon, icons } from 'ui-system/icons';
+import { icons } from 'ui-system/icons';
 
-import { IconTemplate } from './root';
+import { IconRoot } from './root';
 import type { IconProps } from './props.model';
-
-interface IconComponentProps extends IconProps {
-  readonly children?: React.ReactNode;
-  readonly color?: Color;
-  readonly name: Icon;
-}
 
 function Icon({
   children,
@@ -20,13 +13,13 @@ function Icon({
   name,
   // Other Props
   ...rest
-}: IconComponentProps) {
+}: IconProps) {
   const theme = useTheme();
 
   const icon = icons.find((item) => item.name === name);
 
   return (
-    <IconTemplate
+    <IconRoot
       src={icon?.path as string}
       fill={theme.colors[color ?? theme.defaultPrimaryColor].main}
       baseProps={{ size }}

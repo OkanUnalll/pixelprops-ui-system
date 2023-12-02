@@ -1,4 +1,4 @@
-import { CSSObject } from '@emotion/styled';
+import { CSSObject } from '@emotion/react';
 
 import type { Device, Devices } from '.';
 import { devices } from 'ui-system/theme';
@@ -86,10 +86,20 @@ export class Property<T> {
     }
   }
 
-  public if(condition: T, cssValue: CSSObject) {
-    this.cssRepo = {
-      ...this.cssRepo,
-      [String(condition)]: cssValue,
-    };
+  public if(condition: T, cssValue: CSSObject | (() => CSSObject)) {
+    if (typeof cssValue === 'function') {
+      this.cssRepo = {
+        ...this.cssRepo,
+        [String(condition)]: cssValue(),
+      };
+    }
+
+    if (typeof cssValue === 'object') {
+      this.cssRepo = {
+        ...this.cssRepo,
+        [String(condition)]: cssValue,
+      };
+    }
+    
   }
 }

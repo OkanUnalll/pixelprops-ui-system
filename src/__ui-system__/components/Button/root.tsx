@@ -1,12 +1,13 @@
-import styled, { CSSObject } from '@emotion/styled';
+import styled from '@emotion/styled';
+
+import { hexToRgba } from 'ui-system/utils';
 
 import { Property, baseProperties } from 'ui-system/core';
 
-import type { BaseButtonProps, Variant } from './props.types';
+import type { ButtonBaseProps, Rounded, Size, Variant } from './props.types';
 import { Template } from '../models';
-import { hexToRgba } from 'ui-system/utils';
 
-export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) => {
+export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
   /* PROPS */
   const { baseProps, theme, disabled } = props;
 
@@ -21,12 +22,17 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
     isUppercase = true,
   } = baseProps;
 
-  const variantProp = new Property<Variant>((value) => {
-    const colorValue = theme.colors[color].main;
-    const darkColorValue = theme.colors[color].dark;
-    const textColorValue = theme.colors[color].contrastText;
+  const colorValue = theme.colors[color].main;
+  const colorTextValue = theme.colors[color].contrastText;
+  const colorDarkValue = theme.colors[color].dark;
 
-    const textVariant: CSSObject = {
+  /* ------ BASE PROPS STYLES ------ */
+  /* -- VARIANT STYLES -- */
+  const variantProperty = new Property<Variant>();
+
+  variantProperty.if(
+    'text',
+    {
       backgroundColor: 'transparent',
       borderColor: 'transparent',
       borderWidth: '1px',
@@ -41,32 +47,38 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
-        transform: !disabled ? 'scale(0.99)' : undefined,
+        transform: !disabled ? 'scale(0.95)' : undefined,
         opacity: !disabled ? theme.opacities.sm : undefined,
       },
-    };
+    }
+  );
 
-    const containedVariant: CSSObject = {
+  variantProperty.if(
+    'contained',
+    {
       backgroundColor: colorValue,
       borderColor: colorValue,
       borderWidth: '1px',
       borderStyle: 'solid',
-      color: textColorValue,
+      color: colorTextValue,
 
       'svg': {
-        fill: textColorValue,
+        fill: colorTextValue,
       },
 
       '&:hover': {
         opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
-        transform: !disabled ? 'scale(0.99)' : undefined,
+        transform: !disabled ? 'scale(0.95)' : undefined,
         opacity: !disabled ? theme.opacities.sm : undefined,
       },
-    };
+    },
+  );
 
-    const outlinedVariant: CSSObject = {
+  variantProperty.if(
+    'outlined',
+    {
       backgroundColor: 'transparent',
       borderColor: colorValue,
       borderWidth: '1px',
@@ -81,12 +93,15 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
-        transform: !disabled ? 'scale(0.99)' : undefined,
+        transform: !disabled ? 'scale(0.95)' : undefined,
         opacity: !disabled ? theme.opacities.sm : undefined,
       },
-    };
+    },
+  );
 
-    const ghostVarinat: CSSObject = {
+  variantProperty.if(
+    'ghost',
+    {
       backgroundColor: 'transparent',
       borderColor: 'transparent',
       borderWidth: '1px',
@@ -101,25 +116,28 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
         backgroundColor: !disabled ? hexToRgba(colorValue, 0.1) : undefined,
       },
       '&:active': {
-        transform: !disabled ? 'scale(0.99)' : undefined,
+        transform: !disabled ? 'scale(0.95)' : undefined,
         opacity: !disabled ? theme.opacities.md : undefined,
       },
-    };
+    },
+  );
 
-    const bootstrapVarinat: CSSObject = {
+  variantProperty.if(
+    'bootstrap',
+    {
       backgroundColor: colorValue,
       borderColor: 'transparent',
       borderWidth: '1px',
       borderStyle: 'solid',
-      color: textColorValue,
+      color: colorTextValue,
       position: 'relative',
 
       'svg': {
-        fill: textColorValue,
+        fill: colorTextValue,
       },
 
       '&:hover': {
-        backgroundColor: !disabled ? darkColorValue : undefined,
+        backgroundColor: !disabled ? colorDarkValue : undefined,
       },
 
       '&::before': {
@@ -141,92 +159,108 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       '&:focus::before': {
         opacity: 1,
       },
-    };
+    },
+  );
+  /* -- END - VARIANT STYLES -- */
 
-    switch (value) {
-      case 'text': return textVariant;
-      case 'contained': return containedVariant;
-      case 'outlined': return outlinedVariant;
-      case 'ghost': return ghostVarinat;
-      case 'bootstrap': return bootstrapVarinat;
-    }
-  });
+  /* -- SIZE STYLES -- */
+  const sizeProperty = new Property<Size>();
 
-  /* BASE PROPS STYLES */
-  const sizeStyles = () => {
-    if (iconOnly) {
-      switch (size) {
-        case 'sm': return {
-          width: '27px',
-          height: '27px',
-        } as CSSObject;
-        case 'md': return {
-          width: '32px',
-          height: '32px',
-        } as CSSObject;
-        case 'lg': return {
-          width: '37px',
-          height: '37px',
-        } as CSSObject;
-        case 'xl': return {
-          width: '42px',
-          height: '42px',
-        } as CSSObject;
-        case 'container': return {
-          width: 'auto',
-          height: 'auto',
-        } as CSSObject;
-      }
-    }
-
-    switch (size) {
-      case 'sm': return {
+  sizeProperty.if(
+    'sm',
+    () => {
+      const css = iconOnly ? {
+        width: '27px',
+        height: '27px',
+      } : {
         height: '27px',
         padding: '0 0.7rem',
         fontSize: '12px',
-      } as CSSObject;
-      case 'md': return {
+      };
+
+      return css;
+    },
+  );
+
+  sizeProperty.if(
+    'md',
+    () => {
+      const css = iconOnly ? {
+        width: '32px',
+        height: '32px',
+      } : {
         height: '32px',
         padding: '0 0.9rem',
         fontSize: '13px',
-      } as CSSObject;
-      case 'lg': return {
+      };
+
+      return css;
+    },
+  );
+
+  sizeProperty.if(
+    'lg',
+    () => {
+      const css = iconOnly ? {
+        width: '37px',
+        height: '37px',
+      } : {
         height: '37px',
         padding: '0 1rem',
         fontSize: '14px',
-      } as CSSObject;
-      case 'xl': return {
+      };
+
+      return css;
+    },
+  );
+
+  sizeProperty.if(
+    'xl',
+    () => {
+      const css = iconOnly ? {
+        width: '42px',
+        height: '42px',
+      } : {
         height: '42px',
         padding: '0 1.1rem',
         fontSize: '15px',
-      } as CSSObject;
-      case 'container': return {
-        width: 'auto',
-        height: 'auto',
-      } as CSSObject;
-    }
-  };
+      };
 
-  const roundedStyles = () => {
-    return {
-      borderRadius: theme.edges[rounded],
-    } as CSSObject;
-  };
+      return css;
+    },
+  );
 
-  const fullWidthStyles = () => {
-    const css = fullWidth ? {
+  sizeProperty.if(
+    'container',
+    {
+      width: 'auto',
+      height: 'auto',
+    },
+  );
+  /* -- END - SIZE STYLES -- */
+
+  /* -- ROUNDED STYLES -- */
+  const roundedProperty = new Property<Rounded>(
+    (value) => ({
+      borderRadius: theme.edges[value],
+    })
+  );
+  /* -- END - ROUNDED STYLES -- */
+
+  /* -- FULL WIDTH STYLES -- */
+  const fullWidthVariant = new Property<boolean>((value) => {    
+    return value ? {
       width: '100%',
-    } as CSSObject : undefined;
+    } : {};
+  });
+  /* -- END - FULL WIDTH STYLES -- */
 
-    return css;
-  };
-
-  const isUppercaseStyles = () => {
-    return {
-      textTransform: isUppercase ? 'uppercase' : 'none',
-    } as CSSObject;
-  };
-  /* END - BASE PROPS STYLES */
+  /* -- IS UPPERCASE STYLES -- */
+  const isUppercaseProperty = new Property<boolean>((value) => ({
+    textTransform: value ? 'uppercase' : 'none',
+  }));
+  /* -- END - IS UPPERCASE STYLES -- */
+  /* ------ END - BASE PROPS STYLES ------ */
 
   return {
     /* DEFAULT STYLES */
@@ -241,11 +275,11 @@ export const ButtonTemplate = styled.button<Template<BaseButtonProps>>((props) =
       cursor: 'default',
     },
     /* BASE BUTTON PROPS STYLES */
-    ...variantProp.get(variant),
-    ...sizeStyles(),
-    ...roundedStyles(),
-    ...fullWidthStyles(),
-    ...isUppercaseStyles(),
+    ...variantProperty.get(variant),
+    ...sizeProperty.get(size),
+    ...roundedProperty.get(rounded),
+    ...fullWidthVariant.get(fullWidth),
+    ...isUppercaseProperty.get(isUppercase),
     /* BASE PROPERTIES */
     ...baseProperties(props),
   };

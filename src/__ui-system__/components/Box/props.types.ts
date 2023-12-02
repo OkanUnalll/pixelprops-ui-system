@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import type { BaseProperties, LayoutProperties } from 'ui-system/core';
-import { Color } from 'ui-system/theme';
+import type { Color } from 'ui-system/theme';
 
 /* ------ BASE PROPS TYPES ------ */
 export type BackgroundColor = Color | undefined;

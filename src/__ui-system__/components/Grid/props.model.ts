@@ -1,21 +1,28 @@
 import type { HTMLAttributes } from 'react';
 import type { BaseProperties, LayoutProperties } from 'ui-system/core';
 
-export interface BaseGridProps {
-  spacing?: number | string;
-}
+/* ------ BASE PROPS TYPES ------ */
+export type Spacing = number | string;
+/* ------------------ */
 
-export interface BaseGridItemProps {
-  xs: number;
+/* ------ ALL PROPS ------ */
+export interface GridContainerBaseProps {
+  spacing?: Spacing;
+}
+export interface GridItemBaseProps {
+  xs?: number;
   sm?: number;
   md?: number;
   lg?: number;
   xl?: number;
   xxl?: number;
 }
+type HTMLProps = React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+type CoreProps = BaseProperties & LayoutProperties;
+/* ------------------ */
 
-type GridMergedHTMLAttributes = BaseGridProps & React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-type GridItemMergedHTMLAttributes = BaseGridItemProps & React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-
-export interface GridProps extends BaseProperties, LayoutProperties, GridMergedHTMLAttributes {}
-export interface GridItemProps extends BaseProperties, LayoutProperties, GridItemMergedHTMLAttributes {}
+export interface GridProps extends CoreProps, HTMLProps, GridContainerBaseProps, GridItemBaseProps {
+  readonly children: React.ReactNode;
+  readonly container?: boolean;
+  readonly item?: boolean;
+}

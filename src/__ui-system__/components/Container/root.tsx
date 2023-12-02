@@ -26,23 +26,28 @@ export const ContainerRoot = styled.div<Template<ContainerBaseProps>>((props) =>
     maxWidth: '100%',
     [devices.sm]: {
       maxWidth: '460px',
-      padding: 0,
+      paddingRight: 0,
+      paddingLeft: 0,
     },
     [devices.md]: {
       maxWidth: '614px',
-      padding: 0,
+      paddingRight: 0,
+      paddingLeft: 0,
     },
     [devices.lg]: {
       maxWidth: '793px',
-      padding: 0,
+      paddingRight: 0,
+      paddingLeft: 0,
     },
     [devices.xl]: {
       maxWidth: '960px',
-      padding: 0,
+      paddingRight: 0,
+      paddingLeft: 0,
     },
     [devices.xxl]: {
       maxWidth: '1120px',
-      padding: 0,
+      paddingRight: 0,
+      paddingLeft: 0,
     },
     /* BASE BOX PROPS STYLES */
     ...backgroundColorProperty.get(backgroundColor),

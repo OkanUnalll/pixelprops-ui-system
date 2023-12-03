@@ -1,19 +1,36 @@
-import type { HTMLAttributes } from 'react';
-import type { BaseProperties, LayoutProperties } from 'ui-system/core';
-import type { Color } from 'ui-system/theme';
+import CSSType from 'csstype';
+
+import type { BaseProperties } from 'ui-system/core';
+import type { Color, Font, Typography } from 'ui-system/theme';
 
 /* ------ BASE PROPS TYPES ------ */
-export type BackgroundColor = Color | undefined;
+export type Variant = Typography;
+export type TextAlign = CSSType.Property.TextAlign;
+export type LineHeight = CSSType.Property.LineHeight | undefined;
+export type FontFamily = Font;
+export type FontWeight = CSSType.Property.FontWeight | undefined;
+export type FontSize = CSSType.Property.FontSize | undefined;
+export type Limit = {
+  width?: CSSType.Property.Width;
+  maxWidth?: CSSType.Property.MaxWidth;
+  lineClamp?: CSSType.Property.WebkitLineClamp;
+} | undefined;
 /* ------------------ */
 
 /* ------ ALL PROPS ------ */
-export interface BoxBaseProps {
-  backgroundColor?: BackgroundColor;
+export interface TypographyBaseProps {
+  color?: Color;
+  textAlign?: TextAlign;
+  lineHeight?: LineHeight;
+  fontFamily?: FontFamily;
+  fontWeight?: FontWeight;
+  fontSize?: FontSize;
+  limit?: Limit;
 }
-type HTMLProps = React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-type CoreProps = BaseProperties & LayoutProperties;
+type CoreProps = BaseProperties;
 /* ------------------ */
 
-export interface BoxProps extends CoreProps, HTMLProps, BoxBaseProps {
+export interface TypographyProps extends CoreProps, TypographyBaseProps {
   readonly children: React.ReactNode;
+  readonly variant?: Variant;
 }

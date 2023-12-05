@@ -3,9 +3,12 @@ import CSSType from 'csstype';
 import type { BaseProperties } from 'ui-system/core';
 import type { Color, Font, Typography } from 'ui-system/theme';
 
+/* ------ COMPONENT PROPS TYPES ------ */
+export type Variant = Typography | 'strong' | 'em' | 'del' | 'ins';
+/* ------------------ */
+
 /* ------ BASE PROPS TYPES ------ */
-export type Variant = Typography;
-export type TextAlign = CSSType.Property.TextAlign;
+export type TextAlign = 'left' | 'center' | 'right';
 export type LineHeight = CSSType.Property.LineHeight | undefined;
 export type FontFamily = Font;
 export type FontWeight = CSSType.Property.FontWeight | undefined;
@@ -14,11 +17,11 @@ export type Limit = {
   width?: CSSType.Property.Width;
   maxWidth?: CSSType.Property.MaxWidth;
   lineClamp?: CSSType.Property.WebkitLineClamp;
-} | undefined;
+} | boolean | undefined;
 /* ------------------ */
 
 /* ------ ALL PROPS ------ */
-export interface TypographyBaseProps {
+export interface TextBaseProps {
   color?: Color;
   textAlign?: TextAlign;
   lineHeight?: LineHeight;
@@ -30,7 +33,7 @@ export interface TypographyBaseProps {
 type CoreProps = BaseProperties;
 /* ------------------ */
 
-export interface TypographyProps extends CoreProps, TypographyBaseProps {
+export interface TextProps extends CoreProps, TextBaseProps {
   readonly children: React.ReactNode;
   readonly variant?: Variant;
 }

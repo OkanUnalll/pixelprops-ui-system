@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Property, baseProperties, layoutProperties } from 'ui-system/core';
+import { Property, baseProperties } from 'ui-system/core';
 import type { Template } from '../models';
 import type {
   FontFamily,
@@ -9,13 +9,13 @@ import type {
   Limit,
   LineHeight,
   TextAlign,
-  TypographyBaseProps,
+  TextBaseProps,
 } from './props.types';
 import { Color } from 'ui-system/theme';
 
-export interface TypographyRootProps extends Template<TypographyBaseProps> {}
+export interface TextRootProps extends Template<TextBaseProps> {}
 
-export const TypographyRoot = styled.div<TypographyRootProps>((props) => {
+export const TextRoot = styled.p<TextRootProps>((props) => {
   /* PROPS */
   const { baseProps, theme } = props;
 
@@ -23,7 +23,7 @@ export const TypographyRoot = styled.div<TypographyRootProps>((props) => {
   const {
     color = theme.textColor,
     limit,
-    textAlign = 'start',
+    textAlign = 'left',
     fontFamily = theme.defaultFont,
     fontSize,
     fontWeight,
@@ -33,19 +33,32 @@ export const TypographyRoot = styled.div<TypographyRootProps>((props) => {
   /* ------ BASE PROPS STYLES ------ */
   /* -- COLOR STYLES -- */
   const colorProperty = new Property<Color>((value) => ({
-    color: value,
+    color: theme.colors[value].main,
   }));
   /* -- END - COLOR STYLES -- */
 
   /* -- LIMIT STYLES -- */
-  const limitProperty = new Property<Limit>((value) => ({
-    display: '-webkit-box',
-    WebkitLineClamp: value?.lineClamp ?? 1,
-    WebkitBoxOrient: 'vertical',
-    overflow: 'hidden',
-    width: value?.width ?? '100%',
-    maxWidth: value?.maxWidth ?? '100%',
-  }));
+  const limitProperty = new Property<Limit>((value) => {
+    if (typeof value === 'object') return {
+      display: '-webkit-box',
+      WebkitLineClamp: value?.lineClamp ?? 1,
+      WebkitBoxOrient: 'vertical',
+      overflow: 'hidden',
+      width: value?.width ?? '100%',
+      maxWidth: value?.maxWidth ?? '100%',
+    };
+
+    if (typeof value === 'boolean' && value === true) return {
+      display: '-webkit-box',
+      WebkitLineClamp: 1,
+      WebkitBoxOrient: 'vertical',
+      overflow: 'hidden',
+      width: '100%',
+      maxWidth: '100%',
+    };
+
+    return {}; 
+  });
   /* -- END - LIMIT STYLES -- */
 
   /* -- COLOR STYLES -- */
@@ -56,7 +69,7 @@ export const TypographyRoot = styled.div<TypographyRootProps>((props) => {
 
   /* -- FONT FAMILY STYLES -- */
   const fontFamilyProperty = new Property<FontFamily>((value) => ({
-    fontFamily: `${value}, sans-serif`,
+    fontFamily: `${theme.fonts[value]}, sans-serif`,
   }));
   /* -- END - FONT FAMILY STYLES -- */
 
@@ -80,7 +93,6 @@ export const TypographyRoot = styled.div<TypographyRootProps>((props) => {
   /* ------ END - BASE PROPS STYLES ------ */
 
   return {
-    display: 'block',
     /* BASE BOX PROPS STYLES */
     ...colorProperty.get(color),
     ...limitProperty.get(limit),
@@ -91,14 +103,96 @@ export const TypographyRoot = styled.div<TypographyRootProps>((props) => {
     ...lineHeightProperty.get(lineHeight),
     /* BASE PROPERTIES */
     ...baseProperties(props),
-    ...layoutProperties(props),
   };
 });
 
-export const H1 = TypographyRoot.withComponent('h1');
-export const H2 = TypographyRoot.withComponent('h2');
-export const H3 = TypographyRoot.withComponent('h3');
-export const H4 = TypographyRoot.withComponent('h4');
-export const H5 = TypographyRoot.withComponent('h5');
-export const H6 = TypographyRoot.withComponent('h6');
-export const P = TypographyRoot.withComponent('p');
+/* ------ VARIANTS ------ */
+/* -- H1 VARIANT -- */
+export const H1 = styled(TextRoot)((props) => {
+  const { theme } = props;
+
+  return {
+    fontSize: theme.typography.h1.fontSize,
+    fontWeight: theme.typography.h1.fontWeight,
+    lineHeight: theme.typography.h1.lineHeight,
+  };
+}).withComponent('h1');
+
+/* -- H2 VARIANT -- */
+export const H2 = styled(TextRoot)((props) => {
+  const { theme } = props;
+
+  return {
+    fontSize: theme.typography.h2.fontSize,
+    fontWeight: theme.typography.h2.fontWeight,
+    lineHeight: theme.typography.h2.lineHeight,
+  };
+}).withComponent('h2');
+
+/* -- H3 VARIANT -- */
+export const H3 = styled(TextRoot)((props) => {
+  const { theme } = props;
+
+  return {
+    fontSize: theme.typography.h3.fontSize,
+    fontWeight: theme.typography.h3.fontWeight,
+    lineHeight: theme.typography.h3.lineHeight,
+  };
+}).withComponent('h3');
+
+/* -- H4 VARIANT -- */
+export const H4 = styled(TextRoot)((props) => {
+  const { theme } = props;
+
+  return {
+    fontSize: theme.typography.h4.fontSize,
+    fontWeight: theme.typography.h4.fontWeight,
+    lineHeight: theme.typography.h4.lineHeight,
+  };
+}).withComponent('h4');
+
+/* -- H5 VARIANT -- */
+export const H5 = styled(TextRoot)((props) => {
+  const { theme } = props;
+
+  return {
+    fontSize: theme.typography.h5.fontSize,
+    fontWeight: theme.typography.h5.fontWeight,
+    lineHeight: theme.typography.h5.lineHeight,
+  };
+}).withComponent('h5');
+
+/* -- H6 VARIANT -- */
+export const H6 = styled(TextRoot)((props) => {
+  const { theme } = props;
+
+  return {
+    fontSize: theme.typography.h6.fontSize,
+    fontWeight: theme.typography.h6.fontWeight,
+    lineHeight: theme.typography.h6.lineHeight,
+  };
+}).withComponent('h6');
+
+/* -- PARAGRAPH VARIANT -- */
+export const Paragraph = styled(TextRoot)((props) => {
+  const { theme } = props;
+
+  return {
+    fontSize: theme.typography.paragraph.fontSize,
+    fontWeight: theme.typography.paragraph.fontWeight,
+    lineHeight: theme.typography.paragraph.lineHeight,
+  };
+}).withComponent('p');
+
+/* -- STRONG VARIANT -- */
+export const Strong = TextRoot.withComponent('strong');
+
+/* -- EM VARIANT -- */
+export const Em = TextRoot.withComponent('em');
+
+/* -- DEL VARIANT -- */
+export const Del = TextRoot.withComponent('del');
+
+/* -- INS VARIANT -- */
+export const Ins = TextRoot.withComponent('ins');
+/* ------ END - VARIANTS ------ */

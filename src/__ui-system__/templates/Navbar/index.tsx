@@ -12,6 +12,10 @@ const navItems = [
     text: 'Buttons',
     route: '/components/buttons',
   },
+  {
+    text: 'Typography',
+    route: '/components/typography',
+  },
 ];
 
 function Navbar() {

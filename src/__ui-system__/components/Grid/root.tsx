@@ -80,7 +80,9 @@ export const GridContainerRoot = styled.div<Template<GridContainerBaseProps>>((p
 
   /* BASE PROPS */
   const {
-    spacing = 0,
+    spacing,
+    spacingX,
+    spacingY,
   } = baseProps;
 
   /* ------ BASE PROPS STYLES ------ */
@@ -88,11 +90,37 @@ export const GridContainerRoot = styled.div<Template<GridContainerBaseProps>>((p
   const spacingProperty = new Property<Spacing>((value) => {
     const gridItem = `${GridItemRoot}`;
 
-    return {
+    return value ? {
       [gridItem]: {
         padding: value,
       },
-    };
+    } : {};
+  });
+  /* -- END - SPACING STYLES -- */
+
+  /* -- SPACING X STYLES -- */
+  const spacingXProperty = new Property<Spacing>((value) => {
+    const gridItem = `${GridItemRoot}`;
+
+    return value ? {
+      [gridItem]: {
+        paddingLeft: value,
+        paddingRight: value,
+      },
+    } : {};
+  });
+  /* -- END - SPACING STYLES -- */
+
+  /* -- SPACING Y STYLES -- */
+  const spacingYProperty = new Property<Spacing>((value) => {
+    const gridItem = `${GridItemRoot}`;
+
+    return value ? {
+      [gridItem]: {
+        paddingTop: value,
+        paddingBottom: value,
+      },
+    } : {};
   });
   /* -- END - SPACING STYLES -- */
   /* ------ END - BASE PROPS STYLES ------ */
@@ -103,6 +131,8 @@ export const GridContainerRoot = styled.div<Template<GridContainerBaseProps>>((p
     minWidth: '0px',
     /* BASE GRID CONTAINER PROPS STYLES */
     ...spacingProperty.get(spacing),
+    ...spacingXProperty.get(spacingX),
+    ...spacingYProperty.get(spacingY),
     /* BASE PROPERTIES */
     ...baseProperties(props),
     ...layoutProperties(props),

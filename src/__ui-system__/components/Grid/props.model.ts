@@ -2,12 +2,14 @@ import type { HTMLAttributes } from 'react';
 import type { BaseProperties, LayoutProperties } from 'ui-system/core';
 
 /* ------ BASE PROPS TYPES ------ */
-export type Spacing = number | string;
+export type Spacing = number | string | undefined;
 /* ------------------ */
 
 /* ------ ALL PROPS ------ */
 export interface GridContainerBaseProps {
   spacing?: Spacing;
+  spacingX?: Spacing;
+  spacingY?: Spacing;
 }
 export interface GridItemBaseProps {
   xs?: number;

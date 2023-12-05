@@ -25,7 +25,7 @@ export const darkTheme: ThemeProperties = {
     ...themeBase,
     mode: 'dark',
     backgroundColor: 'dark',
-    textColor: 'grey',
+    textColor: 'white',
     defaultPrimaryColor: 'primary',
     defaultRadius: 'md',
     defaultFont: 'roboto',

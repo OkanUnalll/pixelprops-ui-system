@@ -13,12 +13,16 @@ function Grid({
   xl,
   xxl,
   spacing,
+  spacingX,
+  spacingY,
   ...rest
 }: GridProps) {
   const renderGridContainer = () => (
     <GridContainerRoot
       baseProps={{
         spacing,
+        spacingX,
+        spacingY,
       }}
       {...rest}
     >

@@ -11,10 +11,10 @@ export interface Typographies {
     h4: TypographyStyles;
     h5: TypographyStyles;
     h6: TypographyStyles;
-    text: TypographyStyles;
+    paragraph: TypographyStyles;
 };
 
-export type Typography = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'text';
+export type Typography = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'paragraph';
 
 export const typography: Typographies = {
     h1: {
@@ -47,8 +47,8 @@ export const typography: Typographies = {
         fontWeight: '500',
         lineHeight: '1.625',
     },
-    text: {
-        fontSize: '13px',
+    paragraph: {
+        fontSize: '15px',
         fontWeight: '300',
         lineHeight: '1.3',
     },

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { CSSObject, keyframes } from '@emotion/react';
 
 import { hexToRgba } from 'ui-system/utils';
 
@@ -14,19 +15,71 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
   /* BASE PROPS */
   const {
     variant = 'contained',
-    color = theme.defaultPrimaryColor,
+    color = theme.bodyColor,
     size = 'md',
     iconOnly = false,
     rounded = theme.defaultRadius,
     fullWidth = false,
     isUppercase = true,
+    hoverEffect = 'default',
   } = baseProps;
 
-  const colorValue = theme.colors[color].main;
-  const colorTextValue = theme.colors[color].contrastText;
-  const colorDarkValue = theme.colors[color].dark;
+  const colorMain = theme.colors[color].main;
+  const colorContrast = theme.colors[color].contrast;
+  const colorDark = theme.colors[color].dark;
 
   /* ------ BASE PROPS STYLES ------ */
+  /* -- EFFECT STYLES -- */
+  const dropletHoverEffect = () => {
+    const keyframe = keyframes({
+      '100%': {
+        transform: 'translate(-50%, -50%) scale(1)',
+        opacity: 1,
+      },
+    });
+
+    const BORDER_WIDTH = '3px';
+  
+    return {
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        width: '100%',
+        height: '100%',
+        backgroundColor: hexToRgba(colorMain, 0.1),
+        pointerEvents: 'none',
+        borderRadius: theme.edges[rounded],
+        opacity: 0,
+        transform: 'translate(-50%, -50%) scale(0.5)',
+      },
+
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        width: '100%',
+        height: '100%',
+        borderRadius: `calc(${theme.edges[rounded]} + ${BORDER_WIDTH})`,
+        border: `solid ${BORDER_WIDTH} ${hexToRgba(colorMain, 0.3)}`,
+        transform: 'translate(-50%, -50%)',
+        opacity: 0,
+      },
+  
+      '&:hover:before': {
+        animation: !disabled ? `${keyframe} 0.25s ease forwards` : undefined,
+      },
+
+      '&:focus:after': {
+        opacity: 1,
+      },
+    } as CSSObject;
+  };
+
+  /* -- END - EFFECT STYLES -- */
+
   /* -- VARIANT STYLES -- */
   const variantProperty = new Property<Variant>();
 
@@ -37,17 +90,16 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
       borderColor: 'transparent',
       borderWidth: '1px',
       borderStyle: 'solid',
-      color: colorValue,
+      color: colorMain,
 
       'svg': {
-        fill: colorValue,
+        fill: colorMain,
       },
 
       '&:hover': {
-        opacity: !disabled ? theme.opacities.lg : undefined,
+        opacity: !disabled ? theme.opacities.md : undefined,
       },
       '&:active': {
-        transform: !disabled ? 'scale(0.95)' : undefined,
         opacity: !disabled ? theme.opacities.sm : undefined,
       },
     }
@@ -55,111 +107,225 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
 
   variantProperty.if(
     'contained',
-    {
-      backgroundColor: colorValue,
-      borderColor: colorValue,
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      color: colorTextValue,
+    () => {
+      const hoverEffectStyle = () => {
+        if (disabled) return undefined;
 
-      'svg': {
-        fill: colorTextValue,
-      },
+        return {
+          '&:hover': {
+            backgroundColor: colorDark,
+          }
+        };
+      };
 
-      '&:hover': {
-        opacity: !disabled ? theme.opacities.lg : undefined,
-      },
-      '&:active': {
-        transform: !disabled ? 'scale(0.95)' : undefined,
-        opacity: !disabled ? theme.opacities.sm : undefined,
-      },
+      return {
+        backgroundColor: colorMain,
+        borderColor: 'transparent',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        color: colorContrast,
+  
+        'svg': {
+          fill: colorContrast,
+        },
+  
+        ...hoverEffectStyle(),
+
+        '&:active': {
+          backgroundColor: !disabled ? hexToRgba(colorDark, 0.8) : undefined,
+        },
+      };
     },
   );
 
   variantProperty.if(
     'outlined',
-    {
-      backgroundColor: 'transparent',
-      borderColor: colorValue,
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      color: colorValue,
+    () => {
+      const hoverEffectStyle = () => {
+        if (disabled) return undefined;
 
-      'svg': {
-        fill: colorValue,
-      },
+        switch (hoverEffect) {
+          case 'droplet': return dropletHoverEffect();
+          case 'default': return {
+            '&:hover': {
+              backgroundColor: hexToRgba(colorMain, 0.1),
+              borderColor: 'transparent',
+            },
+          };
+        }
+      };
 
-      '&:hover': {
-        opacity: !disabled ? theme.opacities.lg : undefined,
-      },
-      '&:active': {
-        transform: !disabled ? 'scale(0.95)' : undefined,
-        opacity: !disabled ? theme.opacities.sm : undefined,
-      },
+      const activeStyle = !disabled ? {
+        opacity: theme.opacities.md,
+      } : undefined;
+
+      return {
+        backgroundColor: 'transparent',
+        borderColor: hexToRgba(colorMain, 0.2),
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        color: colorMain,
+
+        'svg': {
+          fill: colorMain,
+        },
+
+        // '&:hover': hoverStyle,
+        '&:active': activeStyle,
+        ...hoverEffectStyle(),
+      };
+    },
+  );
+
+  variantProperty.if(
+    'surface',
+    () => {
+      const hoverEffectStyle = () => {
+        if (disabled) return undefined;
+
+        switch (hoverEffect) {
+          case 'droplet': return dropletHoverEffect();
+          case 'default': return {
+            '&:hover': {
+              backgroundColor: hexToRgba(colorMain, 0.15),
+            },
+          };
+        }
+      };
+
+      return {
+        backgroundColor: hexToRgba(colorMain, 0.1),
+        borderColor: hexToRgba(colorMain, 0.2),
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        color: colorMain,
+  
+        'svg': {
+          fill: colorMain,
+        },
+  
+        '&:active': {
+          opacity: !disabled ? theme.opacities.md : undefined,
+        },
+  
+        ...hoverEffectStyle(),
+      };
+    }
+  );
+
+  variantProperty.if(
+    'soft',
+    () => {
+      const hoverEffectStyle = () => {
+        if (disabled) return undefined;
+
+        switch (hoverEffect) {
+          case 'droplet': return dropletHoverEffect();
+          case 'default': return {
+            '&:hover': {
+              backgroundColor: hexToRgba(colorMain, 0.2),
+            },
+          };
+        }
+      };
+
+      return {
+        backgroundColor: hexToRgba(colorMain, 0.1),
+        borderColor: 'transparent',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        color: colorMain,
+  
+        'svg': {
+          fill: colorMain,
+        },
+  
+        '&:active': {
+          opacity: !disabled ? theme.opacities.md : undefined,
+        },
+  
+        ...hoverEffectStyle(),
+      };
     },
   );
 
   variantProperty.if(
     'ghost',
-    {
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      color: colorValue,
+    () => {
+      const hoverEffectStyle = () => {
+        if (disabled) return undefined;
 
-      'svg': {
-        fill: colorValue,
-      },
+        switch (hoverEffect) {
+          case 'droplet': return dropletHoverEffect();
+          case 'default': return {
+            '&:hover': {
+              backgroundColor: hexToRgba(colorMain, 0.1),
+            },
+          };
+        }
+      };
 
-      '&:hover': {
-        backgroundColor: !disabled ? hexToRgba(colorValue, 0.1) : undefined,
-      },
-      '&:active': {
-        transform: !disabled ? 'scale(0.95)' : undefined,
-        opacity: !disabled ? theme.opacities.md : undefined,
-      },
+      return {
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        color: colorMain,
+  
+        'svg': {
+          fill: colorMain,
+        },
+  
+        '&:active': {
+          opacity: !disabled ? theme.opacities.md : undefined,
+        },
+  
+        ...hoverEffectStyle(),
+      };
     },
   );
 
   variantProperty.if(
     'bootstrap',
-    {
-      backgroundColor: colorValue,
-      borderColor: 'transparent',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      color: colorTextValue,
-      position: 'relative',
+    () => {
+      const BEFORE_BORDER_WIDTH = '4px';
 
-      'svg': {
-        fill: colorTextValue,
-      },
-
-      '&:hover': {
-        backgroundColor: !disabled ? colorDarkValue : undefined,
-      },
-
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '100%',
-        height: '100%',
-        borderRadius: `calc(${theme.edges[rounded]} + 4px)`,
-        border: `solid 5px ${hexToRgba(colorValue, 0.3)}`,
-        backgroundColor: 'transparent',
-        transition: theme.transitions.fast,
-        pointerEvents: 'none',
-        opacity: 0,
-      },
-
-      '&:focus::before': {
-        opacity: 1,
-      },
-    },
+      return {
+        backgroundColor: colorMain,
+        borderStyle: 'none',
+        color: colorContrast,
+        position: 'relative',
+        overflow: 'visible',
+  
+        'svg': {
+          fill: colorContrast,
+        },
+  
+        '&:hover': {
+          backgroundColor: !disabled ? colorDark : undefined,
+        },
+  
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100%',
+          height: '100%',
+          borderRadius: `calc(${theme.edges[rounded]} + ${BEFORE_BORDER_WIDTH})`,
+          border: `solid ${BEFORE_BORDER_WIDTH} ${hexToRgba(colorMain, 0.3)}`,
+          backgroundColor: 'transparent',
+          transition: theme.transitions.fast,
+          pointerEvents: 'none',
+          opacity: 0,
+        },
+  
+        '&:focus::before': {
+          opacity: 1,
+        },
+      };
+    }
   );
   /* -- END - VARIANT STYLES -- */
 
@@ -168,65 +334,49 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
 
   sizeProperty.if(
     'sm',
-    () => {
-      const css = iconOnly ? {
-        width: '27px',
-        height: '27px',
-      } : {
-        height: '27px',
-        padding: '0 0.7rem',
-        fontSize: '12px',
-      };
-
-      return css;
+    () => iconOnly ? {
+      width: '25px',
+      height: '25px',
+    } : {
+      height: '25px',
+      padding: '0 0.7rem',
+      fontSize: '11px',
     },
   );
 
   sizeProperty.if(
     'md',
-    () => {
-      const css = iconOnly ? {
-        width: '32px',
-        height: '32px',
-      } : {
-        height: '32px',
-        padding: '0 0.9rem',
-        fontSize: '13px',
-      };
-
-      return css;
+    () => iconOnly ? {
+      width: '30px',
+      height: '30px',
+    } : {
+      height: '30px',
+      padding: '0 0.9rem',
+      fontSize: '12px',
     },
   );
 
   sizeProperty.if(
     'lg',
-    () => {
-      const css = iconOnly ? {
-        width: '37px',
-        height: '37px',
-      } : {
-        height: '37px',
-        padding: '0 1rem',
-        fontSize: '14px',
-      };
-
-      return css;
+    () => iconOnly ? {
+      width: '35px',
+      height: '35px',
+    } : {
+      height: '35px',
+      padding: '0 1rem',
+      fontSize: '13px',
     },
   );
 
   sizeProperty.if(
     'xl',
-    () => {
-      const css = iconOnly ? {
-        width: '42px',
-        height: '42px',
-      } : {
-        height: '42px',
-        padding: '0 1.1rem',
-        fontSize: '15px',
-      };
-
-      return css;
+    () => iconOnly ? {
+      width: '40px',
+      height: '40px',
+    } : {
+      height: '40px',
+      padding: '0 1.1rem',
+      fontSize: '14px',
     },
   );
 
@@ -265,11 +415,14 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
   return {
     /* DEFAULT STYLES */
     cursor: 'pointer',
-    transition: theme.transitions.mid,
     fontWeight: '500',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'relative',
+    '& svg': {
+      transition: theme.transitions.mid,
+    },
     '&:disabled': {
       opacity: theme.opacities.disabled,
       cursor: 'default',

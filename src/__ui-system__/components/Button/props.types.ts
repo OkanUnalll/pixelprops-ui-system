@@ -3,9 +3,10 @@ import type { BaseProperties } from 'ui-system/core';
 import type { Color, Edge } from 'ui-system/theme';
 
 /* ------ BASE PROPS TYPES ------ */
-export type Variant = 'text' | 'contained' | 'outlined' | 'ghost' | 'bootstrap';
+export type Variant = 'text' | 'contained' | 'outlined' | 'surface' | 'soft' | 'ghost' | 'bootstrap';
 export type Size = 'sm' | 'md' | 'lg' | 'xl' | 'container';
 export type Rounded = Edge;
+export type HoverEffect = 'default' | 'droplet';
 /* ------------------ */
 
 /* ------ ALL PROPS ------ */
@@ -17,6 +18,16 @@ export interface ButtonBaseProps {
   rounded?: Edge;
   fullWidth?: boolean;
   isUppercase?: boolean;
+  /**
+   * Only valid for certain variants:
+   * - 'outlined'
+   * - 'surface'
+   * - 'soft'
+   * - 'ghost'
+   * 
+   * default value: 'default'
+   */
+  hoverEffect?: HoverEffect,
 }
 
 type HTMLProps = Omit<
@@ -26,4 +37,6 @@ type HTMLProps = Omit<
 type CoreProps = BaseProperties;
 /* ------------------ */
 
-export interface ButtonProps extends CoreProps, HTMLProps, ButtonBaseProps {}
+export interface ButtonProps extends CoreProps, HTMLProps, ButtonBaseProps {
+  href?: string;
+}

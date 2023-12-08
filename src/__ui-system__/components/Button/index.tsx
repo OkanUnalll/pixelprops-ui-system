@@ -1,3 +1,6 @@
+import { MouseEvent } from 'react';
+import { useRouter } from 'next/navigation';
+
 import type { Icon as TIcon } from 'ui-system/icons';
 
 import { Icon } from '../Icon';
@@ -17,6 +20,8 @@ function Button({
   iconLeft,
   iconRight,
   icon,
+  href,
+  onClick,
   // Base Props
   color,
   variant,
@@ -25,9 +30,12 @@ function Button({
   rounded,
   fullWidth,
   isUppercase,
+  hoverEffect,
   // Other Props
   ...rest
 }: ButtonComponentProps) {
+  const router = useRouter();
+
   const iconSize = () => {
     switch(size) {
       case 'sm': return 'sm';
@@ -36,6 +44,16 @@ function Button({
       case 'xl': return 'xl';
       case 'container': return 'md';
       default: return 'md';
+    }
+  };
+
+  const handleRoute = (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+    if (href) {
+      router.push(href);
+    }
+
+    if (typeof onClick === 'function') {
+      onClick(event);
     }
   };
 
@@ -49,7 +67,9 @@ function Button({
         rounded,
         fullWidth,
         isUppercase,
+        hoverEffect,
       }}
+      onClick={handleRoute}
       {...rest}
     >
       {iconLeft && (

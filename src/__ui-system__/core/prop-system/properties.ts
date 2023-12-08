@@ -8,6 +8,13 @@ export interface MarginProperties {
   /**
    * CSS Equivalent: @example
    * {
+   * margin: <property-value>;
+   * }
+  */
+  m?: string | number | Devices<string | number>;
+  /**
+   * CSS Equivalent: @example
+   * {
    * margin-right: <property-value>;
    * margin-left: <property-value>;
    * }
@@ -44,6 +51,13 @@ export interface MarginProperties {
 }
 
 export interface PaddingProperties {
+  /**
+   * CSS Equivalent: @example
+   * {
+   *   padding: <property-value>;
+   * }
+  */
+  p?: string | number | Devices<string | number>;
   /**
    * CSS Equivalent: @example
    * {
@@ -102,6 +116,11 @@ export const baseProperties = (props: BaseProperties | any) => {
    */
 
   /* -- MARGIN PROPS */
+  const m = new Property((value: any) => ({
+    margin: onDevice(value, { numberToRem: true })  
+  }));
+
+  
   const mt = new Property((value: any) => ({
     marginTop: onDevice(value, { numberToRem: true })  
   }));
@@ -129,6 +148,10 @@ export const baseProperties = (props: BaseProperties | any) => {
   }));
 
   /* -- PADDING PROPS */
+  const p = new Property((value: any) => ({
+    padding: onDevice(value, { numberToRem: true })  
+  }));
+  
   const pt = new Property((value: any) => ({
     paddingTop: onDevice(value, { numberToRem: true })  
   }));
@@ -162,6 +185,7 @@ export const baseProperties = (props: BaseProperties | any) => {
 
   return breaker({
     /* -- MARGIN PROPS */
+    ...m.getInProps('m', props),
     ...mt.getInProps('mt', props),
     ...mr.getInProps('mr', props),
     ...mb.getInProps('mb', props),
@@ -169,6 +193,7 @@ export const baseProperties = (props: BaseProperties | any) => {
     ...my.getInProps('my', props),
     ...mx.getInProps('mx', props),
     /* -- PADDING PROPS */
+    ...p.getInProps('p', props),
     ...pt.getInProps('pt', props),
     ...pr.getInProps('pr', props),
     ...pb.getInProps('pb', props),

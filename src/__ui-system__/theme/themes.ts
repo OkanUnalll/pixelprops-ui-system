@@ -15,6 +15,7 @@ export type ThemeMode = 'light' | 'dark' | 'apple';
 export interface ThemeProperties extends BaseThemeProperties {
     mode: ThemeMode;
     textColor: Color;
+    bodyColor: Color;
     backgroundColor: Color;
     defaultPrimaryColor: Color;
     defaultRadius: Edge;
@@ -26,8 +27,9 @@ export const darkTheme: ThemeProperties = {
     mode: 'dark',
     backgroundColor: 'dark',
     textColor: 'white',
+    bodyColor: 'lightGrey',
     defaultPrimaryColor: 'primary',
-    defaultRadius: 'md',
+    defaultRadius: 'sm',
     defaultFont: 'roboto',
 };
 
@@ -36,6 +38,7 @@ export const lightTheme: ThemeProperties = {
     mode: 'light',
     backgroundColor: 'white',
     textColor: 'dark',
+    bodyColor: 'darkGrey',
     defaultPrimaryColor: 'primary',
     defaultRadius: 'md',
     defaultFont: 'roboto',
@@ -47,6 +50,7 @@ export const appleTheme: ThemeProperties = {
     mode: 'apple',
     backgroundColor: 'white',
     textColor: 'dark',
+    bodyColor: 'darkGrey',
     defaultPrimaryColor: 'red',
     defaultRadius: 'full',
     defaultFont: 'poppins',

@@ -22,29 +22,29 @@ export const IconRoot = styled(InlineSVG)<Template<IconBaseProps>>((props) => {
   sizeProperty.if(
     'sm',
     {
-      width: '11px',
-      height: '11px',
+      width: '10px',
+      height: '10px',
     },
   );
   sizeProperty.if(
     'md',
     {
-      width: '13px',
-      height: '13px',
+      width: '12px',
+      height: '12px',
     },
   );
   sizeProperty.if(
     'lg',
     {
-      width: '15px',
-      height: '15px',
+      width: '14px',
+      height: '14px',
     },
   );
   sizeProperty.if(
     'xl',
     {
-      width: '17px',
-      height: '17px',
+      width: '16px',
+      height: '16px',
     },
   );
   /* -- END - SIZE PROPERTY STYLES -- */

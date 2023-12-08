@@ -15,7 +15,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
   /* BASE PROPS */
   const {
     variant = 'contained',
-    color = theme.bodyColor,
+    color = 'default',
     size = 'md',
     iconOnly = false,
     rounded = theme.defaultRadius,
@@ -24,9 +24,11 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
     hoverEffect = 'default',
   } = baseProps;
 
-  const colorMain = theme.colors[color].main;
-  const colorContrast = theme.colors[color].contrast;
-  const colorDark = theme.colors[color].dark;
+  const colorValue = color === 'default' ? theme.bodyColor : color;
+
+  const colorMain = theme.colors[colorValue].main;
+  const colorContrast = theme.colors[colorValue].contrast;
+  const colorDark = theme.colors[colorValue].dark;
 
   /* ------ BASE PROPS STYLES ------ */
   /* -- EFFECT STYLES -- */

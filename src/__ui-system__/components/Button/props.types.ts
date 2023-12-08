@@ -12,11 +12,26 @@ export type HoverEffect = 'default' | 'droplet';
 /* ------ ALL PROPS ------ */
 export interface ButtonBaseProps {
   variant?: Variant;
-  color?: Color;
+  /**
+   * default value: 'default'
+   */
+  color?: Color | 'default';
+  /**
+   * default value: 'md'
+   */
   size?: Size;
+  /**
+   * default value: false
+   */
   iconOnly?: boolean;
   rounded?: Edge;
+  /**
+   * default value: false
+   */
   fullWidth?: boolean;
+  /**
+   * default value: true
+   */
   isUppercase?: boolean;
   /**
    * Only valid for certain variants:

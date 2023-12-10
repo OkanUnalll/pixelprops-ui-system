@@ -18,7 +18,7 @@ export interface Colors {
     blue: ColorTypes;
     purple: ColorTypes;
     red: ColorTypes;
-    yellow: ColorTypes;
+    orange: ColorTypes;
     green: ColorTypes;
 };
 
@@ -34,7 +34,7 @@ export type Color = 'primary'
 | 'blue'
 | 'purple'
 | 'red'
-| 'yellow'
+| 'orange'
 | 'green';
 export type ColorType = 'main' | 'light' | 'dark' | 'contrast';
 
@@ -111,7 +111,7 @@ export const colors: Colors = {
         dark: '#c62828',
         contrast: '#ffffff',
     },
-    yellow: {
+    orange: {
         main: '#ed6c02',
         light: '#ff9800',
         dark: '#e65100',

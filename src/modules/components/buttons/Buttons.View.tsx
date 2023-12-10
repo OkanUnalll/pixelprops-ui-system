@@ -258,54 +258,54 @@ function ButtonsView() {
             <Grid item xs={12} gap={1} _display="flex" css={{ flexWrap: 'wrap' }} justifyContent="center">
               <Button variant="outlined" size="container" rounded="lg" hoverEffect="droplet">
                 <Box _display="flex" alignItems="center" py={0.6} px={1.5} gap="10px">
-                  <Icon name="google_call" size="lg" />
+                  <Icon color="green" name="google_call" size="lg" />
                   <Text fontSize="13px" fontWeight="500" variant="paragraph">Call</Text>
                 </Box>
               </Button>
               <Button variant="soft" size="container" rounded="lg" hoverEffect="droplet">
                 <Box _display="flex" alignItems="center" py={0.6} px={1.5} gap="10px">
-                  <Icon name="google_call" size="lg" />
+                  <Icon color="green" name="google_call" size="lg" />
                   <Text fontSize="13px" fontWeight="500" variant="paragraph">Call</Text>
                 </Box>
               </Button>
               <Button variant="surface" size="container" rounded="lg" hoverEffect="droplet">
                 <Box _display="flex" alignItems="center" py={0.6} px={1.5} gap="10px">
-                  <Icon name="google_call" size="lg" />
+                  <Icon color="green" name="google_call" size="lg" />
                   <Text fontSize="13px" fontWeight="500" variant="paragraph">Call</Text>
                 </Box>
               </Button>
               <Button variant="ghost" size="container" rounded="lg" hoverEffect="droplet">
                 <Box _display="flex" alignItems="center" py={0.6} px={1.5} gap="10px">
-                  <Icon name="google_call" size="lg" />
+                  <Icon color="green" name="google_call" size="lg" />
                   <Text fontSize="13px" fontWeight="500" variant="paragraph">Call</Text>
                 </Box>
               </Button>
             </Grid>
             <Grid item xs={12} gap={1} _display="flex" css={{ flexWrap: 'wrap' }} justifyContent="center">
-              <Button color="yellow" variant="outlined" size="container" rounded="full" hoverEffect="droplet">
+              <Button color="orange" variant="outlined" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
-              <Button color="yellow" variant="soft" size="container" rounded="full" hoverEffect="droplet">
+              <Button color="orange" variant="soft" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
-              <Button color="yellow" variant="surface" size="container" rounded="full" hoverEffect="droplet">
+              <Button color="orange" variant="surface" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
-              <Button color="yellow" variant="ghost" size="container" rounded="full" hoverEffect="droplet">
+              <Button color="orange" variant="ghost" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
             </Grid>
             <Grid item xs={12} gap={1} _display="flex" css={{ flexWrap: 'wrap' }} justifyContent="center">
-              <Button disabled color="yellow" variant="outlined" size="container" rounded="full" hoverEffect="droplet">
+              <Button disabled color="orange" variant="outlined" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
-              <Button disabled color="yellow" variant="soft" size="container" rounded="full" hoverEffect="droplet">
+              <Button disabled color="orange" variant="soft" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
-              <Button disabled color="yellow" variant="surface" size="container" rounded="full" hoverEffect="droplet">
+              <Button disabled color="orange" variant="surface" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
-              <Button disabled color="yellow" variant="ghost" size="container" rounded="full" hoverEffect="droplet">
+              <Button disabled color="orange" variant="ghost" size="container" rounded="full" hoverEffect="droplet">
                 <Icon name="google_call" size="lg" m={1} />
               </Button>
             </Grid>

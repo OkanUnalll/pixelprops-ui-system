@@ -4,19 +4,30 @@ import InlineSVG from 'react-inlinesvg';
 
 import { Property, baseProperties } from 'ui-system/core';
 
-import type { IconBaseProps, Size } from './props.model';
+import type { Color, IconBaseProps, Size } from './props.model';
 import type { Template } from '../models';
 
 export const IconRoot = styled(InlineSVG)<Template<IconBaseProps>>((props) => {
   /* PROPS */
-  const { baseProps } = props;
+  const { theme, baseProps } = props;
 
   /* BASE PROPS */
   const {
     size = 'md',
+    color = 'default',
   } = baseProps;
 
   /* ------ BASE PROPS STYLES ------ */
+  /* -- COLOR PROPERTY STYLES -- */
+  const colorProperty = new Property<Color>((value) => {
+    const colorValue = value === 'default' ? theme.bodyColor : theme.colors[value].main;
+    
+    return {
+      fill: colorValue,
+    };
+  });
+  /* -- END - COLOR PROPERTY STYLES -- */
+
   /* -- SIZE PROPERTY STYLES -- */
   const sizeProperty = new Property<Size>();
   sizeProperty.if(
@@ -53,6 +64,7 @@ export const IconRoot = styled(InlineSVG)<Template<IconBaseProps>>((props) => {
   return {
     /* DEFAULT STYLES */
     /* BASE BUTTON PROPS STYLES */
+    ...colorProperty.get(color),
     ...sizeProperty.get(size),
     /* BASE PROPERTIES */
     ...baseProperties(props),

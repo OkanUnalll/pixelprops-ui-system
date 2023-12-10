@@ -99,7 +99,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
       },
 
       '&:hover': {
-        opacity: !disabled ? theme.opacities.md : undefined,
+        opacity: !disabled ? theme.opacities.lg : undefined,
       },
       '&:active': {
         opacity: !disabled ? theme.opacities.sm : undefined,
@@ -158,7 +158,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
       };
 
       const activeStyle = !disabled ? {
-        opacity: theme.opacities.md,
+        opacity: theme.opacities.lg,
       } : undefined;
 
       return {
@@ -168,7 +168,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
         borderStyle: 'solid',
         color: colorMain,
 
-        'svg': {
+        '& > svg': {
           fill: colorMain,
         },
 
@@ -202,12 +202,12 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
         borderStyle: 'solid',
         color: colorMain,
   
-        'svg': {
+        '& > svg': {
           fill: colorMain,
         },
   
         '&:active': {
-          opacity: !disabled ? theme.opacities.md : undefined,
+          opacity: !disabled ? theme.opacities.lg : undefined,
         },
   
         ...hoverEffectStyle(),
@@ -238,12 +238,12 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
         borderStyle: 'solid',
         color: colorMain,
   
-        'svg': {
+        '& > svg': {
           fill: colorMain,
         },
   
         '&:active': {
-          opacity: !disabled ? theme.opacities.md : undefined,
+          opacity: !disabled ? theme.opacities.lg : undefined,
         },
   
         ...hoverEffectStyle(),
@@ -274,12 +274,12 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
         borderStyle: 'solid',
         color: colorMain,
   
-        'svg': {
+        '& > svg': {
           fill: colorMain,
         },
   
         '&:active': {
-          opacity: !disabled ? theme.opacities.md : undefined,
+          opacity: !disabled ? theme.opacities.lg : undefined,
         },
   
         ...hoverEffectStyle(),

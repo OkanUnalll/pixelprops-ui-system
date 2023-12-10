@@ -94,7 +94,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
       borderStyle: 'solid',
       color: colorMain,
 
-      'svg': {
+      '& > svg': {
         fill: colorMain,
       },
 
@@ -127,7 +127,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
         borderStyle: 'solid',
         color: colorContrast,
   
-        'svg': {
+        '& > svg': {
           fill: colorContrast,
         },
   
@@ -400,7 +400,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
   /* -- END - ROUNDED STYLES -- */
 
   /* -- FULL WIDTH STYLES -- */
-  const fullWidthVariant = new Property<boolean>((value) => {    
+  const fullWidthProperty = new Property<boolean>((value) => {    
     return value ? {
       width: '100%',
     } : {};
@@ -433,7 +433,7 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
     ...variantProperty.get(variant),
     ...sizeProperty.get(size),
     ...roundedProperty.get(rounded),
-    ...fullWidthVariant.get(fullWidth),
+    ...fullWidthProperty.get(fullWidth),
     ...isUppercaseProperty.get(isUppercase),
     /* BASE PROPERTIES */
     ...baseProperties(props),

@@ -1,4 +1,4 @@
-import { Color, Edge, Font } from './tokens';
+import { Color, ColorTypes, Edge, Font } from './tokens';
 import type { BaseThemeProperties } from './theme-base';
 import { themeBase } from './theme-base';
 
@@ -20,6 +20,7 @@ export interface ThemeProperties extends BaseThemeProperties {
     defaultPrimaryColor: Color;
     defaultRadius: Edge;
     defaultFont: Font;
+    defaultColor: ColorTypes;
 }
 
 export const darkTheme: ThemeProperties = {
@@ -31,6 +32,12 @@ export const darkTheme: ThemeProperties = {
     defaultPrimaryColor: 'primary',
     defaultRadius: 'sm',
     defaultFont: 'roboto',
+    defaultColor: {
+        main: '#424242',
+        light: '#5e5e5e',
+        dark: '#353535',
+        contrast: '#ffffff',
+    },
 };
 
 export const lightTheme: ThemeProperties = {
@@ -42,6 +49,12 @@ export const lightTheme: ThemeProperties = {
     defaultPrimaryColor: 'primary',
     defaultRadius: 'md',
     defaultFont: 'roboto',
+    defaultColor: {
+        main: '#e1e1e1',
+        light: '#efefef',
+        dark: '#cecece',
+        contrast: '#141414',
+    },
 };
 
 /* EXAMPLE CUSTOM THEME: */
@@ -54,4 +67,10 @@ export const appleTheme: ThemeProperties = {
     defaultPrimaryColor: 'red',
     defaultRadius: 'full',
     defaultFont: 'poppins',
+    defaultColor: {
+        main: '#e1e1e1',
+        light: '#efefef',
+        dark: '#cecece',
+        contrast: '#141414',
+    },
 };

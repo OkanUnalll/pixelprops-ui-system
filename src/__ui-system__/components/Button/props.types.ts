@@ -24,7 +24,7 @@ export interface ButtonBaseProps {
    * default value: false
    */
   iconOnly?: boolean;
-  rounded?: Edge;
+  rounded?: Rounded;
   /**
    * default value: false
    */

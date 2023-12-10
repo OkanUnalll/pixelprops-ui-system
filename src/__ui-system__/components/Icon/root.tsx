@@ -63,7 +63,7 @@ export const IconRoot = styled(InlineSVG)<Template<IconBaseProps>>((props) => {
   
   return {
     /* DEFAULT STYLES */
-    /* BASE BUTTON PROPS STYLES */
+    /* BASE ICON PROPS STYLES */
     ...colorProperty.get(color),
     ...sizeProperty.get(size),
     /* BASE PROPERTIES */

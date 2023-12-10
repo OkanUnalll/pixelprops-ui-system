@@ -49,7 +49,7 @@ export const ContainerRoot = styled.div<Template<ContainerBaseProps>>((props) =>
       paddingRight: 0,
       paddingLeft: 0,
     },
-    /* BASE BOX PROPS STYLES */
+    /* BASE CONTAINER PROPS STYLES */
     ...backgroundColorProperty.get(backgroundColor),
     /* BASE PROPERTIES */
     ...baseProperties(props),

@@ -93,7 +93,7 @@ export const TextRoot = styled.p<TextRootProps>((props) => {
   /* ------ END - BASE PROPS STYLES ------ */
 
   return {
-    /* BASE BOX PROPS STYLES */
+    /* BASE TEXT PROPS STYLES */
     ...colorProperty.get(color),
     ...limitProperty.get(limit),
     ...textAlignProperty.get(textAlign),

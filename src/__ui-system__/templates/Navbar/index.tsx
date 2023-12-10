@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Box, Container } from 'ui-system/components';
+import { Box, Container, Text } from 'ui-system/components';
 
 const navItems = [
   {
@@ -16,6 +16,10 @@ const navItems = [
     text: 'Typography',
     route: '/components/typography',
   },
+  {
+    text: 'Checkbox',
+    route: '/components/checkbox',
+  },
 ];
 
 function Navbar() {
@@ -23,14 +27,18 @@ function Navbar() {
     <Box>
       <Container py={2} _display="flex" alignItems="center" justifyContent="space-between">
         <Link href="/">
-          Pixel Props UI System
+          <Text>
+            Pixel Props UI System
+          </Text>
         </Link>
 
         <Box _display="flex" gap={1}>
           {navItems.map((item) => (
             <Box key={item.route}>
               <Link href={item.route}>
-                {item.text}
+                <Text>
+                  {item.text}
+                </Text>
               </Link>
             </Box>
           ))}

@@ -1,13 +1,13 @@
 'use client';
 
-import { contrastColor} from 'contrast-color';
-
 import { UIProvider } from 'ui-system/providers';
 import { Navbar } from 'ui-system/templates';
-import { hexToRgba } from 'ui-system/utils';
+import { Color } from 'ui-system/__test__/features/application/Color.Feature';
 
 function DashboardView() {
-  console.log('color: ', hexToRgba('#d32323'));
+  const green = new Color({ color: '#264dc1' });
+
+  console.log('contrast green : ', green.toContrast());
 
   return (
     <UIProvider>

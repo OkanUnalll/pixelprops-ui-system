@@ -1,31 +1,16 @@
-/**
- * ---- COLOR HERO ----
- * 
- * Sources used as reference in the development of this feature:
- * @see https://css-tricks.com/converting-color-spaces-in-javascript/
- * hex to rgba: @see https://stackoverflow.com/questions/21646738/convert-hex-to-rgba
- * rgb to hsl:  @see https://www.30secondsofcode.org/js/s/rgb-to-hsl/
+/*
+** ---- COLOR HERO ----
+** 
+** Sources used as reference in the development of this feature:
+** @see https://css-tricks.com/converting-color-spaces-in-javascript/
+** hex to rgba: @see https://stackoverflow.com/questions/21646738/convert-hex-to-rgba
+** rgb to hsl:  @see https://www.30secondsofcode.org/js/s/rgb-to-hsl/
 */
 
 export class ColorHero {
-  private color: string;
-  private type: 'hex' | 'rgba' | 'hsl';
-
-  constructor(
-    {
-      color,
-      type
-    }: {
-      color: string;
-      type: 'hex' | 'rgba' | 'hsl';
-    }) {
-    this.color = color;
-    this.type = type;
-  }
-
-  /* ------ HELPER METHODS ------ */
+  /* ------ INDEPENDENT HELPER METHODS ------ */
   /* -- HEX TO RGB CODES -- */
-  public hexToRgbCodes(hex: string): { r: number; g: number; b: number } {
+  static hexToRgbCodes(hex: string): { r: number; g: number; b: number } {
     const r: number = parseInt(hex.slice(1, 3), 16);
     const g: number = parseInt(hex.slice(3, 5), 16);
     const b: number = parseInt(hex.slice(5, 7), 16);
@@ -37,11 +22,11 @@ export class ColorHero {
   // refs: https://www.30secondsofcode.org/js/s/rgb-to-hsl/
   //       https://css-tricks.com/converting-color-spaces-in-javascript/#aa-rgb-to-hsl
   /**
-   * @param r - Red
-   * @param g - Green
-   * @param b - Blue
+  * @param r - Red
+  * @param g - Green
+  * @param b - Blue
   */
-  public rgbToHslCodes(r: number, g: number, b: number) {
+  static rgbToHslCodes(r: number, g: number, b: number): { h: number, s: number, l: number } {
     // Make r, g, and b fractions of 1
     r /= 255;
     g /= 255;
@@ -89,7 +74,7 @@ export class ColorHero {
   * @param hex
   * @param alpha - value range: [0.0 - 1.0]
   */
-  public hexToRgbaCodes(hex: string, alpha?: number) {
+  static hexToRgbaCodes(hex: string, alpha?: number): { r: number, g: number, b: number, a?: number } {
     const { r, g, b } = this.hexToRgbCodes(hex);
 
     return { r, g, b, a: alpha };
@@ -97,7 +82,12 @@ export class ColorHero {
 
   /* -- HSL TO RGB CODES -- */
   // refs: https://css-tricks.com/converting-color-spaces-in-javascript/#aa-hsl-to-rgb
-  public hslToRgbCodes(h: number, s: number, l: number) {
+  /**
+  * @param h - Hue
+  * @param s - Saturation
+  * @param l - Lightness
+  */
+  static hslToRgbCodes(h: number, s: number, l: number): { r: number, g: number, b: number} {
     // Must be fractions of 1
     s /= 100;
     l /= 100;
@@ -132,7 +122,13 @@ export class ColorHero {
 
   /* -- HSLA TO RGBA CODES -- */
   // refs: https://css-tricks.com/converting-color-spaces-in-javascript/#aa-hsla-to-rgba
-  public hslaToRgbaCodes(h: number, s: number, l: number, a: number) {
+  /**
+  * @param h - Hue
+  * @param s - Saturation
+  * @param l - Lightness
+  * @param a - Alpha
+  */
+  static hslaToRgbaCodes(h: number, s: number, l: number, a: number): { r: number, g: number, b: number, a: number } {
     const { r, g, b } = this.hslToRgbCodes(h, s, l);
 
     return { r, g, b, a };
@@ -141,7 +137,13 @@ export class ColorHero {
 
   /* -- RGB TO HEX -- */
   // refs: https://css-tricks.com/converting-color-spaces-in-javascript/#aa-rgb-to-hex
-  public rgbToHex(r: number, g: number, b: number) {
+  /**
+  * @param r - Red
+  * @param g - Green
+  * @param b - Blue
+  * @returns - example return : #000000
+  */
+  static rgbToHex(r: number, g: number, b: number): string {
     let _r: string = r.toString(16);
     let _g: string = g.toString(16);
     let _b: string = b.toString(16);
@@ -155,7 +157,13 @@ export class ColorHero {
 
   /* -- RGBA TO HEXA -- */
   // refs: https://css-tricks.com/converting-color-spaces-in-javascript/#aa-rgba-to-hex-rrggbbaa
-  public rgbaToHexA(r: number, g: number, b: number, a: number)  {
+  /**
+  * @param r - Red
+  * @param g - Green
+  * @param b - Blue
+  * @param a - Alpha
+  */
+  static rgbaToHexa(r: number, g: number, b: number, a: number): string  {
     let _r = r.toString(16);
     let _g = g.toString(16);
     let _b = b.toString(16);
@@ -174,8 +182,9 @@ export class ColorHero {
   /**
   * @param hex
   * @param alpha - value range: [0.0 - 1.0]
+  * @returns - return : rgba(r, g, b, alpha)
   */
-  public hexToRgba(hex: string, alpha?: number) {
+  static hexToRgba(hex: string, alpha?: number): string {
     const { r, g, b } = this.hexToRgbCodes(hex);
 
     if (alpha !== undefined || alpha !== null) {
@@ -185,29 +194,50 @@ export class ColorHero {
     }
   }
 
+  /* -- HEX TO RGB -- */
+  // refs: https://stackoverflow.com/a/28056903
+  /**
+  * @param hex
+  * @param alpha - value range: [0.0 - 1.0]
+  * @returns - return : rgba(r, g, b)
+  */
+  static hexToRgb(hex: string): string {
+    const { r, g, b } = this.hexToRgbCodes(hex);
+
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  }
+
   /* -- RGB TO HSL -- */
   /**
    * @param r - Red
    * @param g - Green
    * @param b - Blue
+   * @returns - return : hsl(h, s%, l%)
   */
-  public rgbToHsl(r: number, g: number, b: number) {
+  static rgbToHsl(r: number, g: number, b: number): string {
     const { h, s, l } = this.rgbToHslCodes(r, g, b);
 
     return 'hsl(' + h + ',' + s + '%,' + l + '%)';
   };
 
   /* -- HSL TO RGB -- */
-  public hslToRgb(h: number, s: number, l: number) {
+  /**
+  * @returns - return : rgba(r, g, b)
+  */
+  static hslToRgb(h: number, s: number, l: number): string {
     const { r, g, b } = this.hslToRgbCodes(h, s, l);
 
     return 'rgb(' + r + ',' + g + ',' + b + ')';
   }
 
   /* -- HSLA TO RGBA -- */
-  public hslaToRgba(h: number, s: number, l: number, alpha: number) {
+  /**
+  * @returns - return : rgba(r, g, b, alpha)
+  */
+  static hslaToRgba(h: number, s: number, l: number, alpha: number): string {
     const { r, g, b, a } = this.hslaToRgbaCodes(h, s, l, alpha);
 
     return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
   }
+  /* ------ END - INDEPENDENT HELPER METHODS ------ */
 }

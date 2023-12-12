@@ -1,5 +1,5 @@
-/* -- PROPERTIES FEATURES -- */
-export * from './properties/CSS.Feature';
-export * from './properties/Property.Feature';
-/* -- UI FEATURES -- */
-export * from './ui/Theme.Feature';
+/* -- APPLICATION FEATURES -- */
+export * from './application/Property.Feature';
+export * from './application/Theme.Feature';
+/* -- SUPPORT FEATURES -- */
+export * from './support/ColorHero.Feature';

@@ -15,12 +15,12 @@ export type ThemeMode = 'light' | 'dark' | 'apple';
 export interface ThemeProperties extends BaseThemeProperties {
     mode: ThemeMode;
     textColor: Color;
-    bodyColor: Color;
+    defaultGrayColor: Color;
     backgroundColor: Color;
     defaultPrimaryColor: Color;
     defaultRadius: Edge;
     defaultFont: Font;
-    defaultColor: ColorTypes;
+    defaultGrayColor2: ColorTypes;
 }
 
 export const darkTheme: ThemeProperties = {
@@ -28,15 +28,15 @@ export const darkTheme: ThemeProperties = {
     mode: 'dark',
     backgroundColor: 'dark',
     textColor: 'white',
-    bodyColor: 'lightGrey',
+    defaultGrayColor: 'lightGrey',
     defaultPrimaryColor: 'primary',
     defaultRadius: 'sm',
     defaultFont: 'roboto',
-    defaultColor: {
-        main: '#424242',
-        light: '#5e5e5e',
-        dark: '#353535',
-        contrast: '#ffffff',
+    defaultGrayColor2: {
+        main: '',
+        light: '',
+        dark: '',
+        contrast: '',
     },
 };
 
@@ -45,15 +45,15 @@ export const lightTheme: ThemeProperties = {
     mode: 'light',
     backgroundColor: 'white',
     textColor: 'dark',
-    bodyColor: 'darkGrey',
+    defaultGrayColor: 'darkGrey',
     defaultPrimaryColor: 'primary',
     defaultRadius: 'md',
     defaultFont: 'roboto',
-    defaultColor: {
-        main: '#e1e1e1',
-        light: '#efefef',
-        dark: '#cecece',
-        contrast: '#141414',
+    defaultGrayColor2: {
+        main: '#DDDDDD',
+        light: '#EBEBEB',
+        dark: '#CECECE',
+        contrast: '#393939',
     },
 };
 
@@ -63,14 +63,14 @@ export const appleTheme: ThemeProperties = {
     mode: 'apple',
     backgroundColor: 'white',
     textColor: 'dark',
-    bodyColor: 'darkGrey',
+    defaultGrayColor: 'darkGrey',
     defaultPrimaryColor: 'red',
     defaultRadius: 'full',
     defaultFont: 'poppins',
-    defaultColor: {
-        main: '#e1e1e1',
-        light: '#efefef',
-        dark: '#cecece',
-        contrast: '#141414',
+    defaultGrayColor2: {
+        main: '#DDDDDD',
+        light: '#EBEBEB',
+        dark: '#CECECE',
+        contrast: '#393939',
     },
 };

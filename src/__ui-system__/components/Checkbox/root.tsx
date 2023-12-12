@@ -73,7 +73,7 @@ export const CheckboxRoot = styled.div<CheckboxRootProps>((props) => {
   const checkboxRootInput = `${CheckboxRootInput}`;
 
   /* COLORS */
-  const colorValue = color === 'default' ? theme.bodyColor : color;
+  const colorValue = color === 'default' ? theme.defaultGrayColor : color;
 
   const colorMain = theme.colors[colorValue].main;
   const colorDark = theme.colors[colorValue].dark;
@@ -154,7 +154,7 @@ export const CheckboxRoot = styled.div<CheckboxRootProps>((props) => {
       cursor: !disabled && 'pointer',
       borderStyle: 'solid',
       borderWidth: '1px',
-      borderColor: hexToRgba(theme.colors[theme.bodyColor].main, 0.5),
+      borderColor: hexToRgba(theme.colors[theme.defaultGrayColor].main, 0.5),
 
       '& > svg': {
         fill: 'transparent',
@@ -163,22 +163,22 @@ export const CheckboxRoot = styled.div<CheckboxRootProps>((props) => {
       },
 
       '&:hover': {
-        backgroundColor: !disabled && hexToRgba(theme.colors[theme.bodyColor].main, 0.1),
+        backgroundColor: !disabled && hexToRgba(theme.colors[theme.defaultGrayColor].main, 0.1),
       },
     },
 
     [`& > label > ${checkboxRootInput}:checked ~ ${checkboxRootContent} > ${checkboxRootCheckbox}`]: {
-      backgroundColor: color === 'default' ? hexToRgba(colorMain, 0.2) : colorMain,
+      backgroundColor: colorMain,
       borderColor: 'transparent',
 
       '&:hover': {
-        backgroundColor: !disabled && (color === 'default' ? hexToRgba(colorDark, 0.3) : colorDark),
+        backgroundColor: !disabled && colorDark,
       },
 
       '& > svg': {
         opacity: 1,
         transform: 'scale(1)',
-        fill: color === 'default' ? colorMain : colorContrast,
+        fill: colorContrast,
       },
     },
     /* BASE CHECKBOX PROPS STYLES */

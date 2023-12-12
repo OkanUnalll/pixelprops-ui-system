@@ -85,7 +85,7 @@ function CheckboxViewUI() {
                 cursor: 'pointer',
 
                 '&:hover': {
-                  backgroundColor: hexToRgba(theme.colors[theme.bodyColor].main, 0.1),
+                  backgroundColor: hexToRgba(theme.colors[theme.defaultGrayColor].main, 0.1),
                 },
               }}
               px={1}

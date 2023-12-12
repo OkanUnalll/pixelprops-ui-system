@@ -9,6 +9,7 @@ import type { ButtonBaseProps, Rounded, Size, Variant } from './props.types';
 import { Template } from '../models';
 
 export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
+
   /* PROPS */
   const { baseProps, theme, disabled } = props;
 
@@ -24,11 +25,11 @@ export const ButtonRoot = styled.button<Template<ButtonBaseProps>>((props) => {
     hoverEffect = 'default',
   } = baseProps;
 
-  const colorValue = color === 'default' ? theme.bodyColor : color;
+  const colorValue = color === 'default' ? theme.defaultGrayColor2 : theme.colors[color];
 
-  const colorMain = theme.colors[colorValue].main;
-  const colorContrast = theme.colors[colorValue].contrast;
-  const colorDark = theme.colors[colorValue].dark;
+  const colorMain = colorValue.main;
+  const colorContrast = colorValue.contrast;
+  const colorDark = colorValue.dark;
 
   /* ------ BASE PROPS STYLES ------ */
   /* -- EFFECT STYLES -- */

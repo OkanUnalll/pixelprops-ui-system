@@ -15,5 +15,5 @@ type CoreProps = BaseProperties & LayoutProperties;
 /* ------------------ */
 
 export interface BoxProps extends CoreProps, HTMLProps, BoxBaseProps {
-  readonly children: React.ReactNode;
+  readonly children?: React.ReactNode;
 }

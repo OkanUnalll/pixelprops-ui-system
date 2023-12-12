@@ -133,6 +133,13 @@ export class ColorHero {
 
     return { r, g, b, a };
   }
+
+  /* -- HEX TO HSL CODES -- */
+  static hexToHslCodes(hex: string): { h: number, s: number, l: number } {
+    const { r, g, b } = this.hexToRgbCodes(hex);
+
+    return this.rgbToHslCodes(r, g, b);
+  }
   /* ---------- */
 
   /* -- RGB TO HEX -- */
@@ -238,6 +245,12 @@ export class ColorHero {
     const { r, g, b, a } = this.hslaToRgbaCodes(h, s, l, alpha);
 
     return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+  /* -- HEX TO HSL CODES -- */
+  static hexToHsl(hex: string): string {
+    const { h, s, l } = this.hexToHslCodes(hex);
+
+    return 'hsl(' + h + ',' + s + '%,' + l + '%)';
   }
   /* ------ END - INDEPENDENT HELPER METHODS ------ */
 }

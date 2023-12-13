@@ -68,6 +68,21 @@ export class ColorHero {
     return { h, s, l };
   };
 
+  /* -- RGBA TO HSLA CODES -- */
+  // refs: https://www.30secondsofcode.org/js/s/rgb-to-hsl/
+  //       https://css-tricks.com/converting-color-spaces-in-javascript/#aa-rgb-to-hsl
+  /**
+  * @param r - Red
+  * @param g - Green
+  * @param b - Blue
+  * @param a - Alpha
+  */
+  static rgbaToHslaCodes(r: number, g: number, b: number, a: number): { h: number, s: number, l: number, a: number } {
+    const { h, s, l } = ColorHero.rgbToHslCodes(r, g, b);
+
+    return { h, s, l, a };
+  };
+
   /* -- HEX TO RGB/RGBA CODES -- */
   // refs: https://stackoverflow.com/a/28056903
   /**
@@ -75,7 +90,7 @@ export class ColorHero {
   * @param alpha - value range: [0.0 - 1.0]
   */
   static hexToRgbaCodes(hex: string, alpha?: number): { r: number, g: number, b: number, a?: number } {
-    const { r, g, b } = this.hexToRgbCodes(hex);
+    const { r, g, b } = ColorHero.hexToRgbCodes(hex);
 
     return { r, g, b, a: alpha };
   }
@@ -129,16 +144,16 @@ export class ColorHero {
   * @param a - Alpha
   */
   static hslaToRgbaCodes(h: number, s: number, l: number, a: number): { r: number, g: number, b: number, a: number } {
-    const { r, g, b } = this.hslToRgbCodes(h, s, l);
+    const { r, g, b } = ColorHero.hslToRgbCodes(h, s, l);
 
     return { r, g, b, a };
   }
 
   /* -- HEX TO HSL CODES -- */
   static hexToHslCodes(hex: string): { h: number, s: number, l: number } {
-    const { r, g, b } = this.hexToRgbCodes(hex);
+    const { r, g, b } = ColorHero.hexToRgbCodes(hex);
 
-    return this.rgbToHslCodes(r, g, b);
+    return ColorHero.rgbToHslCodes(r, g, b);
   }
   /* ---------- */
 
@@ -192,7 +207,7 @@ export class ColorHero {
   * @returns - return : rgba(r, g, b, alpha)
   */
   static hexToRgba(hex: string, alpha?: number): string {
-    const { r, g, b } = this.hexToRgbCodes(hex);
+    const { r, g, b } = ColorHero.hexToRgbCodes(hex);
 
     if (alpha !== undefined || alpha !== null) {
       return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + (alpha ?? 1) + ')';
@@ -209,7 +224,7 @@ export class ColorHero {
   * @returns - return : rgba(r, g, b)
   */
   static hexToRgb(hex: string): string {
-    const { r, g, b } = this.hexToRgbCodes(hex);
+    const { r, g, b } = ColorHero.hexToRgbCodes(hex);
 
     return 'rgb(' + r + ', ' + g + ', ' + b + ')';
   }
@@ -222,7 +237,7 @@ export class ColorHero {
    * @returns - return : hsl(h, s%, l%)
   */
   static rgbToHsl(r: number, g: number, b: number): string {
-    const { h, s, l } = this.rgbToHslCodes(r, g, b);
+    const { h, s, l } = ColorHero.rgbToHslCodes(r, g, b);
 
     return 'hsl(' + h + ',' + s + '%,' + l + '%)';
   };
@@ -232,7 +247,7 @@ export class ColorHero {
   * @returns - return : rgba(r, g, b)
   */
   static hslToRgb(h: number, s: number, l: number): string {
-    const { r, g, b } = this.hslToRgbCodes(h, s, l);
+    const { r, g, b } = ColorHero.hslToRgbCodes(h, s, l);
 
     return 'rgb(' + r + ',' + g + ',' + b + ')';
   }
@@ -242,15 +257,50 @@ export class ColorHero {
   * @returns - return : rgba(r, g, b, alpha)
   */
   static hslaToRgba(h: number, s: number, l: number, alpha: number): string {
-    const { r, g, b, a } = this.hslaToRgbaCodes(h, s, l, alpha);
+    const { r, g, b, a } = ColorHero.hslaToRgbaCodes(h, s, l, alpha);
 
     return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
   }
   /* -- HEX TO HSL CODES -- */
   static hexToHsl(hex: string): string {
-    const { h, s, l } = this.hexToHslCodes(hex);
+    const { h, s, l } = ColorHero.hexToHslCodes(hex);
 
     return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+  }
+
+  /* -- RGB TO RGB CODES -- */
+  // refs: https://stackoverflow.com/a/10971090
+  /**
+   * Returns the values of an rgb expression of type string.
+   * example usage: toRgbCodes('rgb(0, 0, 0)')
+   * output: { r: 0, g: 0, b: 0 }
+  */
+  static rgbToRgbCodes(rgb: string): { r: number; g: number; b: number } {
+    const codes = rgb.replace(/[^\d,]/g, '').split(',');
+
+    return {
+      r: parseFloat(codes[0]),
+      g: parseFloat(codes[1]),
+      b: parseFloat(codes[2]),
+    };
+  }
+
+  /* -- RGBA TO RGBA CODES -- */
+  // refs: https://stackoverflow.com/a/10971090
+  /**
+   * Returns the values of an rgba expression of type string.
+   * example usage: toRgbCodes('rgb(0, 0, 0, 1)')
+   * output: { r: 0, g: 0, b: 0, a: 1 }
+  */
+  static rgbaToRgbaCodes(rgba: string): { r: number; g: number; b: number, a: number } {
+    const codes = rgba.replace(/[^\d,.]/g, '').split(',');
+
+    return {
+      r: parseFloat(codes[0]),
+      g: parseInt(codes[1]),
+      b: parseInt(codes[2]),
+      a: parseFloat(codes[3]),
+    };
   }
   /* ------ END - INDEPENDENT HELPER METHODS ------ */
 }
